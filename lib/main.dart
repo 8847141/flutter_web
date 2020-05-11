@@ -22,12 +22,18 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SingleChildScrollView(
-          child: SizedBox(
-            width: 500,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
+        child: GridView.extent(
+          maxCrossAxisExtent: 500,
+          mainAxisSpacing: 0,
+          childAspectRatio: 0.34,
+          crossAxisSpacing: 20,
+          addAutomaticKeepAlives: false,
+          addRepaintBoundaries: false,
+          addSemanticIndexes: false,
+          children: [
+            Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(height: 8),
                 _terrain(),
@@ -44,17 +50,36 @@ class MyHomePage extends StatelessWidget {
                 const SizedBox(height: 8),
                 _watering(),
                 const SizedBox(height: 8),
-                /*_waterOutlet(),
-                const SizedBox(height: 8),*/
                 _pump(),
                 const SizedBox(height: 8),
                 _barrel(),
                 const SizedBox(height: 8),
-                /*_comments(),
-                const SizedBox(height: 8),*/
               ],
             ),
-          ),
+            Column(
+              children: [
+                const SizedBox(height: 8),
+                _terrain(),
+                const SizedBox(height: 8),
+                _connectionType(),
+                const SizedBox(height: 8),
+                _path(),
+                const SizedBox(height: 8),
+                _nozzlesType(),
+                const SizedBox(height: 8),
+                _controller(),
+                const SizedBox(height: 8),
+                _sensor(),
+                const SizedBox(height: 8),
+                _watering(),
+                const SizedBox(height: 8),
+                _pump(),
+                const SizedBox(height: 8),
+                _barrel(),
+                const SizedBox(height: 8),
+              ],
+            ),
+          ],
         ),
       ),
     );
