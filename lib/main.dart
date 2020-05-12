@@ -21,66 +21,89 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: GridView.extent(
-          maxCrossAxisExtent: 500,
-          mainAxisSpacing: 0,
-          childAspectRatio: 0.34,
-          crossAxisSpacing: 20,
-          addAutomaticKeepAlives: false,
-          addRepaintBoundaries: false,
-          addSemanticIndexes: false,
-          children: [
-            Column(
-              //mainAxisAlignment: MainAxisAlignment.center,
-              //crossAxisAlignment: CrossAxisAlignment.center,
+      body: Column(
+        children: [
+          const Text('Техническое задание на проектирование'),
+          Container(
+            color: Colors.green,
+            padding: EdgeInsets.all(16),
+            child: GridView.extent(
+              maxCrossAxisExtent: 500.0,
               children: [
-                const SizedBox(height: 8),
-                _terrain(),
-                const SizedBox(height: 8),
-                _connectionType(),
-                const SizedBox(height: 8),
-                _path(),
-                const SizedBox(height: 8),
-                _nozzlesType(),
-                const SizedBox(height: 8),
-                _controller(),
-                const SizedBox(height: 8),
-                _sensor(),
-                const SizedBox(height: 8),
-                _watering(),
-                const SizedBox(height: 8),
-                _pump(),
-                const SizedBox(height: 8),
-                _barrel(),
-                const SizedBox(height: 8),
+                Column(
+                  children: [
+                    const SizedBox(height: 8),
+                    _terrain(),
+                    const SizedBox(height: 8),
+                    _connectionType(),
+                    const SizedBox(height: 8),
+                    _path(),
+                    const SizedBox(height: 8),
+                    _nozzlesType(),
+                    const SizedBox(height: 8),
+                    _controller(),
+                    const SizedBox(height: 8),
+                    _pump(),
+                    const SizedBox(height: 8),
+                    _barrel(),
+                    const SizedBox(height: 8),
+                  ],
+                ),
               ],
             ),
-            Column(
-              children: [
-                const SizedBox(height: 8),
-                _terrain(),
-                const SizedBox(height: 8),
-                _connectionType(),
-                const SizedBox(height: 8),
-                _path(),
-                const SizedBox(height: 8),
-                _nozzlesType(),
-                const SizedBox(height: 8),
-                _controller(),
-                const SizedBox(height: 8),
-                _sensor(),
-                const SizedBox(height: 8),
-                _watering(),
-                const SizedBox(height: 8),
-                _pump(),
-                const SizedBox(height: 8),
-                _barrel(),
-                const SizedBox(height: 8),
-              ],
+          )
+          /*SizedBox.expand(
+            child: GridView.count(
+              crossAxisCount: 2,
+              children: <Widget>[Text("data"), Text("as")],
             ),
-          ],
-        ),
+          ),*/
+          /*child: GridView.extent(
+              maxCrossAxisExtent: 785.0,
+              crossAxisSpacing: 20.0,
+              mainAxisSpacing: 20.0,
+              childAspectRatio: 0.8,
+              children: [
+                /*Container(
+                  alignment: Alignment.center,
+                  color: Colors.green,
+                  child: */
+                Column(
+                  children: [
+                    const SizedBox(height: 8),
+                    _terrain(),
+                    const SizedBox(height: 8),
+                    _connectionType(),
+                    const SizedBox(height: 8),
+                    _path(),
+                    const SizedBox(height: 8),
+                    _nozzlesType(),
+                    const SizedBox(height: 8),
+                    _controller(),
+                    const SizedBox(height: 8),
+                    _pump(),
+                    const SizedBox(height: 8),
+                    _barrel(),
+                    const SizedBox(height: 8),
+                  ],
+                ),
+                //),
+                /*Container(
+                  color: Colors.blue,
+                  child: */
+                Column(
+                  children: [
+                    const SizedBox(height: 8),
+                    _sensor(),
+                    const SizedBox(height: 8),
+                    _watering(),
+                    const SizedBox(height: 8),
+                  ],
+                ),
+                //),
+              ],
+            ),*/
+        ],
       ),
     );
   }
