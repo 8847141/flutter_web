@@ -18,91 +18,35 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key key}) : super(key: key);
 
+  final TextEditingController _noteController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          const Text('Техническое задание на проектирование'),
-          Container(
-            color: Colors.green,
-            padding: EdgeInsets.all(16),
-            child: GridView.extent(
-              maxCrossAxisExtent: 500.0,
-              children: [
-                Column(
-                  children: [
-                    const SizedBox(height: 8),
-                    _terrain(),
-                    const SizedBox(height: 8),
-                    _connectionType(),
-                    const SizedBox(height: 8),
-                    _path(),
-                    const SizedBox(height: 8),
-                    _nozzlesType(),
-                    const SizedBox(height: 8),
-                    _controller(),
-                    const SizedBox(height: 8),
-                    _pump(),
-                    const SizedBox(height: 8),
-                    _barrel(),
-                    const SizedBox(height: 8),
-                  ],
-                ),
-              ],
+          const SizedBox(
+            height: 20,
+          ),
+          const Align(
+            alignment: Alignment.center,
+            child: Text(
+              'Техническое задание на проектирование',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: TextField(
+              controller: _noteController,
+              maxLines: null,
+              minLines: 2,
+              decoration: kTextFormInputDecoration,
             ),
           )
-          /*SizedBox.expand(
-            child: GridView.count(
-              crossAxisCount: 2,
-              children: <Widget>[Text("data"), Text("as")],
-            ),
-          ),*/
-          /*child: GridView.extent(
-              maxCrossAxisExtent: 785.0,
-              crossAxisSpacing: 20.0,
-              mainAxisSpacing: 20.0,
-              childAspectRatio: 0.8,
-              children: [
-                /*Container(
-                  alignment: Alignment.center,
-                  color: Colors.green,
-                  child: */
-                Column(
-                  children: [
-                    const SizedBox(height: 8),
-                    _terrain(),
-                    const SizedBox(height: 8),
-                    _connectionType(),
-                    const SizedBox(height: 8),
-                    _path(),
-                    const SizedBox(height: 8),
-                    _nozzlesType(),
-                    const SizedBox(height: 8),
-                    _controller(),
-                    const SizedBox(height: 8),
-                    _pump(),
-                    const SizedBox(height: 8),
-                    _barrel(),
-                    const SizedBox(height: 8),
-                  ],
-                ),
-                //),
-                /*Container(
-                  color: Colors.blue,
-                  child: */
-                Column(
-                  children: [
-                    const SizedBox(height: 8),
-                    _sensor(),
-                    const SizedBox(height: 8),
-                    _watering(),
-                    const SizedBox(height: 8),
-                  ],
-                ),
-                //),
-              ],
-            ),*/
         ],
       ),
     );
