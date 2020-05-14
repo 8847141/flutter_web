@@ -23,31 +23,45 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          const Align(
-            alignment: Alignment.center,
-            child: Text(
-              'Техническое задание на проектирование',
-              style: TextStyle(
-                fontSize: 20,
+      body: Center(
+        child: ListView(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+          children: [
+            const SizedBox(
+              height: 20,
+            ),
+            const Align(
+              alignment: Alignment.center,
+              child: Text(
+                'Техническое задание на проектирование',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: TextField(
-              controller: _noteController,
-              maxLines: null,
-              minLines: 2,
-              decoration: kTextFormInputDecoration,
+            const SizedBox(
+              height: 20,
             ),
-          )
-        ],
+            Align(
+              alignment: Alignment.center,
+              child: SizedBox(
+                width: 800,
+                child: TextField(
+                  controller: _noteController,
+                  maxLines: null,
+                  minLines: 2,
+                  decoration: kTextFormInputDecoration,
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            _terrain(),
+          ],
+        ),
       ),
     );
   }
@@ -55,17 +69,19 @@ class MyHomePage extends StatelessWidget {
   Widget _terrain() {
     return Row(
       children: [
-        const SizedBox(width: 16),
-        const Text('Рельеф участка'),
-        const SizedBox(width: 16),
+        const Text(
+          'Рельеф участка',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        const SizedBox(width: 8),
         Container(
-          padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+          padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
           decoration: BoxDecoration(
             border: Border.all(
               color: kMainColor,
               width: 2,
             ),
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(14),
           ),
           child: DropdownButton<String>(
             value: 'Ровный',
@@ -87,7 +103,6 @@ class MyHomePage extends StatelessWidget {
             }).toList(),
           ),
         ),
-        const SizedBox(width: 16),
       ],
     );
   }

@@ -5,9 +5,12 @@ const Color kMainColor = Color(0xff3553f1);
 const EdgeInsetsGeometry kChecboxesPadding = EdgeInsets.fromLTRB(12, 0, 12, 0);
 
 const OutlineInputBorder kTextFormBorderStyle = OutlineInputBorder(
-  borderSide: BorderSide(color: kMainColor),
+  borderSide: BorderSide(
+    color: kMainColor,
+    width: 2,
+  ),
   borderRadius: BorderRadius.all(
-    Radius.circular(15),
+    Radius.circular(14),
   ),
 );
 
