@@ -1,14 +1,21 @@
+# Customizing static analysis
 # https://dart.dev/guides/language/analysis-options
+# https://dart-lang.github.io/linter/lints/
 
-include: package:pedantic/analysis_options.yaml
+#include: package:pedantic/analysis_options.yaml
 #include: package:effective_dart/analysis_options.yaml
 
 analyzer:
   exclude:
-    - 'example/**'
+    # web
+    - 'web/**'
+    # build
     - 'build/**'
-    - '**.g.dart'
+    # generated code
+    - 'lib/**/*.g.dart'
     - 'lib/generated_plugin_registrant.dart'
+    # assets and mocks for test
+    - 'test/data/*'
   strong-mode:
     implicit-casts: false
     implicit-dynamic: false
@@ -17,11 +24,13 @@ analyzer:
     todo: info
     directives_ordering: info
     always_declare_return_types: info
+
     # warning
     unsafe_html: warning
     prefer_relative_imports: warning
-    no_logic_in_create_state: warning
+    #no_logic_in_create_state: warning
     empty_catches: warning
+
     # error
     avoid_relative_lib_imports: error
     avoid_slow_async_io: error
@@ -31,16 +40,25 @@ analyzer:
     valid_regexps: error
     always_require_non_null_named_parameters: error
 
-# https://dart-lang.github.io/linter/lints/
 linter:
   rules:
+    # Strong/weak typing
+    always_specify_typetypes: false
+    avoid_types_on_closure_parameters: true
+    omit_local_variable_types: false
+
+    # True only for package
+    public_member_api_docs: false
+    lines_longer_than_80_chars: false
+
     # false
-    public_member_api_docs: false # Only for package
-    avoid_types_on_closure_parameters: false # Not as redundant as helpful and speaking
-    omit_local_variable_types: false # I really like type annotation
-    lines_longer_than_80_chars: false # I have two eyes
 
     # true
+    package_api_docs: true
+    no_adjacent_strings_in_list: true
+    avoid_init_to_null: true
+    sized_box_for_whitespace: true
+    avoid_unused_constructor_parameters: true
     avoid_null_checks_in_equality_operators: true
     camel_case_extensions: true
     prefer_adjacent_string_concatenation: true
@@ -105,7 +123,6 @@ linter:
     hash_and_equals: true
     implementation_imports: true
     non_constant_identifier_names: true
-    package_api_docs: true
     package_names: true
     package_prefixed_library_names: true
     test_types_in_equals: true

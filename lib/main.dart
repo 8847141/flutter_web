@@ -85,7 +85,7 @@ class MyHomePage extends StatelessWidget {
           ),
           child: DropdownButton<String>(
             value: 'Ровный',
-            icon: Icon(Icons.arrow_drop_down),
+            icon: const Icon(Icons.arrow_drop_down),
             iconSize: 24,
             elevation: 8,
             style:
@@ -93,9 +93,9 @@ class MyHomePage extends StatelessWidget {
             underline: const SizedBox(
               height: 0,
             ),
-            onChanged: (String newValue) {},
+            onChanged: null,
             items: <String>['Ровный', 'С перепадом высот']
-                .map<DropdownMenuItem<String>>((String value) {
+                .map<DropdownMenuItem<String>>((value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),
@@ -124,7 +124,7 @@ class MyHomePage extends StatelessWidget {
           ),
           child: DropdownButton<String>(
             value: 'Магистраль',
-            icon: Icon(Icons.arrow_drop_down),
+            icon: const Icon(Icons.arrow_drop_down),
             iconSize: 24,
             elevation: 8,
             style:
@@ -132,7 +132,7 @@ class MyHomePage extends StatelessWidget {
             underline: const SizedBox(
               height: 0,
             ),
-            onChanged: (String newValue) {},
+            onChanged: null,
             items: <String>[
               'Магистраль',
               'Емкость',
@@ -140,7 +140,7 @@ class MyHomePage extends StatelessWidget {
               'Скважина',
               'Водоем',
               'Другое'
-            ].map<DropdownMenuItem<String>>((String value) {
+            ].map<DropdownMenuItem<String>>((value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),
@@ -183,11 +183,11 @@ class MyHomePage extends StatelessWidget {
   Widget _nozzlesType() {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        const Padding(
+          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: const Text('Предпочитаемый тип дождевателя'),
+            child: Text('Предпочитаемый тип дождевателя'),
           ),
         ),
         const SizedBox(width: 8),
@@ -285,11 +285,11 @@ class MyHomePage extends StatelessWidget {
   Widget _sensor() {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        const Padding(
+          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: const Text('Датчик погоды'),
+            child: Text('Датчик погоды'),
           ),
         ),
         const SizedBox(width: 8),
@@ -370,11 +370,11 @@ class MyHomePage extends StatelessWidget {
   Widget _watering() {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+        const Padding(
+          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: const Text('Что поливаем?'),
+            child: Text('Что поливаем?'),
           ),
         ),
         const SizedBox(width: 8),
@@ -449,7 +449,7 @@ class MyHomePage extends StatelessWidget {
         const SizedBox(width: 16),
         const Text('Установка водяных розеток'),
         const SizedBox(width: 16),
-        TextField(
+        const TextField(
           decoration: InputDecoration(
               border: InputBorder.none, hintText: 'Enter a search term'),
         ),
@@ -509,13 +509,6 @@ class MyHomePage extends StatelessWidget {
         ),
         const SizedBox(width: 16),
       ],
-    );
-  }
-
-  Widget _comments() {
-    return TextField(
-      minLines: 4,
-      maxLines: 20,
     );
   }
 }
