@@ -56,10 +56,15 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 12),
             _terrain(),
+            const SizedBox(height: 12),
+            _connectionType(),
+            const SizedBox(height: 12),
+            _path(),
+            const SizedBox(height: 12),
+            _nozzlesType(),
+            const SizedBox(height: 12),
           ],
         ),
       ),
@@ -71,18 +76,12 @@ class MyHomePage extends StatelessWidget {
       children: [
         const Text(
           'Рельеф участка',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: kMainTextStyle,
         ),
         const SizedBox(width: 8),
         Container(
           padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: kMainColor,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(14),
-          ),
+          decoration: kDropdownButtonDecoration,
           child: DropdownButton<String>(
             value: 'Ровный',
             icon: const Icon(Icons.arrow_drop_down),
@@ -93,7 +92,7 @@ class MyHomePage extends StatelessWidget {
             underline: const SizedBox(
               height: 0,
             ),
-            onChanged: null,
+            onChanged: (_) {},
             items: <String>['Ровный', 'С перепадом высот']
                 .map<DropdownMenuItem<String>>((value) {
               return DropdownMenuItem<String>(
@@ -110,18 +109,14 @@ class MyHomePage extends StatelessWidget {
   Widget _connectionType() {
     return Row(
       children: [
-        const SizedBox(width: 16),
-        const Text('Подключение к системе'),
-        const SizedBox(width: 16),
+        const Text(
+          'Подключение к системе',
+          style: kMainTextStyle,
+        ),
+        const SizedBox(width: 8),
         Container(
           padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: kMainColor,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(12),
-          ),
+          decoration: kDropdownButtonDecoration,
           child: DropdownButton<String>(
             value: 'Магистраль',
             icon: const Icon(Icons.arrow_drop_down),
@@ -132,7 +127,7 @@ class MyHomePage extends StatelessWidget {
             underline: const SizedBox(
               height: 0,
             ),
-            onChanged: null,
+            onChanged: (_) {},
             items: <String>[
               'Магистраль',
               'Емкость',
@@ -148,7 +143,6 @@ class MyHomePage extends StatelessWidget {
             }).toList(),
           ),
         ),
-        const SizedBox(width: 16),
       ],
     );
   }
@@ -156,26 +150,45 @@ class MyHomePage extends StatelessWidget {
   Widget _path() {
     return Row(
       children: [
-        const SizedBox(width: 16),
-        const Text('Поливаем дорожки?'),
+        const Text(
+          'Поливаем дорожки?',
+          style: kMainTextStyle,
+        ),
         const SizedBox(width: 16),
         Row(
-          children: <Widget>[
-            Row(
-              children: [
-                const Radio(value: false, groupValue: null, onChanged: null),
-                const Text('Да'),
-              ],
+          children: [
+            Container(
+              padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+              decoration: kDropdownButtonDecoration,
+              width: 100.0,
+              child: Row(
+                children: [
+                  const Radio(
+                    value: true,
+                    groupValue: true,
+                    onChanged: null,
+                  ),
+                  const Text('Да'),
+                ],
+              ),
             ),
-            Row(
-              children: [
-                const Radio(value: false, groupValue: null, onChanged: null),
-                const Text('Нет'),
-              ],
+            Container(
+              padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+              //decoration: kDropdownButtonDecoration,
+              width: 100.0,
+              child: Row(
+                children: [
+                  const Radio(
+                    value: false,
+                    groupValue: null,
+                    onChanged: null,
+                  ),
+                  const Text('Нет'),
+                ],
+              ),
             ),
           ],
         ),
-        const SizedBox(width: 16),
       ],
     );
   }
@@ -183,53 +196,92 @@ class MyHomePage extends StatelessWidget {
   Widget _nozzlesType() {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text('Предпочитаемый тип дождевателя'),
+        const Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Предпочитаемый тип дождевателей',
+            style: kMainTextStyle,
           ),
         ),
-        const SizedBox(width: 8),
+        const SizedBox(height: 8.0),
         Padding(
           padding: kChecboxesPadding,
           child: Column(
             children: [
-              Row(
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (_) {},
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  decoration: kDropdownButtonDecoration,
+                  width: 200.0,
+                  child: Row(
+                    children: [
+                      Checkbox(
+                        activeColor: kMainColor,
+                        value: true,
+                        onChanged: (_) {},
+                      ),
+                      const Text('Статические')
+                    ],
                   ),
-                  const Text('Статические')
-                ],
+                ),
               ),
-              Row(
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (_) {},
+              const SizedBox(height: 8.0),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  decoration: kDropdownButtonDecoration,
+                  width: 200.0,
+                  child: Row(
+                    children: [
+                      Checkbox(
+                        activeColor: kMainColor,
+                        value: true,
+                        onChanged: (_) {},
+                      ),
+                      const Text('Ротаторные')
+                    ],
                   ),
-                  const Text('Ротаторные')
-                ],
+                ),
               ),
-              Row(
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (_) {},
+              const SizedBox(height: 8.0),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  //decoration: kDropdownButtonDecoration,
+                  width: 200.0,
+                  child: Row(
+                    children: [
+                      Checkbox(
+                        activeColor: kMainColor,
+                        value: false,
+                        onChanged: (_) {},
+                      ),
+                      const Text('Роторы')
+                    ],
                   ),
-                  const Text('Роторы')
-                ],
+                ),
               ),
-              Row(
-                children: [
-                  Checkbox(
-                    value: false,
-                    onChanged: (_) {},
+              const SizedBox(height: 8.0),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                  //decoration: kDropdownButtonDecoration,
+                  width: 200.0,
+                  child: Row(
+                    children: [
+                      Checkbox(
+                        activeColor: kMainColor,
+                        value: false,
+                        onChanged: (_) {},
+                      ),
+                      const Text('Любые')
+                    ],
                   ),
-                  const Text('Любые')
-                ],
+                ),
               ),
             ],
           ),

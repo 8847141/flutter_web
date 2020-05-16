@@ -23,3 +23,15 @@ const InputDecoration kTextFormInputDecoration = InputDecoration(
   filled: true,
   fillColor: Colors.white,
 );
+
+final Decoration kDropdownButtonDecoration = BoxDecoration(
+  border: Border.all(
+    color: kMainColor,
+    width: 2,
+  ),
+  borderRadius: BorderRadius.circular(14),
+);
+
+const TextStyle kMainTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+);
