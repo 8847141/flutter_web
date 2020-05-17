@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'bloc/options_bloc.dart';
 import 'constants.dart';
 
 void main() => runApp(MyApp());
@@ -10,7 +12,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Техническое задание',
-      home: MyHomePage(),
+      home: BlocProvider(
+        create: (_) => OptionsBloc(),
+        child: MyHomePage(),
+      ),
     );
   }
 }
@@ -82,24 +87,35 @@ class MyHomePage extends StatelessWidget {
         Container(
           padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
           decoration: kDropdownButtonDecoration,
-          child: DropdownButton<String>(
-            value: 'Ровный',
-            icon: const Icon(Icons.arrow_drop_down),
-            iconSize: 24,
-            elevation: 8,
-            style:
-                const TextStyle(color: kMainColor, fontWeight: FontWeight.bold),
-            underline: const SizedBox(
-              height: 0,
-            ),
-            onChanged: (_) {},
-            items: <String>['Ровный', 'С перепадом высот']
-                .map<DropdownMenuItem<String>>((value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
+          child: BlocBuilder<OptionsBloc, OptionsState>(
+            builder: (context, bloc) {
+              if (bloc is OptionsIsLoaded) {
+                return DropdownButton<String>(
+                  value: bloc.terrain,
+                  icon: const Icon(Icons.arrow_drop_down),
+                  iconSize: 24,
+                  elevation: 8,
+                  style: const TextStyle(
+                      color: kMainColor, fontWeight: FontWeight.bold),
+                  underline: const SizedBox(
+                    height: 0,
+                  ),
+                  onChanged: (terrain) =>
+                      context.bloc<OptionsBloc>().add(ChangeTerrain(terrain)),
+                  items: context
+                      .bloc<OptionsBloc>()
+                      .terrains
+                      .map<DropdownMenuItem<String>>((value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                );
+              } else {
+                return null;
+              }
+            },
           ),
         ),
       ],
@@ -117,30 +133,36 @@ class MyHomePage extends StatelessWidget {
         Container(
           padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
           decoration: kDropdownButtonDecoration,
-          child: DropdownButton<String>(
-            value: 'Магистраль',
-            icon: const Icon(Icons.arrow_drop_down),
-            iconSize: 24,
-            elevation: 8,
-            style:
-                const TextStyle(color: kMainColor, fontWeight: FontWeight.bold),
-            underline: const SizedBox(
-              height: 0,
-            ),
-            onChanged: (_) {},
-            items: <String>[
-              'Магистраль',
-              'Емкость',
-              'Колодец',
-              'Скважина',
-              'Водоем',
-              'Другое'
-            ].map<DropdownMenuItem<String>>((value) {
-              return DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-            }).toList(),
+          child: BlocBuilder<OptionsBloc, OptionsState>(
+            builder: (context, bloc) {
+              if (bloc is OptionsIsLoaded) {
+                return DropdownButton<String>(
+                  value: bloc.connectionType,
+                  icon: const Icon(Icons.arrow_drop_down),
+                  iconSize: 24,
+                  elevation: 8,
+                  style: const TextStyle(
+                      color: kMainColor, fontWeight: FontWeight.bold),
+                  underline: const SizedBox(
+                    height: 0,
+                  ),
+                  onChanged: (connectionType) => context
+                      .bloc<OptionsBloc>()
+                      .add(ChangeConnectionType(connectionType)),
+                  items: context
+                      .bloc<OptionsBloc>()
+                      .connectionTypes
+                      .map<DropdownMenuItem<String>>((value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                );
+              } else {
+                return null;
+              }
+            },
           ),
         ),
       ],
@@ -155,39 +177,53 @@ class MyHomePage extends StatelessWidget {
           style: kMainTextStyle,
         ),
         const SizedBox(width: 16),
-        Row(
-          children: [
-            Container(
-              padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-              decoration: kDropdownButtonDecoration,
-              width: 100.0,
-              child: Row(
+        BlocBuilder<OptionsBloc, OptionsState>(
+          builder: (context, bloc) {
+            if (bloc is OptionsIsLoaded) {
+              return Row(
                 children: [
-                  const Radio(
-                    value: true,
-                    groupValue: true,
-                    onChanged: null,
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                    decoration: bloc.path ? kDropdownButtonDecoration : null,
+                    width: 100.0,
+                    child: Row(
+                      children: [
+                        Radio(
+                          value: true,
+                          groupValue: bloc.path,
+                          onChanged: (dynamic value) => context
+                              .bloc<OptionsBloc>()
+                              .add(WaterThePath(true)),
+                          activeColor: kMainColor,
+                        ),
+                        const Text('Да'),
+                      ],
+                    ),
                   ),
-                  const Text('Да'),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
-              //decoration: kDropdownButtonDecoration,
-              width: 100.0,
-              child: Row(
-                children: [
-                  const Radio(
-                    value: false,
-                    groupValue: null,
-                    onChanged: null,
+                  Container(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                    decoration: bloc.path ? null : kDropdownButtonDecoration,
+                    width: 100.0,
+                    child: Row(
+                      children: [
+                        Radio(
+                          value: false,
+                          groupValue: bloc.path,
+                          onChanged: (dynamic value) => context
+                              .bloc<OptionsBloc>()
+                              .add(WaterThePath(false)),
+                          activeColor: kMainColor,
+                        ),
+                        const Text('Нет'),
+                      ],
+                    ),
                   ),
-                  const Text('Нет'),
                 ],
-              ),
-            ),
-          ],
+              );
+            } else {
+              return null;
+            }
+          },
         ),
       ],
     );
@@ -290,7 +326,7 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  Widget _controller() {
+  /*Widget _controller() {
     return Column(
       children: [
         Row(
@@ -562,5 +598,5 @@ class MyHomePage extends StatelessWidget {
         const SizedBox(width: 16),
       ],
     );
-  }
+  }*/
 }
