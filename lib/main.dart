@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'bloc/options_bloc.dart';
 import 'constants.dart';
+import 'models/answers.dart';
 
 void main() => runApp(MyApp());
 
@@ -64,12 +66,12 @@ class MyHomePage extends StatelessWidget {
             const SizedBox(height: 12),
             _terrain(),
             const SizedBox(height: 12),
-            _connectionType(),
+            /*_connectionType(),
             const SizedBox(height: 12),
             _path(),
             const SizedBox(height: 12),
             _nozzlesType(),
-            const SizedBox(height: 12),
+            const SizedBox(height: 12),*/
           ],
         ),
       ),
@@ -91,7 +93,7 @@ class MyHomePage extends StatelessWidget {
             builder: (context, bloc) {
               if (bloc is OptionsIsLoaded) {
                 return DropdownButton<String>(
-                  value: bloc.terrain,
+                  value: bloc.answers.terrainType,
                   icon: const Icon(Icons.arrow_drop_down),
                   iconSize: 24,
                   elevation: 8,
@@ -100,11 +102,13 @@ class MyHomePage extends StatelessWidget {
                   underline: const SizedBox(
                     height: 0,
                   ),
-                  onChanged: (terrain) =>
-                      context.bloc<OptionsBloc>().add(ChangeTerrain(terrain)),
+                  onChanged: (terrain) => context
+                      .bloc<OptionsBloc>()
+                      .add(ChangeAnswers(Answers(terrainType: terrain))),
                   items: context
                       .bloc<OptionsBloc>()
-                      .terrains
+                      .answers
+                      .terrainTypes
                       .map<DropdownMenuItem<String>>((value) {
                     return DropdownMenuItem<String>(
                       value: value,
@@ -121,7 +125,7 @@ class MyHomePage extends StatelessWidget {
       ],
     );
   }
-
+/*
   Widget _connectionType() {
     return Row(
       children: [
@@ -180,6 +184,7 @@ class MyHomePage extends StatelessWidget {
         BlocBuilder<OptionsBloc, OptionsState>(
           builder: (context, bloc) {
             if (bloc is OptionsIsLoaded) {
+              print('path!');
               return Row(
                 children: [
                   Container(
@@ -324,7 +329,7 @@ class MyHomePage extends StatelessWidget {
         )
       ],
     );
-  }
+  }*/
 
   /*Widget _controller() {
     return Column(

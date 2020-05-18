@@ -6,11 +6,9 @@ abstract class OptionsState {
 }
 
 class OptionsIsLoaded extends OptionsState {
-  final String terrain;
-  final String connectionType;
-  final bool path;
+  final Answers answers;
 
-  const OptionsIsLoaded({this.terrain, this.connectionType, this.path});
+  const OptionsIsLoaded(this.answers);
 
-  List<Object> get props => [terrain];
+  List<Object> get props => [answers];
 }
