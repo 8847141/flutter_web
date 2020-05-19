@@ -7,7 +7,7 @@ part 'options_event.dart';
 part 'options_state.dart';
 
 class OptionsBloc extends Bloc<OptionsEvent, OptionsState> {
-  final Answers answers = const Answers(terrainType: 'Ровный');
+  final Answers answers = Answers();
 
   @override
   OptionsState get initialState => OptionsIsLoaded(answers);

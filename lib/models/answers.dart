@@ -1,23 +1,36 @@
 class Answers {
-  final String terrainType;
-  /*String heightDifference;
+  String terrainType;
+  //String heightDifference;
   String connectionType;
-  String otherconnectionType;
+  //String otherconnectionType;
   bool canBeWateredWalkway;
-  //TODO preferredNozzleType;
-  String controllerLocation;
-  bool controllerWitfWiFi;
-  String sensor;
-  bool dripIrrigation;
-  String typesOfIrrigatedLandings;
-  int waterOutlet;
-  bool needPump;
-  bool needWaterTank;
-  String comments;*/
+  // preferredNozzleType;
+  //String controllerLocation;
+  //bool controllerWitfWiFi;
+  //String sensor;
+  //bool dripIrrigation;
+  //String typesOfIrrigatedLandings;
+  //int waterOutlet;
+  //bool needPump;
+  //bool needWaterTank;
+  //String comments;
 
   List<String> get terrainTypes => ['Ровный', 'С перепадом высот'];
   List<String> get connectionTypes =>
       ['Магистраль', 'Емкость', 'Колодец', 'Скважина', 'Водоем', 'Другое'];
 
-  const Answers({this.terrainType});
+  Answers({
+    this.terrainType = 'Ровный',
+    this.connectionType = 'Магистраль',
+    this.canBeWateredWalkway = true,
+  });
+
+  Answers copyWith(
+      {String terrainType, String connectionType, bool canBeWateredWalkway}) {
+    return Answers(
+      terrainType: terrainType ?? this.terrainType,
+      connectionType: connectionType ?? this.connectionType,
+      canBeWateredWalkway: canBeWateredWalkway ?? this.canBeWateredWalkway,
+    );
+  }
 }
