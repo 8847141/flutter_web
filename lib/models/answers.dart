@@ -1,10 +1,12 @@
+import 'preferred_nozzle_type.dart';
+
 class Answers {
   String terrainType;
   //String heightDifference;
   String connectionType;
   //String otherconnectionType;
   bool canBeWateredWalkway;
-  // preferredNozzleType;
+  PreferredNozzleType preferredNozzleType;
   //String controllerLocation;
   //bool controllerWitfWiFi;
   //String sensor;
@@ -19,18 +21,24 @@ class Answers {
   List<String> get connectionTypes =>
       ['Магистраль', 'Емкость', 'Колодец', 'Скважина', 'Водоем', 'Другое'];
 
-  Answers({
-    this.terrainType = 'Ровный',
-    this.connectionType = 'Магистраль',
-    this.canBeWateredWalkway = true,
-  });
+  Answers(
+      {this.terrainType = 'Ровный',
+      this.connectionType = 'Магистраль',
+      this.canBeWateredWalkway = true,
+      PreferredNozzleType preferredNozzleType}) {
+    this.preferredNozzleType = preferredNozzleType ?? PreferredNozzleType();
+  }
 
   Answers copyWith(
-      {String terrainType, String connectionType, bool canBeWateredWalkway}) {
+      {String terrainType,
+      String connectionType,
+      bool canBeWateredWalkway,
+      PreferredNozzleType preferredNozzleType}) {
     return Answers(
       terrainType: terrainType ?? this.terrainType,
       connectionType: connectionType ?? this.connectionType,
       canBeWateredWalkway: canBeWateredWalkway ?? this.canBeWateredWalkway,
+      preferredNozzleType: preferredNozzleType ?? this.preferredNozzleType,
     );
   }
 }

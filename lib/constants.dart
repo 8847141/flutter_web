@@ -33,6 +33,14 @@ final Decoration kDropdownButtonDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(14.0),
 );
 
+final Decoration kHideDropdownButtonDecoration = BoxDecoration(
+  border: Border.all(
+    color: Colors.white,
+    width: 2.0,
+  ),
+  borderRadius: BorderRadius.circular(14.0),
+);
+
 const TextStyle kMainTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );

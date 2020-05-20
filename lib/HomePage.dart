@@ -55,6 +55,7 @@ class HomePage extends StatelessWidget {
                 Path(),
                 const SizedBox(height: 12.0),
                 PreferredNozzleType(),
+                const SizedBox(height: 12.0),
               ],
             ),
           ),
