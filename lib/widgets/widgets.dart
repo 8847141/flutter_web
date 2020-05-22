@@ -1,54 +1,12 @@
 export 'connection_type_widget.dart';
+export 'controller.dart';
 export 'path_widget.dart';
 export 'preferred_nozzle_type_widget.dart';
 export 'terrarian_type_widget.dart';
 
 //! Use this widgets
 
-/*Widget _controller() {
-    return Column(
-      children: [
-        Row(
-          children: [
-            const SizedBox(width: 16),
-            const Text('Пульт управления'),
-            const SizedBox(width: 16),
-            Row(
-              children: <Widget>[
-                Row(
-                  children: [
-                    const Radio(
-                        value: false, groupValue: null, onChanged: null),
-                    const Text('Внутренний'),
-                  ],
-                ),
-                Row(
-                  children: [
-                    const Radio(
-                        value: false, groupValue: null, onChanged: null),
-                    const Text('Наружный'),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
-        Padding(
-          padding: kChecboxesPadding,
-          child: Row(
-            children: [
-              const Checkbox(
-                value: false,
-                onChanged: null,
-              ),
-              const Text('С Wi-Fi'),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
+/*
   Widget _sensor() {
     return Column(
       children: [

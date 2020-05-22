@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(
-                  height: 40.0,
+                  height: 20.0,
                 ),
                 const Align(
                   alignment: Alignment.center,
@@ -55,6 +55,8 @@ class HomePage extends StatelessWidget {
                 Path(),
                 const SizedBox(height: 12.0),
                 PreferredNozzleType(),
+                const SizedBox(height: 12.0),
+                Controller(),
                 const SizedBox(height: 12.0),
               ],
             ),
