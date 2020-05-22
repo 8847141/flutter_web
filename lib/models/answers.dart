@@ -1,4 +1,5 @@
 import 'preferred_nozzle_type.dart';
+import 'sensors.dart';
 
 class Answers {
   String terrainType;
@@ -7,9 +8,9 @@ class Answers {
   //String otherconnectionType;
   bool canBeWateredWalkway;
   PreferredNozzleType preferredNozzleType;
-  bool outdoorController;
+  String controllerType;
   bool controllerWitfWiFi;
-  //String sensor;
+  Sensors sensors;
   //bool dripIrrigation;
   //String typesOfIrrigatedLandings;
   //int waterOutlet;
@@ -19,16 +20,20 @@ class Answers {
 
   List<String> get terrainTypes => ['Ровный', 'С перепадом высот'];
   List<String> get connectionTypes =>
-      ['Магистраль', 'Емкость', 'Колодец', 'Скважина', 'Водоем', 'Другое'];
+      ['Емкость', 'Магистраль', 'Колодец', 'Скважина', 'Водоем', 'Другое'];
+  List<String> get controllerTypes => ['Внутренний', 'Внешний'];
 
-  Answers(
-      {this.terrainType = 'Ровный',
-      this.connectionType = 'Магистраль',
-      this.canBeWateredWalkway = true,
-      PreferredNozzleType preferredNozzleType,
-      this.outdoorController = true,
-      this.controllerWitfWiFi = false}) {
+  Answers({
+    this.terrainType = 'Ровный',
+    this.connectionType = 'Емкость',
+    this.canBeWateredWalkway = true,
+    PreferredNozzleType preferredNozzleType,
+    this.controllerType = 'Внутренний',
+    this.controllerWitfWiFi = false,
+    Sensors sensors,
+  }) {
     this.preferredNozzleType = preferredNozzleType ?? PreferredNozzleType();
+    this.sensors = sensors ?? Sensors();
   }
 
   Answers copyWith({
@@ -36,16 +41,18 @@ class Answers {
     String connectionType,
     bool canBeWateredWalkway,
     PreferredNozzleType preferredNozzleType,
-    bool outdoorController,
+    String controllerType,
     bool controllerWitfWiFi,
+    Sensors sensors,
   }) {
     return Answers(
       terrainType: terrainType ?? this.terrainType,
       connectionType: connectionType ?? this.connectionType,
       canBeWateredWalkway: canBeWateredWalkway ?? this.canBeWateredWalkway,
       preferredNozzleType: preferredNozzleType ?? this.preferredNozzleType,
-      outdoorController: outdoorController ?? this.outdoorController,
+      controllerType: controllerType ?? this.controllerType,
       controllerWitfWiFi: controllerWitfWiFi ?? this.controllerWitfWiFi,
+      sensors: sensors ?? this.sensors,
     );
   }
 }
