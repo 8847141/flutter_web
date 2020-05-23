@@ -29,25 +29,20 @@ class PreferredNozzleType extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
-                      padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
                       decoration: bloc.answers.preferredNozzleType.statics
                           ? kDropdownButtonDecoration
                           : kHideDropdownButtonDecoration,
                       width: 200.0,
-                      child: Row(
-                        children: [
-                          Checkbox(
-                            activeColor: kMainColor,
-                            value: bloc.answers.preferredNozzleType.statics,
-                            onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers.copyWith(
-                                    preferredNozzleType: bloc
-                                        .answers.preferredNozzleType
-                                        .copyWith(statics: value)))),
-                          ),
-                          const Text('Статические')
-                        ],
+                      child: CheckboxListTile(
+                        value: bloc.answers.preferredNozzleType.statics,
+                        onChanged: (value) => context.bloc<OptionsBloc>().add(
+                            ChangeAnswers(bloc.answers.copyWith(
+                                preferredNozzleType: bloc
+                                    .answers.preferredNozzleType
+                                    .copyWith(statics: value)))),
+                        activeColor: kMainColor,
+                        title: const Text('Статические'),
+                        controlAffinity: ListTileControlAffinity.leading,
                       ),
                     ),
                   ),
@@ -55,25 +50,20 @@ class PreferredNozzleType extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
-                      padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
                       decoration: bloc.answers.preferredNozzleType.rotators
                           ? kDropdownButtonDecoration
                           : kHideDropdownButtonDecoration,
                       width: 200.0,
-                      child: Row(
-                        children: [
-                          Checkbox(
-                            activeColor: kMainColor,
-                            value: bloc.answers.preferredNozzleType.rotators,
-                            onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers.copyWith(
-                                    preferredNozzleType: bloc
-                                        .answers.preferredNozzleType
-                                        .copyWith(rotators: value)))),
-                          ),
-                          const Text('Ротаторные')
-                        ],
+                      child: CheckboxListTile(
+                        value: bloc.answers.preferredNozzleType.rotators,
+                        onChanged: (value) => context.bloc<OptionsBloc>().add(
+                            ChangeAnswers(bloc.answers.copyWith(
+                                preferredNozzleType: bloc
+                                    .answers.preferredNozzleType
+                                    .copyWith(rotators: value)))),
+                        activeColor: kMainColor,
+                        title: const Text('Ротаторные'),
+                        controlAffinity: ListTileControlAffinity.leading,
                       ),
                     ),
                   ),
@@ -81,25 +71,20 @@ class PreferredNozzleType extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
-                      padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
                       decoration: bloc.answers.preferredNozzleType.rotors
                           ? kDropdownButtonDecoration
                           : kHideDropdownButtonDecoration,
                       width: 200.0,
-                      child: Row(
-                        children: [
-                          Checkbox(
-                            activeColor: kMainColor,
-                            value: bloc.answers.preferredNozzleType.rotors,
-                            onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers.copyWith(
-                                    preferredNozzleType: bloc
-                                        .answers.preferredNozzleType
-                                        .copyWith(rotors: value)))),
-                          ),
-                          const Text('Роторы')
-                        ],
+                      child: CheckboxListTile(
+                        value: bloc.answers.preferredNozzleType.rotors,
+                        onChanged: (value) => context.bloc<OptionsBloc>().add(
+                            ChangeAnswers(bloc.answers.copyWith(
+                                preferredNozzleType: bloc
+                                    .answers.preferredNozzleType
+                                    .copyWith(rotors: value)))),
+                        activeColor: kMainColor,
+                        title: const Text('Роторы'),
+                        controlAffinity: ListTileControlAffinity.leading,
                       ),
                     ),
                   ),
@@ -107,25 +92,20 @@ class PreferredNozzleType extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
-                      padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
                       decoration: bloc.answers.preferredNozzleType.any
                           ? kDropdownButtonDecoration
                           : kHideDropdownButtonDecoration,
                       width: 200.0,
-                      child: Row(
-                        children: [
-                          Checkbox(
-                            activeColor: kMainColor,
-                            value: bloc.answers.preferredNozzleType.any,
-                            onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers.copyWith(
-                                    preferredNozzleType: bloc
-                                        .answers.preferredNozzleType
-                                        .copyWith(any: value)))),
-                          ),
-                          const Text('Любые')
-                        ],
+                      child: CheckboxListTile(
+                        value: bloc.answers.preferredNozzleType.any,
+                        onChanged: (value) => context.bloc<OptionsBloc>().add(
+                            ChangeAnswers(bloc.answers.copyWith(
+                                preferredNozzleType: bloc
+                                    .answers.preferredNozzleType
+                                    .copyWith(any: value)))),
+                        activeColor: kMainColor,
+                        title: const Text('Любые'),
+                        controlAffinity: ListTileControlAffinity.leading,
                       ),
                     ),
                   ),
