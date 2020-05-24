@@ -46,7 +46,7 @@ class PreferredNozzleType extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 4.0),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -67,7 +67,7 @@ class PreferredNozzleType extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 4.0),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
@@ -88,7 +88,7 @@ class PreferredNozzleType extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 8.0),
+                  const SizedBox(height: 4.0),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(

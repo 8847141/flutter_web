@@ -14,52 +14,42 @@ class Path extends StatelessWidget {
           'Поливаем дорожки?',
           style: kMainTextStyle,
         ),
-        const SizedBox(width: 16.0),
+        const SizedBox(width: 8.0),
         BlocBuilder<OptionsBloc, OptionsState>(
           builder: (context, bloc) {
             if (bloc is OptionsIsLoaded) {
               return Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
                     decoration: bloc.answers.canBeWateredWalkway
                         ? kDropdownButtonDecoration
                         : null,
-                    width: 100.0,
-                    child: Row(
-                      children: [
-                        Radio(
-                          value: true,
-                          groupValue: bloc.answers.canBeWateredWalkway,
-                          onChanged: (dynamic value) => context
-                              .bloc<OptionsBloc>()
-                              .add(ChangeAnswers(bloc.answers.copyWith(
-                                  canBeWateredWalkway: value as bool))),
-                          activeColor: kMainColor,
-                        ),
-                        const Text('Да'),
-                      ],
+                    width: 120.0,
+                    child: RadioListTile(
+                      title: const Text('Да'),
+                      activeColor: kMainColor,
+                      value: true,
+                      groupValue: bloc.answers.canBeWateredWalkway,
+                      onChanged: (dynamic value) => context
+                          .bloc<OptionsBloc>()
+                          .add(ChangeAnswers(bloc.answers
+                              .copyWith(canBeWateredWalkway: value as bool))),
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
                     decoration: bloc.answers.canBeWateredWalkway
                         ? null
                         : kDropdownButtonDecoration,
-                    width: 100.0,
-                    child: Row(
-                      children: [
-                        Radio(
-                          value: false,
-                          groupValue: bloc.answers.canBeWateredWalkway,
-                          onChanged: (dynamic value) => context
-                              .bloc<OptionsBloc>()
-                              .add(ChangeAnswers(bloc.answers.copyWith(
-                                  canBeWateredWalkway: value as bool))),
-                          activeColor: kMainColor,
-                        ),
-                        const Text('Нет'),
-                      ],
+                    width: 120.0,
+                    child: RadioListTile(
+                      title: const Text('Нет'),
+                      activeColor: kMainColor,
+                      value: false,
+                      groupValue: bloc.answers.canBeWateredWalkway,
+                      onChanged: (dynamic value) => context
+                          .bloc<OptionsBloc>()
+                          .add(ChangeAnswers(bloc.answers
+                              .copyWith(canBeWateredWalkway: value as bool))),
                     ),
                   ),
                 ],

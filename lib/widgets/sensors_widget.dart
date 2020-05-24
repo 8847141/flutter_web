@@ -18,7 +18,7 @@ class Sensors extends StatelessWidget {
             style: kMainTextStyle,
           ),
         ),
-        const SizedBox(width: 8.0),
+        const SizedBox(height: 8.0),
         Padding(
             padding: kChecboxesPadding,
             child: BlocBuilder<OptionsBloc, OptionsState>(
@@ -26,103 +26,116 @@ class Sensors extends StatelessWidget {
                 if (bloc is OptionsIsLoaded) {
                   return Column(
                     children: [
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: bloc.answers.sensors.rain,
-                            onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers.copyWith(
-                                    sensors: bloc.answers.sensors
-                                        .copyWith(rain: value)))),
-                            activeColor: kMainColor,
-                          ),
-                          const Text('Дождя')
-                        ],
+                      DecoratedBox(
+                        decoration: bloc.answers.sensors.rain
+                            ? kDropdownButtonDecoration
+                            : kHideDropdownButtonDecoration,
+                        child: CheckboxListTile(
+                          title: const Text('Дождя'),
+                          activeColor: kMainColor,
+                          controlAffinity: ListTileControlAffinity.leading,
+                          value: bloc.answers.sensors.rain,
+                          onChanged: (value) => context.bloc<OptionsBloc>().add(
+                              ChangeAnswers(bloc.answers.copyWith(
+                                  sensors: bloc.answers.sensors
+                                      .copyWith(rain: value)))),
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: bloc.answers.sensors.wind,
-                            onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers.copyWith(
-                                    sensors: bloc.answers.sensors
-                                        .copyWith(wind: value)))),
-                            activeColor: kMainColor,
-                          ),
-                          const Text('Ветра')
-                        ],
+                      const SizedBox(height: 4.0),
+                      DecoratedBox(
+                        decoration: bloc.answers.sensors.wind
+                            ? kDropdownButtonDecoration
+                            : kHideDropdownButtonDecoration,
+                        child: CheckboxListTile(
+                          title: const Text('Ветра'),
+                          activeColor: kMainColor,
+                          controlAffinity: ListTileControlAffinity.leading,
+                          value: bloc.answers.sensors.wind,
+                          onChanged: (value) => context.bloc<OptionsBloc>().add(
+                              ChangeAnswers(bloc.answers.copyWith(
+                                  sensors: bloc.answers.sensors
+                                      .copyWith(wind: value)))),
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: bloc.answers.sensors.soil,
-                            onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers.copyWith(
-                                    sensors: bloc.answers.sensors
-                                        .copyWith(soil: value)))),
-                            activeColor: kMainColor,
-                          ),
-                          const Text('Влажности почвы')
-                        ],
+                      const SizedBox(height: 4.0),
+                      DecoratedBox(
+                        decoration: bloc.answers.sensors.soil
+                            ? kDropdownButtonDecoration
+                            : kHideDropdownButtonDecoration,
+                        child: CheckboxListTile(
+                          title: const Text('Влажности почвы'),
+                          activeColor: kMainColor,
+                          controlAffinity: ListTileControlAffinity.leading,
+                          value: bloc.answers.sensors.soil,
+                          onChanged: (value) => context.bloc<OptionsBloc>().add(
+                              ChangeAnswers(bloc.answers.copyWith(
+                                  sensors: bloc.answers.sensors
+                                      .copyWith(soil: value)))),
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: bloc.answers.sensors.freeze,
-                            onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers.copyWith(
-                                    sensors: bloc.answers.sensors
-                                        .copyWith(freeze: value)))),
-                            activeColor: kMainColor,
-                          ),
-                          const Text('Заморозков')
-                        ],
+                      const SizedBox(height: 4.0),
+                      DecoratedBox(
+                        decoration: bloc.answers.sensors.freeze
+                            ? kDropdownButtonDecoration
+                            : kHideDropdownButtonDecoration,
+                        child: CheckboxListTile(
+                          title: const Text('Заморозков'),
+                          activeColor: kMainColor,
+                          controlAffinity: ListTileControlAffinity.leading,
+                          value: bloc.answers.sensors.freeze,
+                          onChanged: (value) => context.bloc<OptionsBloc>().add(
+                              ChangeAnswers(bloc.answers.copyWith(
+                                  sensors: bloc.answers.sensors
+                                      .copyWith(freeze: value)))),
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: bloc.answers.sensors.rainFreeze,
-                            onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers.copyWith(
-                                    sensors: bloc.answers.sensors
-                                        .copyWith(rainFreeze: value)))),
-                            activeColor: kMainColor,
-                          ),
-                          const Text('Дождя и заморозков')
-                        ],
+                      const SizedBox(height: 4.0),
+                      DecoratedBox(
+                        decoration: bloc.answers.sensors.rainFreeze
+                            ? kDropdownButtonDecoration
+                            : kHideDropdownButtonDecoration,
+                        child: CheckboxListTile(
+                          title: const Text('Дождя и заморозков'),
+                          activeColor: kMainColor,
+                          controlAffinity: ListTileControlAffinity.leading,
+                          value: bloc.answers.sensors.rainFreeze,
+                          onChanged: (value) => context.bloc<OptionsBloc>().add(
+                              ChangeAnswers(bloc.answers.copyWith(
+                                  sensors: bloc.answers.sensors
+                                      .copyWith(rainFreeze: value)))),
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: bloc.answers.sensors.solar,
-                            onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers.copyWith(
-                                    sensors: bloc.answers.sensors
-                                        .copyWith(solar: value)))),
-                            activeColor: kMainColor,
-                          ),
-                          const Text('Солнечной активности')
-                        ],
+                      const SizedBox(height: 4.0),
+                      DecoratedBox(
+                        decoration: bloc.answers.sensors.solar
+                            ? kDropdownButtonDecoration
+                            : kHideDropdownButtonDecoration,
+                        child: CheckboxListTile(
+                          title: const Text('Солнечной активности'),
+                          activeColor: kMainColor,
+                          controlAffinity: ListTileControlAffinity.leading,
+                          value: bloc.answers.sensors.solar,
+                          onChanged: (value) => context.bloc<OptionsBloc>().add(
+                              ChangeAnswers(bloc.answers.copyWith(
+                                  sensors: bloc.answers.sensors
+                                      .copyWith(solar: value)))),
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Checkbox(
-                            value: bloc.answers.sensors.flow,
-                            onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers.copyWith(
-                                    sensors: bloc.answers.sensors
-                                        .copyWith(flow: value)))),
-                            activeColor: kMainColor,
-                          ),
-                          const Text('Потока')
-                        ],
+                      const SizedBox(height: 4.0),
+                      DecoratedBox(
+                        decoration: bloc.answers.sensors.flow
+                            ? kDropdownButtonDecoration
+                            : kHideDropdownButtonDecoration,
+                        child: CheckboxListTile(
+                          title: const Text('Потока'),
+                          activeColor: kMainColor,
+                          controlAffinity: ListTileControlAffinity.leading,
+                          value: bloc.answers.sensors.flow,
+                          onChanged: (value) => context.bloc<OptionsBloc>().add(
+                              ChangeAnswers(bloc.answers.copyWith(
+                                  sensors: bloc.answers.sensors
+                                      .copyWith(flow: value)))),
+                        ),
                       ),
                     ],
                   );
