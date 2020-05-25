@@ -8,13 +8,16 @@ class Path extends StatelessWidget {
   Path({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        const Text(
-          'Поливаем дорожки?',
-          style: kMainTextStyle,
+        const Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Поливаем дорожки?',
+            style: kMainTextStyle,
+          ),
         ),
-        const SizedBox(width: 8.0),
+        const SizedBox(height: 8.0),
         BlocBuilder<OptionsBloc, OptionsState>(
           builder: (context, bloc) {
             if (bloc is OptionsIsLoaded) {

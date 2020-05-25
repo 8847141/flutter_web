@@ -17,13 +17,16 @@ class TerrarianType extends StatelessWidget {
         if (bloc is OptionsIsLoaded) {
           return Column(
             children: [
-              Row(
+              Column(
                 children: [
-                  const Text(
-                    'Рельеф участка',
-                    style: kMainTextStyle,
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      'Рельеф участка',
+                      style: kMainTextStyle,
+                    ),
                   ),
-                  const SizedBox(width: 8.0),
+                  const SizedBox(height: 8.0),
                   Container(
                     padding: const EdgeInsets.fromLTRB(8.0, 0.0, 0.0, 0.0),
                     decoration: kDropdownButtonDecoration,

@@ -8,13 +8,16 @@ class ConnectionType extends StatelessWidget {
   ConnectionType({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        const Text(
-          'Подключение к системе',
-          style: kMainTextStyle,
+        const Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Подключение к системе',
+            style: kMainTextStyle,
+          ),
         ),
-        const SizedBox(width: 8.0),
+        const SizedBox(height: 8.0),
         Container(
           padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
           decoration: kDropdownButtonDecoration,
