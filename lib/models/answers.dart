@@ -2,7 +2,7 @@ import 'preferred_nozzle_type.dart';
 import 'sensors.dart';
 
 class Answers {
-  String terrainType;
+  bool flatTerrain;
   //String heightDifference;
   String connectionType;
   //String otherconnectionType;
@@ -18,13 +18,12 @@ class Answers {
   //bool needWaterTank;
   //String comments;
 
-  List<String> get terrainTypes => ['Ровный', 'С перепадом высот'];
   List<String> get connectionTypes =>
       ['Емкость', 'Магистраль', 'Колодец', 'Скважина', 'Водоем', 'Другое'];
   List<String> get controllerTypes => ['Внутренний', 'Внешний'];
 
   Answers({
-    this.terrainType = 'Ровный',
+    this.flatTerrain = true,
     this.connectionType = 'Емкость',
     this.canBeWateredWalkway = true,
     PreferredNozzleType preferredNozzleType,
@@ -37,7 +36,7 @@ class Answers {
   }
 
   Answers copyWith({
-    String terrainType,
+    bool flatTerrain,
     String connectionType,
     bool canBeWateredWalkway,
     PreferredNozzleType preferredNozzleType,
@@ -46,7 +45,7 @@ class Answers {
     Sensors sensors,
   }) {
     return Answers(
-      terrainType: terrainType ?? this.terrainType,
+      flatTerrain: flatTerrain ?? this.flatTerrain,
       connectionType: connectionType ?? this.connectionType,
       canBeWateredWalkway: canBeWateredWalkway ?? this.canBeWateredWalkway,
       preferredNozzleType: preferredNozzleType ?? this.preferredNozzleType,

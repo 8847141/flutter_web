@@ -12,83 +12,84 @@ class TerrarianType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OptionsBloc, OptionsState>(
-      builder: (context, bloc) {
-        if (bloc is OptionsIsLoaded) {
-          return Column(
-            children: [
-              Column(
-                children: [
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Рельеф участка',
-                      style: kMainTextStyle,
-                    ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  Container(
-                    padding: const EdgeInsets.fromLTRB(8.0, 0.0, 0.0, 0.0),
-                    decoration: kDropdownButtonDecoration,
-                    child: DropdownButton<String>(
-                      value: bloc.answers.terrainType,
-                      icon: const Icon(Icons.arrow_drop_down),
-                      iconSize: 24.0,
-                      elevation: 8,
-                      style: const TextStyle(
-                          color: kMainColor, fontWeight: FontWeight.bold),
-                      underline: const SizedBox(
-                        height: 0.0,
-                      ),
-                      onChanged: (terrainType) => context
-                          .bloc<OptionsBloc>()
-                          .add(ChangeAnswers(
-                              bloc.answers.copyWith(terrainType: terrainType))),
-                      items: context
-                          .bloc<OptionsBloc>()
-                          .answers
-                          .terrainTypes
-                          .map<DropdownMenuItem<String>>((value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                ],
+    return BlocBuilder<OptionsBloc, OptionsState>(builder: (context, bloc) {
+      if (bloc is OptionsIsLoaded) {
+        return Column(
+          children: [
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Рельеф участка',
+                style: kMainTextStyle,
               ),
-              const SizedBox(height: 8.0),
-              bloc.answers.terrainType != bloc.answers.terrainTypes.last
-                  ? const SizedBox()
-                  : Row(
-                      children: [
-                        const Text(
-                          'Макс. перепад высот',
-                          style: kMainTextStyle,
-                        ),
-                        const SizedBox(width: 8.0),
-                        Align(
-                          alignment: Alignment.center,
-                          child: SizedBox(
-                            height: 52.0,
-                            width: 174.0,
-                            child: TextField(
-                              controller: _heightDifferenceController,
-                              maxLines: 1,
-                              minLines: 1,
-                              decoration: kTextFormInputDecoration,
-                            ),
+            ),
+            const SizedBox(height: 8.0),
+            Row(
+              children: [
+                Container(
+                  decoration: bloc.answers.flatTerrain
+                      ? kDropdownButtonDecoration
+                      : null,
+                  width: 200.0,
+                  child: RadioListTile(
+                    title: const Text('Ровный'),
+                    activeColor: kMainColor,
+                    value: true,
+                    groupValue: bloc.answers.flatTerrain,
+                    onChanged: (dynamic value) => context
+                        .bloc<OptionsBloc>()
+                        .add(ChangeAnswers(
+                            bloc.answers.copyWith(flatTerrain: value as bool))),
+                  ),
+                ),
+                Container(
+                  decoration: bloc.answers.flatTerrain
+                      ? null
+                      : kDropdownButtonDecoration,
+                  width: 200.0,
+                  child: RadioListTile(
+                    title: const Text('С перепадом высот'),
+                    activeColor: kMainColor,
+                    value: false,
+                    groupValue: bloc.answers.flatTerrain,
+                    onChanged: (dynamic value) => context
+                        .bloc<OptionsBloc>()
+                        .add(ChangeAnswers(
+                            bloc.answers.copyWith(flatTerrain: value as bool))),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8.0),
+            bloc.answers.flatTerrain
+                ? const SizedBox()
+                : Row(
+                    children: [
+                      const Text(
+                        'Макс. перепад высот',
+                        style: kMainTextStyle,
+                      ),
+                      const SizedBox(width: 8.0),
+                      Align(
+                        alignment: Alignment.center,
+                        child: SizedBox(
+                          height: 52.0,
+                          width: 174.0,
+                          child: TextField(
+                            controller: _heightDifferenceController,
+                            maxLines: 1,
+                            minLines: 1,
+                            decoration: kTextFormInputDecoration,
                           ),
                         ),
-                      ],
-                    ),
-            ],
-          );
-        } else {
-          return null;
-        }
-      },
-    );
+                      ),
+                    ],
+                  ),
+          ],
+        );
+      } else {
+        return null;
+      }
+    });
   }
 }
