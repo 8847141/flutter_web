@@ -14,13 +14,13 @@ class ConnectionType extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             'Подключение к системе',
-            style: kMainTextStyle,
+            style: mainTextStyle,
           ),
         ),
         const SizedBox(height: 8.0),
         Container(
           padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
-          decoration: kDropdownButtonDecoration,
+          decoration: dropdownButtonDecoration,
           child: BlocBuilder<OptionsBloc, OptionsState>(
             builder: (context, bloc) {
               if (bloc is OptionsIsLoaded) {
@@ -30,7 +30,7 @@ class ConnectionType extends StatelessWidget {
                   iconSize: 24.0,
                   elevation: 8,
                   style: const TextStyle(
-                      color: kMainColor, fontWeight: FontWeight.bold),
+                      color: mainColor, fontWeight: FontWeight.bold),
                   underline: const SizedBox(
                     height: 0.0,
                   ),

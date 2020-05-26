@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-const Color kMainColor = Color(0xff3553f1);
+const Color mainColor = Color(0xff3553f1);
 
 const EdgeInsetsGeometry kChecboxesPadding =
     EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 0.0);
 
-const OutlineInputBorder kTextFormBorderStyle = OutlineInputBorder(
+const OutlineInputBorder textFormBorderStyle = OutlineInputBorder(
   borderSide: BorderSide(
-    color: kMainColor,
+    color: mainColor,
     width: 2,
   ),
   borderRadius: BorderRadius.all(
@@ -15,25 +15,25 @@ const OutlineInputBorder kTextFormBorderStyle = OutlineInputBorder(
   ),
 );
 
-const InputDecoration kTextFormInputDecoration = InputDecoration(
-  focusedBorder: kTextFormBorderStyle,
-  enabledBorder: kTextFormBorderStyle,
-  errorBorder: kTextFormBorderStyle,
-  disabledBorder: kTextFormBorderStyle,
-  border: kTextFormBorderStyle,
+const InputDecoration textFormInputDecoration = InputDecoration(
+  focusedBorder: textFormBorderStyle,
+  enabledBorder: textFormBorderStyle,
+  errorBorder: textFormBorderStyle,
+  disabledBorder: textFormBorderStyle,
+  border: textFormBorderStyle,
   filled: true,
   fillColor: Colors.white,
 );
 
-final Decoration kDropdownButtonDecoration = BoxDecoration(
+final Decoration dropdownButtonDecoration = BoxDecoration(
   border: Border.all(
-    color: kMainColor,
+    color: mainColor,
     width: 2.0,
   ),
   borderRadius: BorderRadius.circular(14.0),
 );
 
-final Decoration kHideDropdownButtonDecoration = BoxDecoration(
+final Decoration hideDropdownButtonDecoration = BoxDecoration(
   border: Border.all(
     color: Colors.white,
     width: 2.0,
@@ -41,6 +41,6 @@ final Decoration kHideDropdownButtonDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(14.0),
 );
 
-const TextStyle kMainTextStyle = TextStyle(
+const TextStyle mainTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );

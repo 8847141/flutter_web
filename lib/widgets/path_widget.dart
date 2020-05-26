@@ -14,7 +14,7 @@ class Path extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             'Поливаем дорожки?',
-            style: kMainTextStyle,
+            style: mainTextStyle,
           ),
         ),
         const SizedBox(height: 8.0),
@@ -25,12 +25,12 @@ class Path extends StatelessWidget {
                 children: [
                   Container(
                     decoration: bloc.answers.canBeWateredWalkway
-                        ? kDropdownButtonDecoration
+                        ? dropdownButtonDecoration
                         : null,
                     width: 120.0,
                     child: RadioListTile(
                       title: const Text('Да'),
-                      activeColor: kMainColor,
+                      activeColor: mainColor,
                       value: true,
                       groupValue: bloc.answers.canBeWateredWalkway,
                       onChanged: (dynamic value) => context
@@ -42,11 +42,11 @@ class Path extends StatelessWidget {
                   Container(
                     decoration: bloc.answers.canBeWateredWalkway
                         ? null
-                        : kDropdownButtonDecoration,
+                        : dropdownButtonDecoration,
                     width: 120.0,
                     child: RadioListTile(
                       title: const Text('Нет'),
-                      activeColor: kMainColor,
+                      activeColor: mainColor,
                       value: false,
                       groupValue: bloc.answers.canBeWateredWalkway,
                       onChanged: (dynamic value) => context

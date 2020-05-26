@@ -15,7 +15,7 @@ class Sensors extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             'Датчик погоды',
-            style: kMainTextStyle,
+            style: mainTextStyle,
           ),
         ),
         const SizedBox(height: 8.0),
@@ -28,11 +28,11 @@ class Sensors extends StatelessWidget {
                     children: [
                       DecoratedBox(
                         decoration: bloc.answers.sensors.rain
-                            ? kDropdownButtonDecoration
-                            : kHideDropdownButtonDecoration,
+                            ? dropdownButtonDecoration
+                            : hideDropdownButtonDecoration,
                         child: CheckboxListTile(
                           title: const Text('Дождя'),
-                          activeColor: kMainColor,
+                          activeColor: mainColor,
                           controlAffinity: ListTileControlAffinity.leading,
                           value: bloc.answers.sensors.rain,
                           onChanged: (value) => context.bloc<OptionsBloc>().add(
@@ -44,11 +44,11 @@ class Sensors extends StatelessWidget {
                       const SizedBox(height: 4.0),
                       DecoratedBox(
                         decoration: bloc.answers.sensors.wind
-                            ? kDropdownButtonDecoration
-                            : kHideDropdownButtonDecoration,
+                            ? dropdownButtonDecoration
+                            : hideDropdownButtonDecoration,
                         child: CheckboxListTile(
                           title: const Text('Ветра'),
-                          activeColor: kMainColor,
+                          activeColor: mainColor,
                           controlAffinity: ListTileControlAffinity.leading,
                           value: bloc.answers.sensors.wind,
                           onChanged: (value) => context.bloc<OptionsBloc>().add(
@@ -60,11 +60,11 @@ class Sensors extends StatelessWidget {
                       const SizedBox(height: 4.0),
                       DecoratedBox(
                         decoration: bloc.answers.sensors.soil
-                            ? kDropdownButtonDecoration
-                            : kHideDropdownButtonDecoration,
+                            ? dropdownButtonDecoration
+                            : hideDropdownButtonDecoration,
                         child: CheckboxListTile(
                           title: const Text('Влажности почвы'),
-                          activeColor: kMainColor,
+                          activeColor: mainColor,
                           controlAffinity: ListTileControlAffinity.leading,
                           value: bloc.answers.sensors.soil,
                           onChanged: (value) => context.bloc<OptionsBloc>().add(
@@ -76,11 +76,11 @@ class Sensors extends StatelessWidget {
                       const SizedBox(height: 4.0),
                       DecoratedBox(
                         decoration: bloc.answers.sensors.freeze
-                            ? kDropdownButtonDecoration
-                            : kHideDropdownButtonDecoration,
+                            ? dropdownButtonDecoration
+                            : hideDropdownButtonDecoration,
                         child: CheckboxListTile(
                           title: const Text('Заморозков'),
-                          activeColor: kMainColor,
+                          activeColor: mainColor,
                           controlAffinity: ListTileControlAffinity.leading,
                           value: bloc.answers.sensors.freeze,
                           onChanged: (value) => context.bloc<OptionsBloc>().add(
@@ -92,11 +92,11 @@ class Sensors extends StatelessWidget {
                       const SizedBox(height: 4.0),
                       DecoratedBox(
                         decoration: bloc.answers.sensors.rainFreeze
-                            ? kDropdownButtonDecoration
-                            : kHideDropdownButtonDecoration,
+                            ? dropdownButtonDecoration
+                            : hideDropdownButtonDecoration,
                         child: CheckboxListTile(
                           title: const Text('Дождя и заморозков'),
-                          activeColor: kMainColor,
+                          activeColor: mainColor,
                           controlAffinity: ListTileControlAffinity.leading,
                           value: bloc.answers.sensors.rainFreeze,
                           onChanged: (value) => context.bloc<OptionsBloc>().add(
@@ -108,11 +108,11 @@ class Sensors extends StatelessWidget {
                       const SizedBox(height: 4.0),
                       DecoratedBox(
                         decoration: bloc.answers.sensors.solar
-                            ? kDropdownButtonDecoration
-                            : kHideDropdownButtonDecoration,
+                            ? dropdownButtonDecoration
+                            : hideDropdownButtonDecoration,
                         child: CheckboxListTile(
                           title: const Text('Солнечной активности'),
-                          activeColor: kMainColor,
+                          activeColor: mainColor,
                           controlAffinity: ListTileControlAffinity.leading,
                           value: bloc.answers.sensors.solar,
                           onChanged: (value) => context.bloc<OptionsBloc>().add(
@@ -124,11 +124,11 @@ class Sensors extends StatelessWidget {
                       const SizedBox(height: 4.0),
                       DecoratedBox(
                         decoration: bloc.answers.sensors.flow
-                            ? kDropdownButtonDecoration
-                            : kHideDropdownButtonDecoration,
+                            ? dropdownButtonDecoration
+                            : hideDropdownButtonDecoration,
                         child: CheckboxListTile(
                           title: const Text('Потока'),
-                          activeColor: kMainColor,
+                          activeColor: mainColor,
                           controlAffinity: ListTileControlAffinity.leading,
                           value: bloc.answers.sensors.flow,
                           onChanged: (value) => context.bloc<OptionsBloc>().add(

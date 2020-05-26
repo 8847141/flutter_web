@@ -16,19 +16,19 @@ class Controller extends StatelessWidget {
               children: [
                 const Text(
                   'Пульт управления',
-                  style: kMainTextStyle,
+                  style: mainTextStyle,
                 ),
                 const SizedBox(width: 8.0),
                 Container(
                   padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
-                  decoration: kDropdownButtonDecoration,
+                  decoration: dropdownButtonDecoration,
                   child: DropdownButton<String>(
                     value: bloc.answers.controllerType,
                     icon: const Icon(Icons.arrow_drop_down),
                     iconSize: 24.0,
                     elevation: 8,
                     style: const TextStyle(
-                        color: kMainColor, fontWeight: FontWeight.bold),
+                        color: mainColor, fontWeight: FontWeight.bold),
                     underline: const SizedBox(
                       height: 0.0,
                     ),
@@ -54,8 +54,8 @@ class Controller extends StatelessWidget {
             Container(
               padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
               decoration: bloc.answers.controllerWitfWiFi
-                  ? kDropdownButtonDecoration
-                  : kHideDropdownButtonDecoration,
+                  ? dropdownButtonDecoration
+                  : hideDropdownButtonDecoration,
               width: 130.0,
               child: Row(
                 children: [
@@ -64,7 +64,7 @@ class Controller extends StatelessWidget {
                     onChanged: (value) => context.bloc<OptionsBloc>().add(
                         ChangeAnswers(
                             bloc.answers.copyWith(controllerWitfWiFi: value))),
-                    activeColor: kMainColor,
+                    activeColor: mainColor,
                   ),
                   const Text('С Wi-Fi'),
                 ],

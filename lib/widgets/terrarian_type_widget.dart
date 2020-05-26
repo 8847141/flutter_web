@@ -20,7 +20,7 @@ class TerrarianType extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 'Рельеф участка',
-                style: kMainTextStyle,
+                style: mainTextStyle,
               ),
             ),
             const SizedBox(height: 8.0),
@@ -28,12 +28,12 @@ class TerrarianType extends StatelessWidget {
               children: [
                 Container(
                   decoration: bloc.answers.flatTerrain
-                      ? kDropdownButtonDecoration
+                      ? dropdownButtonDecoration
                       : null,
                   width: 200.0,
                   child: RadioListTile(
                     title: const Text('Ровный'),
-                    activeColor: kMainColor,
+                    activeColor: mainColor,
                     value: true,
                     groupValue: bloc.answers.flatTerrain,
                     onChanged: (dynamic value) => context
@@ -45,11 +45,11 @@ class TerrarianType extends StatelessWidget {
                 Container(
                   decoration: bloc.answers.flatTerrain
                       ? null
-                      : kDropdownButtonDecoration,
+                      : dropdownButtonDecoration,
                   width: 200.0,
                   child: RadioListTile(
                     title: const Text('С перепадом высот'),
-                    activeColor: kMainColor,
+                    activeColor: mainColor,
                     value: false,
                     groupValue: bloc.answers.flatTerrain,
                     onChanged: (dynamic value) => context
@@ -67,7 +67,7 @@ class TerrarianType extends StatelessWidget {
                     children: [
                       const Text(
                         'Макс. перепад высот',
-                        style: kMainTextStyle,
+                        style: mainTextStyle,
                       ),
                       const SizedBox(width: 8.0),
                       Align(
@@ -79,7 +79,7 @@ class TerrarianType extends StatelessWidget {
                             controller: _heightDifferenceController,
                             maxLines: 1,
                             minLines: 1,
-                            decoration: kTextFormInputDecoration,
+                            decoration: textFormInputDecoration,
                           ),
                         ),
                       ),

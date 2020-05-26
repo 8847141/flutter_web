@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                         controller: _commentController,
                         maxLines: null,
                         minLines: 2,
-                        decoration: kTextFormInputDecoration,
+                        decoration: textFormInputDecoration,
                       ),
                     ),
                   ),
