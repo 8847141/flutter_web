@@ -18,54 +18,85 @@ class HomePage extends StatelessWidget {
           color: Colors.white,
           child: SingleChildScrollView(
             padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
-            child: Container(
-              width: 500,
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 40.0,
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 40.0,
+                ),
+                const Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Техническое задание на проектирование',
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  const Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'Техническое задание на проектирование',
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                    width: 800.0,
+                    child: TextField(
+                      controller: _commentController,
+                      maxLines: null,
+                      minLines: 2,
+                      decoration: textFormInputDecoration,
                     ),
                   ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: SizedBox(
-                      width: 800.0,
-                      child: TextField(
-                        controller: _commentController,
-                        maxLines: null,
-                        minLines: 2,
-                        decoration: textFormInputDecoration,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 400,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 12.0),
+                          TerrarianType(),
+                          const SizedBox(height: 12.0),
+                          ConnectionType(),
+                          const SizedBox(height: 12.0),
+                          Path(),
+                          const SizedBox(height: 12.0),
+                          PreferredNozzleType(),
+                          const SizedBox(height: 12.0),
+                          Controller(),
+                          const SizedBox(height: 12.0),
+                          Sensors(),
+                          const SizedBox(height: 12.0),
+                        ],
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 12.0),
-                  TerrarianType(),
-                  const SizedBox(height: 12.0),
-                  ConnectionType(),
-                  const SizedBox(height: 12.0),
-                  Path(),
-                  const SizedBox(height: 12.0),
-                  PreferredNozzleType(),
-                  const SizedBox(height: 12.0),
-                  Controller(),
-                  const SizedBox(height: 12.0),
-                  Sensors(),
-                  const SizedBox(height: 12.0),
-                ],
-              ),
+                    const SizedBox(width: 8.0),
+                    SizedBox(
+                      width: 400,
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 12.0),
+                          TerrarianType(),
+                          const SizedBox(height: 12.0),
+                          ConnectionType(),
+                          const SizedBox(height: 12.0),
+                          Path(),
+                          const SizedBox(height: 12.0),
+                          PreferredNozzleType(),
+                          const SizedBox(height: 12.0),
+                          Controller(),
+                          const SizedBox(height: 12.0),
+                          Sensors(),
+                          const SizedBox(height: 12.0),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
@@ -73,3 +104,42 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+/*Row(
+                    children: [
+                      Column(
+                        children: [
+                          const SizedBox(height: 12.0),
+                          TerrarianType(),
+                          const SizedBox(height: 12.0),
+                          ConnectionType(),
+                          const SizedBox(height: 12.0),
+                          Path(),
+                          const SizedBox(height: 12.0),
+                          PreferredNozzleType(),
+                          const SizedBox(height: 12.0),
+                          Controller(),
+                          const SizedBox(height: 12.0),
+                          Sensors(),
+                          const SizedBox(height: 12.0),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          const SizedBox(height: 12.0),
+                          TerrarianType(),
+                          const SizedBox(height: 12.0),
+                          ConnectionType(),
+                          const SizedBox(height: 12.0),
+                          Path(),
+                          const SizedBox(height: 12.0),
+                          PreferredNozzleType(),
+                          const SizedBox(height: 12.0),
+                          Controller(),
+                          const SizedBox(height: 12.0),
+                          Sensors(),
+                          const SizedBox(height: 12.0),
+                        ],
+                      ),
+                    ],
+                  ),*/

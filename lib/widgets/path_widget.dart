@@ -27,7 +27,7 @@ class Path extends StatelessWidget {
                     decoration: bloc.answers.canBeWateredWalkway
                         ? dropdownButtonDecoration
                         : null,
-                    width: 120.0,
+                    width: 130.0,
                     child: RadioListTile(
                       title: const Text('Да'),
                       activeColor: mainColor,
@@ -43,7 +43,7 @@ class Path extends StatelessWidget {
                     decoration: bloc.answers.canBeWateredWalkway
                         ? null
                         : dropdownButtonDecoration,
-                    width: 120.0,
+                    width: 130.0,
                     child: RadioListTile(
                       title: const Text('Нет'),
                       activeColor: mainColor,
