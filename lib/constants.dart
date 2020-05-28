@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+//* Sizes
+
+const double questionsWidth = 400.0;
+
+//* Colors
 const Color mainColor = Color(0xff3553f1);
 
-const EdgeInsetsGeometry kChecboxesPadding =
-    EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 0.0);
-
+//* Borders
 const OutlineInputBorder textFormBorderStyle = OutlineInputBorder(
   borderSide: BorderSide(
     color: mainColor,
@@ -15,6 +18,11 @@ const OutlineInputBorder textFormBorderStyle = OutlineInputBorder(
   ),
 );
 
+//* Paddings
+const EdgeInsetsGeometry checboxesPadding =
+    EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 0.0);
+
+//* Decorations
 const InputDecoration textFormInputDecoration = InputDecoration(
   focusedBorder: textFormBorderStyle,
   enabledBorder: textFormBorderStyle,
@@ -41,6 +49,7 @@ final Decoration hideDropdownButtonDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(14.0),
 );
 
+//* Text styles
 const TextStyle mainTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
 );

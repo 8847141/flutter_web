@@ -20,7 +20,7 @@ class Sensors extends StatelessWidget {
         ),
         const SizedBox(height: 8.0),
         Padding(
-            padding: kChecboxesPadding,
+            padding: checboxesPadding,
             child: BlocBuilder<OptionsBloc, OptionsState>(
               builder: (context, bloc) {
                 if (bloc is OptionsIsLoaded) {

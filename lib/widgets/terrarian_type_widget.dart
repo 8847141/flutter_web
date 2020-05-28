@@ -7,8 +7,8 @@ import '../constants.dart';
 class TerrarianType extends StatelessWidget {
   TerrarianType({Key key}) : super(key: key);
 
-  final TextEditingController _heightDifferenceController =
-      TextEditingController();
+  /*final TextEditingController _heightDifferenceController =
+      TextEditingController();*/
 
   @override
   Widget build(BuildContext context) {
@@ -24,44 +24,47 @@ class TerrarianType extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8.0),
-            Row(
-              children: [
-                Container(
-                  decoration: bloc.answers.flatTerrain
-                      ? dropdownButtonDecoration
-                      : null,
-                  width: 200.0,
-                  child: RadioListTile(
-                    title: const Text('Ровный'),
-                    activeColor: mainColor,
-                    value: true,
-                    groupValue: bloc.answers.flatTerrain,
-                    onChanged: (dynamic value) => context
-                        .bloc<OptionsBloc>()
-                        .add(ChangeAnswers(
-                            bloc.answers.copyWith(flatTerrain: value as bool))),
+            Align(
+              alignment: Alignment.topLeft,
+              child: Column(
+                children: [
+                  Container(
+                    decoration: bloc.answers.flatTerrain
+                        ? dropdownButtonDecoration
+                        : null,
+                    width: 200.0,
+                    child: RadioListTile(
+                      title: const Text('Ровный'),
+                      activeColor: mainColor,
+                      value: true,
+                      groupValue: bloc.answers.flatTerrain,
+                      onChanged: (dynamic value) => context
+                          .bloc<OptionsBloc>()
+                          .add(ChangeAnswers(bloc.answers
+                              .copyWith(flatTerrain: value as bool))),
+                    ),
                   ),
-                ),
-                Container(
-                  decoration: bloc.answers.flatTerrain
-                      ? null
-                      : dropdownButtonDecoration,
-                  width: 200.0,
-                  child: RadioListTile(
-                    title: const Text('С перепадом высот'),
-                    activeColor: mainColor,
-                    value: false,
-                    groupValue: bloc.answers.flatTerrain,
-                    onChanged: (dynamic value) => context
-                        .bloc<OptionsBloc>()
-                        .add(ChangeAnswers(
-                            bloc.answers.copyWith(flatTerrain: value as bool))),
+                  Container(
+                    decoration: bloc.answers.flatTerrain
+                        ? null
+                        : dropdownButtonDecoration,
+                    width: 200.0,
+                    child: RadioListTile(
+                      title: const Text('С перепадом высот'),
+                      activeColor: mainColor,
+                      value: false,
+                      groupValue: bloc.answers.flatTerrain,
+                      onChanged: (dynamic value) => context
+                          .bloc<OptionsBloc>()
+                          .add(ChangeAnswers(bloc.answers
+                              .copyWith(flatTerrain: value as bool))),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 8.0),
-            bloc.answers.flatTerrain
+            /*bloc.answers.flatTerrain
                 ? const SizedBox()
                 : Row(
                     children: [
@@ -73,8 +76,8 @@ class TerrarianType extends StatelessWidget {
                       Align(
                         alignment: Alignment.center,
                         child: SizedBox(
-                          height: 52.0,
-                          width: 174.0,
+                          height: 50.0,
+                          width: 100.0,
                           child: TextField(
                             controller: _heightDifferenceController,
                             maxLines: 1,
@@ -84,7 +87,7 @@ class TerrarianType extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
+                  ),*/
           ],
         );
       } else {

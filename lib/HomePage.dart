@@ -49,53 +49,9 @@ class HomePage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 400,
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 12.0),
-                          TerrarianType(),
-                          const SizedBox(height: 12.0),
-                          ConnectionType(),
-                          const SizedBox(height: 12.0),
-                          Path(),
-                          const SizedBox(height: 12.0),
-                          PreferredNozzleType(),
-                          const SizedBox(height: 12.0),
-                          Controller(),
-                          const SizedBox(height: 12.0),
-                          Sensors(),
-                          const SizedBox(height: 12.0),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(width: 8.0),
-                    SizedBox(
-                      width: 400,
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 12.0),
-                          TerrarianType(),
-                          const SizedBox(height: 12.0),
-                          ConnectionType(),
-                          const SizedBox(height: 12.0),
-                          Path(),
-                          const SizedBox(height: 12.0),
-                          PreferredNozzleType(),
-                          const SizedBox(height: 12.0),
-                          Controller(),
-                          const SizedBox(height: 12.0),
-                          Sensors(),
-                          const SizedBox(height: 12.0),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
+                MediaQuery.of(context).size.width == questionsWidth
+                    ? ColumnQuestions()
+                    : RowQuestions(),
               ],
             ),
           ),
@@ -105,41 +61,85 @@ class HomePage extends StatelessWidget {
   }
 }
 
-/*Row(
-                    children: [
-                      Column(
-                        children: [
-                          const SizedBox(height: 12.0),
-                          TerrarianType(),
-                          const SizedBox(height: 12.0),
-                          ConnectionType(),
-                          const SizedBox(height: 12.0),
-                          Path(),
-                          const SizedBox(height: 12.0),
-                          PreferredNozzleType(),
-                          const SizedBox(height: 12.0),
-                          Controller(),
-                          const SizedBox(height: 12.0),
-                          Sensors(),
-                          const SizedBox(height: 12.0),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          const SizedBox(height: 12.0),
-                          TerrarianType(),
-                          const SizedBox(height: 12.0),
-                          ConnectionType(),
-                          const SizedBox(height: 12.0),
-                          Path(),
-                          const SizedBox(height: 12.0),
-                          PreferredNozzleType(),
-                          const SizedBox(height: 12.0),
-                          Controller(),
-                          const SizedBox(height: 12.0),
-                          Sensors(),
-                          const SizedBox(height: 12.0),
-                        ],
-                      ),
-                    ],
-                  ),*/
+class ColumnQuestions extends StatelessWidget {
+  ColumnQuestions({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: questionsWidth,
+      child: Column(
+        children: [
+          const SizedBox(height: 12.0),
+          TerrarianType(),
+          const SizedBox(height: 12.0),
+          ConnectionType(),
+          const SizedBox(height: 12.0),
+          Path(),
+          const SizedBox(height: 12.0),
+          PreferredNozzleType(),
+          const SizedBox(height: 12.0),
+          Controller(),
+          const SizedBox(height: 12.0),
+          Sensors(),
+          const SizedBox(height: 12.0),
+        ],
+      ),
+    );
+  }
+}
+
+class RowQuestions extends StatelessWidget {
+  RowQuestions({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: questionsWidth,
+          child: Column(
+            children: [
+              const SizedBox(height: 12.0),
+              TerrarianType(),
+              const SizedBox(height: 12.0),
+              ConnectionType(),
+              const SizedBox(height: 12.0),
+              Path(),
+              const SizedBox(height: 12.0),
+              PreferredNozzleType(),
+              const SizedBox(height: 12.0),
+              Controller(),
+              const SizedBox(height: 12.0),
+              Sensors(),
+              const SizedBox(height: 12.0),
+            ],
+          ),
+        ),
+        const SizedBox(width: 8.0),
+        SizedBox(
+          width: questionsWidth,
+          child: Column(
+            children: [
+              const SizedBox(height: 12.0),
+              TerrarianType(),
+              const SizedBox(height: 12.0),
+              ConnectionType(),
+              const SizedBox(height: 12.0),
+              Path(),
+              const SizedBox(height: 12.0),
+              PreferredNozzleType(),
+              const SizedBox(height: 12.0),
+              Controller(),
+              const SizedBox(height: 12.0),
+              Sensors(),
+              const SizedBox(height: 12.0),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
