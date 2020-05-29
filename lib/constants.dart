@@ -52,4 +52,11 @@ final Decoration hideDropdownButtonDecoration = BoxDecoration(
 //* Text styles
 const TextStyle mainTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
+  fontSize: 16.0,
+);
+
+const TextStyle secondaryTextStyle = TextStyle(
+  fontSize: 16.0,
+  color: mainColor,
+  fontWeight: FontWeight.w600,
 );

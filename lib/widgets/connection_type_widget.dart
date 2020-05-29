@@ -31,8 +31,7 @@ class ConnectionType extends StatelessWidget {
                     icon: const Icon(Icons.arrow_drop_down),
                     iconSize: 24.0,
                     elevation: 8,
-                    style: const TextStyle(
-                        color: mainColor, fontWeight: FontWeight.bold),
+                    style: secondaryTextStyle,
                     underline: const SizedBox(
                       height: 0.0,
                     ),

@@ -16,44 +16,42 @@ class HomePage extends StatelessWidget {
         child: Container(
           //! For debug
           color: Colors.white,
-          child: SingleChildScrollView(
+          child: ListView(
             padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 40.0,
+            children: [
+              const SizedBox(
+                height: 40.0,
+              ),
+              const Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'Техническое задание на проектирование',
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                const Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Техническое задание на проектирование',
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                    textAlign: TextAlign.center,
+              ),
+              const SizedBox(
+                height: 20.0,
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: SizedBox(
+                  width: 800.0,
+                  child: TextField(
+                    controller: _commentController,
+                    maxLines: null,
+                    minLines: 2,
+                    decoration: textFormInputDecoration,
                   ),
                 ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: SizedBox(
-                    width: 800.0,
-                    child: TextField(
-                      controller: _commentController,
-                      maxLines: null,
-                      minLines: 2,
-                      decoration: textFormInputDecoration,
-                    ),
-                  ),
-                ),
-                MediaQuery.of(context).size.width == questionsWidth
-                    ? ColumnQuestions()
-                    : RowQuestions(),
-              ],
-            ),
+              ),
+              MediaQuery.of(context).size.width <= (questionsWidth + 20) * 2
+                  ? ColumnQuestions()
+                  : RowQuestions(),
+            ],
           ),
         ),
       ),

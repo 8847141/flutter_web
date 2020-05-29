@@ -21,7 +21,7 @@ class Controller extends StatelessWidget {
                     style: mainTextStyle,
                   ),
                 ),
-                const SizedBox(width: 8.0),
+                const SizedBox(height: 8.0),
                 Align(
                   alignment: Alignment.topLeft,
                   child: Container(
