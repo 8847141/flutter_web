@@ -22,6 +22,9 @@ const OutlineInputBorder textFormBorderStyle = OutlineInputBorder(
 const EdgeInsetsGeometry checboxesPadding =
     EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 0.0);
 
+//* Indents
+const SizedBox answerIndent = SizedBox(height: 4.0);
+
 //* Decorations
 const InputDecoration textFormInputDecoration = InputDecoration(
   focusedBorder: textFormBorderStyle,

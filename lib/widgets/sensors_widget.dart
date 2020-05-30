@@ -41,7 +41,7 @@ class Sensors extends StatelessWidget {
                                       .copyWith(rain: value)))),
                         ),
                       ),
-                      const SizedBox(height: 4.0),
+                      answerIndent,
                       DecoratedBox(
                         decoration: bloc.answers.sensors.wind
                             ? dropdownButtonDecoration
@@ -57,7 +57,7 @@ class Sensors extends StatelessWidget {
                                       .copyWith(wind: value)))),
                         ),
                       ),
-                      const SizedBox(height: 4.0),
+                      answerIndent,
                       DecoratedBox(
                         decoration: bloc.answers.sensors.soil
                             ? dropdownButtonDecoration
@@ -73,7 +73,7 @@ class Sensors extends StatelessWidget {
                                       .copyWith(soil: value)))),
                         ),
                       ),
-                      const SizedBox(height: 4.0),
+                      answerIndent,
                       DecoratedBox(
                         decoration: bloc.answers.sensors.freeze
                             ? dropdownButtonDecoration
@@ -89,7 +89,7 @@ class Sensors extends StatelessWidget {
                                       .copyWith(freeze: value)))),
                         ),
                       ),
-                      const SizedBox(height: 4.0),
+                      answerIndent,
                       DecoratedBox(
                         decoration: bloc.answers.sensors.rainFreeze
                             ? dropdownButtonDecoration
@@ -105,7 +105,7 @@ class Sensors extends StatelessWidget {
                                       .copyWith(rainFreeze: value)))),
                         ),
                       ),
-                      const SizedBox(height: 4.0),
+                      answerIndent,
                       DecoratedBox(
                         decoration: bloc.answers.sensors.solar
                             ? dropdownButtonDecoration
@@ -121,7 +121,7 @@ class Sensors extends StatelessWidget {
                                       .copyWith(solar: value)))),
                         ),
                       ),
-                      const SizedBox(height: 4.0),
+                      answerIndent,
                       DecoratedBox(
                         decoration: bloc.answers.sensors.flow
                             ? dropdownButtonDecoration

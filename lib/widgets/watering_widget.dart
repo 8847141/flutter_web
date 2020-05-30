@@ -11,97 +11,141 @@ class Watering extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              'Что поливаем?',
-              style: mainTextStyle,
-            ),
+        /*const Padding(
+          padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
+          child: */
+        const Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Что поливаем?',
+            style: mainTextStyle,
           ),
         ),
-        const SizedBox(width: 8),
-        Padding(
-          padding: checboxesPadding,
-          child: BlocBuilder<OptionsBloc, OptionsState>(
-            builder: (context, bloc) {
-              if (bloc is OptionsIsLoaded) {
-                return Column(
+        // ),
+        const SizedBox(height: 8.0),
+        BlocBuilder<OptionsBloc, OptionsState>(
+          builder: (context, bloc) {
+            if (bloc is OptionsIsLoaded) {
+              return Align(
+                alignment: Alignment.topLeft,
+                child: Column(
                   children: [
-                    CheckboxListTile(
-                      title: const Text('Весь участок'),
-                      activeColor: mainColor,
-                      controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.typesOfIrrigatedLandings.allGarden,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              typesOfIrrigatedLandings: bloc
-                                  .answers.typesOfIrrigatedLandings
-                                  .copyWith(allGarden: value)))),
+                    Container(
+                      decoration:
+                          bloc.answers.typesOfIrrigatedLandings.allGarden
+                              ? dropdownButtonDecoration
+                              : null,
+                      width: 200.0,
+                      child: CheckboxListTile(
+                        title: const Text('Весь участок'),
+                        activeColor: mainColor,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: bloc.answers.typesOfIrrigatedLandings.allGarden,
+                        onChanged: (value) => context.bloc<OptionsBloc>().add(
+                            ChangeAnswers(bloc.answers.copyWith(
+                                typesOfIrrigatedLandings: bloc
+                                    .answers.typesOfIrrigatedLandings
+                                    .copyWith(allGarden: value)))),
+                      ),
                     ),
-                    CheckboxListTile(
-                      title: const Text('Газон'),
-                      activeColor: mainColor,
-                      controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.typesOfIrrigatedLandings.grass,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              typesOfIrrigatedLandings: bloc
-                                  .answers.typesOfIrrigatedLandings
-                                  .copyWith(grass: value)))),
+                    answerIndent,
+                    Container(
+                      decoration: bloc.answers.typesOfIrrigatedLandings.grass
+                          ? dropdownButtonDecoration
+                          : null,
+                      width: 200.0,
+                      child: CheckboxListTile(
+                        title: const Text('Газон'),
+                        activeColor: mainColor,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: bloc.answers.typesOfIrrigatedLandings.grass,
+                        onChanged: (value) => context.bloc<OptionsBloc>().add(
+                            ChangeAnswers(bloc.answers.copyWith(
+                                typesOfIrrigatedLandings: bloc
+                                    .answers.typesOfIrrigatedLandings
+                                    .copyWith(grass: value)))),
+                      ),
                     ),
-                    CheckboxListTile(
-                      title: const Text('Огород'),
-                      activeColor: mainColor,
-                      controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.typesOfIrrigatedLandings.garden,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              typesOfIrrigatedLandings: bloc
-                                  .answers.typesOfIrrigatedLandings
-                                  .copyWith(garden: value)))),
+                    answerIndent,
+                    Container(
+                      decoration: bloc.answers.typesOfIrrigatedLandings.garden
+                          ? dropdownButtonDecoration
+                          : null,
+                      width: 200.0,
+                      child: CheckboxListTile(
+                        title: const Text('Огород'),
+                        activeColor: mainColor,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: bloc.answers.typesOfIrrigatedLandings.garden,
+                        onChanged: (value) => context.bloc<OptionsBloc>().add(
+                            ChangeAnswers(bloc.answers.copyWith(
+                                typesOfIrrigatedLandings: bloc
+                                    .answers.typesOfIrrigatedLandings
+                                    .copyWith(garden: value)))),
+                      ),
                     ),
-                    CheckboxListTile(
-                      title: const Text('Теплица'),
-                      activeColor: mainColor,
-                      controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.typesOfIrrigatedLandings.greenhouse,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              typesOfIrrigatedLandings: bloc
-                                  .answers.typesOfIrrigatedLandings
-                                  .copyWith(greenhouse: value)))),
+                    answerIndent,
+                    Container(
+                      decoration:
+                          bloc.answers.typesOfIrrigatedLandings.greenhouse
+                              ? dropdownButtonDecoration
+                              : null,
+                      width: 200.0,
+                      child: CheckboxListTile(
+                        title: const Text('Теплица'),
+                        activeColor: mainColor,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: bloc.answers.typesOfIrrigatedLandings.greenhouse,
+                        onChanged: (value) => context.bloc<OptionsBloc>().add(
+                            ChangeAnswers(bloc.answers.copyWith(
+                                typesOfIrrigatedLandings: bloc
+                                    .answers.typesOfIrrigatedLandings
+                                    .copyWith(greenhouse: value)))),
+                      ),
                     ),
-                    CheckboxListTile(
-                      title: const Text('Кусты'),
-                      activeColor: mainColor,
-                      controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.typesOfIrrigatedLandings.shrub,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              typesOfIrrigatedLandings: bloc
-                                  .answers.typesOfIrrigatedLandings
-                                  .copyWith(shrub: value)))),
+                    answerIndent,
+                    Container(
+                      decoration: bloc.answers.typesOfIrrigatedLandings.shrub
+                          ? dropdownButtonDecoration
+                          : null,
+                      width: 200.0,
+                      child: CheckboxListTile(
+                        title: const Text('Кусты'),
+                        activeColor: mainColor,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: bloc.answers.typesOfIrrigatedLandings.shrub,
+                        onChanged: (value) => context.bloc<OptionsBloc>().add(
+                            ChangeAnswers(bloc.answers.copyWith(
+                                typesOfIrrigatedLandings: bloc
+                                    .answers.typesOfIrrigatedLandings
+                                    .copyWith(shrub: value)))),
+                      ),
                     ),
-                    CheckboxListTile(
-                      title: const Text('Цветники'),
-                      activeColor: mainColor,
-                      controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.typesOfIrrigatedLandings.flowers,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              typesOfIrrigatedLandings: bloc
-                                  .answers.typesOfIrrigatedLandings
-                                  .copyWith(flowers: value)))),
+                    answerIndent,
+                    Container(
+                      decoration: bloc.answers.typesOfIrrigatedLandings.flowers
+                          ? dropdownButtonDecoration
+                          : null,
+                      width: 200.0,
+                      child: CheckboxListTile(
+                        title: const Text('Цветники'),
+                        activeColor: mainColor,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: bloc.answers.typesOfIrrigatedLandings.flowers,
+                        onChanged: (value) => context.bloc<OptionsBloc>().add(
+                            ChangeAnswers(bloc.answers.copyWith(
+                                typesOfIrrigatedLandings: bloc
+                                    .answers.typesOfIrrigatedLandings
+                                    .copyWith(flowers: value)))),
+                      ),
                     ),
                   ],
-                );
-              } else {
-                return null;
-              }
-            },
-          ),
+                ),
+              );
+            } else {
+              return null;
+            }
+          },
         ),
       ],
     );

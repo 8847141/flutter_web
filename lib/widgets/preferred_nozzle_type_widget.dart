@@ -24,11 +24,11 @@ class PreferredNozzleType extends StatelessWidget {
           child:
               BlocBuilder<OptionsBloc, OptionsState>(builder: (context, bloc) {
             if (bloc is OptionsIsLoaded) {
-              return Column(
-                children: [
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
+              return Align(
+                alignment: Alignment.topLeft,
+                child: Column(
+                  children: [
+                    Container(
                       decoration: bloc.answers.preferredNozzleType.statics
                           ? dropdownButtonDecoration
                           : hideDropdownButtonDecoration,
@@ -45,11 +45,8 @@ class PreferredNozzleType extends StatelessWidget {
                         controlAffinity: ListTileControlAffinity.leading,
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 4.0),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
+                    answerIndent,
+                    Container(
                       decoration: bloc.answers.preferredNozzleType.rotators
                           ? dropdownButtonDecoration
                           : hideDropdownButtonDecoration,
@@ -66,11 +63,8 @@ class PreferredNozzleType extends StatelessWidget {
                         controlAffinity: ListTileControlAffinity.leading,
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 4.0),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
+                    answerIndent,
+                    Container(
                       decoration: bloc.answers.preferredNozzleType.rotors
                           ? dropdownButtonDecoration
                           : hideDropdownButtonDecoration,
@@ -87,11 +81,8 @@ class PreferredNozzleType extends StatelessWidget {
                         controlAffinity: ListTileControlAffinity.leading,
                       ),
                     ),
-                  ),
-                  const SizedBox(height: 4.0),
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
+                    answerIndent,
+                    Container(
                       decoration: bloc.answers.preferredNozzleType.any
                           ? dropdownButtonDecoration
                           : hideDropdownButtonDecoration,
@@ -108,8 +99,8 @@ class PreferredNozzleType extends StatelessWidget {
                         controlAffinity: ListTileControlAffinity.leading,
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               );
             } else {
               return null;
