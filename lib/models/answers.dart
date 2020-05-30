@@ -1,5 +1,6 @@
 import 'preferred_nozzle_type.dart';
 import 'sensors.dart';
+import 'types_of_irrigated_landings.dart';
 
 class Answers {
   bool flatTerrain;
@@ -12,7 +13,7 @@ class Answers {
   bool controllerWitfWiFi;
   Sensors sensors;
   //bool dripIrrigation;
-  //String typesOfIrrigatedLandings;
+  TypesOfIrrigatedLandings typesOfIrrigatedLandings;
   //int waterOutlet;
   //bool needPump;
   //bool needWaterTank;
@@ -30,9 +31,12 @@ class Answers {
     this.controllerType = 'Внутренний',
     this.controllerWitfWiFi = false,
     Sensors sensors,
+    TypesOfIrrigatedLandings typesOfIrrigatedLandings,
   }) {
     this.preferredNozzleType = preferredNozzleType ?? PreferredNozzleType();
     this.sensors = sensors ?? Sensors();
+    this.typesOfIrrigatedLandings =
+        typesOfIrrigatedLandings ?? TypesOfIrrigatedLandings();
   }
 
   Answers copyWith({
@@ -43,15 +47,17 @@ class Answers {
     String controllerType,
     bool controllerWitfWiFi,
     Sensors sensors,
+    TypesOfIrrigatedLandings typesOfIrrigatedLandings,
   }) {
     return Answers(
-      flatTerrain: flatTerrain ?? this.flatTerrain,
-      connectionType: connectionType ?? this.connectionType,
-      canBeWateredWalkway: canBeWateredWalkway ?? this.canBeWateredWalkway,
-      preferredNozzleType: preferredNozzleType ?? this.preferredNozzleType,
-      controllerType: controllerType ?? this.controllerType,
-      controllerWitfWiFi: controllerWitfWiFi ?? this.controllerWitfWiFi,
-      sensors: sensors ?? this.sensors,
-    );
+        flatTerrain: flatTerrain ?? this.flatTerrain,
+        connectionType: connectionType ?? this.connectionType,
+        canBeWateredWalkway: canBeWateredWalkway ?? this.canBeWateredWalkway,
+        preferredNozzleType: preferredNozzleType ?? this.preferredNozzleType,
+        controllerType: controllerType ?? this.controllerType,
+        controllerWitfWiFi: controllerWitfWiFi ?? this.controllerWitfWiFi,
+        sensors: sensors ?? this.sensors,
+        typesOfIrrigatedLandings:
+            typesOfIrrigatedLandings ?? this.typesOfIrrigatedLandings);
   }
 }

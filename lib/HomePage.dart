@@ -81,6 +81,8 @@ class ColumnQuestions extends StatelessWidget {
           const SizedBox(height: 12.0),
           Sensors(),
           const SizedBox(height: 12.0),
+          Watering(),
+          const SizedBox(height: 12.0),
         ],
       ),
     );
