@@ -17,7 +17,7 @@ class ConnectionType extends StatelessWidget {
             style: mainTextStyle,
           ),
         ),
-        const SizedBox(height: 8.0),
+        questionIndent,
         Align(
           alignment: Alignment.topLeft,
           child: Container(

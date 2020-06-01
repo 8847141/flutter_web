@@ -11,9 +11,6 @@ class Watering extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        /*const Padding(
-          padding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
-          child: */
         const Align(
           alignment: Alignment.centerLeft,
           child: Text(
@@ -34,7 +31,7 @@ class Watering extends StatelessWidget {
                       decoration:
                           bloc.answers.typesOfIrrigatedLandings.allGarden
                               ? dropdownButtonDecoration
-                              : null,
+                              : hideDropdownButtonDecoration,
                       width: 200.0,
                       child: CheckboxListTile(
                         title: const Text('Весь участок'),
@@ -52,7 +49,7 @@ class Watering extends StatelessWidget {
                     Container(
                       decoration: bloc.answers.typesOfIrrigatedLandings.grass
                           ? dropdownButtonDecoration
-                          : null,
+                          : hideDropdownButtonDecoration,
                       width: 200.0,
                       child: CheckboxListTile(
                         title: const Text('Газон'),
@@ -70,7 +67,7 @@ class Watering extends StatelessWidget {
                     Container(
                       decoration: bloc.answers.typesOfIrrigatedLandings.garden
                           ? dropdownButtonDecoration
-                          : null,
+                          : hideDropdownButtonDecoration,
                       width: 200.0,
                       child: CheckboxListTile(
                         title: const Text('Огород'),
@@ -89,7 +86,7 @@ class Watering extends StatelessWidget {
                       decoration:
                           bloc.answers.typesOfIrrigatedLandings.greenhouse
                               ? dropdownButtonDecoration
-                              : null,
+                              : hideDropdownButtonDecoration,
                       width: 200.0,
                       child: CheckboxListTile(
                         title: const Text('Теплица'),
@@ -107,7 +104,7 @@ class Watering extends StatelessWidget {
                     Container(
                       decoration: bloc.answers.typesOfIrrigatedLandings.shrub
                           ? dropdownButtonDecoration
-                          : null,
+                          : hideDropdownButtonDecoration,
                       width: 200.0,
                       child: CheckboxListTile(
                         title: const Text('Кусты'),
@@ -125,7 +122,7 @@ class Watering extends StatelessWidget {
                     Container(
                       decoration: bloc.answers.typesOfIrrigatedLandings.flowers
                           ? dropdownButtonDecoration
-                          : null,
+                          : hideDropdownButtonDecoration,
                       width: 200.0,
                       child: CheckboxListTile(
                         title: const Text('Цветники'),

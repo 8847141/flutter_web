@@ -23,7 +23,7 @@ class TerrarianType extends StatelessWidget {
                 style: mainTextStyle,
               ),
             ),
-            const SizedBox(height: 8.0),
+            questionIndent,
             Align(
               alignment: Alignment.topLeft,
               child: Column(
@@ -32,7 +32,7 @@ class TerrarianType extends StatelessWidget {
                     decoration: bloc.answers.flatTerrain
                         ? dropdownButtonDecoration
                         : null,
-                    width: 200.0,
+                    width: 300.0,
                     child: RadioListTile(
                       title: const Text('Ровный'),
                       activeColor: mainColor,
@@ -48,7 +48,7 @@ class TerrarianType extends StatelessWidget {
                     decoration: bloc.answers.flatTerrain
                         ? null
                         : dropdownButtonDecoration,
-                    width: 200.0,
+                    width: 300.0,
                     child: RadioListTile(
                       title: const Text('С перепадом высот'),
                       activeColor: mainColor,

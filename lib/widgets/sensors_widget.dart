@@ -18,7 +18,7 @@ class Sensors extends StatelessWidget {
             style: mainTextStyle,
           ),
         ),
-        const SizedBox(height: 8.0),
+        questionIndent,
         Padding(
             padding: checboxesPadding,
             child: BlocBuilder<OptionsBloc, OptionsState>(

@@ -12,51 +12,46 @@ class Controller extends StatelessWidget {
       if (bloc is OptionsIsLoaded) {
         return Column(
           children: [
-            Column(
-              children: [
-                const Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    'Пульт управления',
-                    style: mainTextStyle,
-                  ),
-                ),
-                const SizedBox(height: 8.0),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Container(
-                    padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
-                    decoration: dropdownButtonDecoration,
-                    child: DropdownButton<String>(
-                      value: bloc.answers.controllerType,
-                      icon: const Icon(Icons.arrow_drop_down),
-                      iconSize: 24.0,
-                      elevation: 8,
-                      style: const TextStyle(
-                          color: mainColor, fontWeight: FontWeight.bold),
-                      underline: const SizedBox(
-                        height: 0.0,
-                      ),
-                      onChanged: (controllerType) => context
-                          .bloc<OptionsBloc>()
-                          .add(ChangeAnswers(bloc.answers
-                              .copyWith(controllerType: controllerType))),
-                      items: context
-                          .bloc<OptionsBloc>()
-                          .answers
-                          .controllerTypes
-                          .map<DropdownMenuItem<String>>((value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                ),
-              ],
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Пульт управления',
+                style: mainTextStyle,
+              ),
             ),
-            const SizedBox(height: 8.0),
+            questionIndent,
+            Align(
+              alignment: Alignment.topLeft,
+              child: Container(
+                padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
+                decoration: dropdownButtonDecoration,
+                child: DropdownButton<String>(
+                  value: bloc.answers.controllerType,
+                  icon: const Icon(Icons.arrow_drop_down),
+                  iconSize: 24.0,
+                  elevation: 8,
+                  style: secondaryTextStyle,
+                  underline: const SizedBox(
+                    height: 0.0,
+                  ),
+                  onChanged: (controllerType) => context
+                      .bloc<OptionsBloc>()
+                      .add(ChangeAnswers(bloc.answers
+                          .copyWith(controllerType: controllerType))),
+                  items: context
+                      .bloc<OptionsBloc>()
+                      .answers
+                      .controllerTypes
+                      .map<DropdownMenuItem<String>>((value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+              ),
+            ),
+            answerIndent,
             Align(
               alignment: Alignment.topLeft,
               child: Container(

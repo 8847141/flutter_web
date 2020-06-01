@@ -11,13 +11,13 @@ class Path extends StatelessWidget {
     return Column(
       children: [
         const Align(
-          alignment: Alignment.centerLeft,
+          alignment: Alignment.topLeft,
           child: Text(
             'Поливаем дорожки?',
             style: mainTextStyle,
           ),
         ),
-        const SizedBox(height: 8.0),
+        questionIndent,
         BlocBuilder<OptionsBloc, OptionsState>(
           builder: (context, bloc) {
             if (bloc is OptionsIsLoaded) {

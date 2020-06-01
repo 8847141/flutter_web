@@ -25,6 +25,8 @@ const EdgeInsetsGeometry checboxesPadding =
 //* Indents
 const SizedBox answerIndent = SizedBox(height: 4.0);
 
+const SizedBox questionIndent = SizedBox(height: 8.0);
+
 //* Decorations
 const InputDecoration textFormInputDecoration = InputDecoration(
   focusedBorder: textFormBorderStyle,
