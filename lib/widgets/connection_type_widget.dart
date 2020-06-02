@@ -21,6 +21,7 @@ class ConnectionType extends StatelessWidget {
         Align(
           alignment: Alignment.topLeft,
           child: Container(
+            height: 56.0,
             padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
             decoration: dropdownButtonDecoration,
             child: BlocBuilder<OptionsBloc, OptionsState>(

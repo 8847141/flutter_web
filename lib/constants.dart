@@ -7,6 +7,8 @@ const double questionsWidth = 400.0;
 //* Colors
 const Color mainColor = Color(0xff3553f1);
 
+const Color hideColor = Colors.black45;
+
 //* Borders
 const OutlineInputBorder textFormBorderStyle = OutlineInputBorder(
   borderSide: BorderSide(

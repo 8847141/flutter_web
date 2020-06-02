@@ -6,7 +6,7 @@ import 'widgets/widgets.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key key}) : super(key: key);
 
-  final TextEditingController _commentController = TextEditingController();
+  //final TextEditingController _commentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +34,9 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(
-                height: 20.0,
+                height: 12.0,
               ),
-              Align(
+              /*Align(
                 alignment: Alignment.center,
                 child: SizedBox(
                   width: 800.0,
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                     decoration: textFormInputDecoration,
                   ),
                 ),
-              ),
+              ),*/
               MediaQuery.of(context).size.width <= (questionsWidth + 20) * 2
                   ? ColumnQuestions()
                   : RowQuestions(),
@@ -68,7 +68,6 @@ class ColumnQuestions extends StatelessWidget {
       width: questionsWidth,
       child: Column(
         children: [
-          const SizedBox(height: 12.0),
           TerrarianType(),
           const SizedBox(height: 12.0),
           ConnectionType(),
@@ -102,7 +101,6 @@ class RowQuestions extends StatelessWidget {
           width: questionsWidth,
           child: Column(
             children: [
-              const SizedBox(height: 12.0),
               TerrarianType(),
               const SizedBox(height: 12.0),
               ConnectionType(),
@@ -123,7 +121,6 @@ class RowQuestions extends StatelessWidget {
           width: questionsWidth,
           child: Column(
             children: [
-              const SizedBox(height: 12.0),
               TerrarianType(),
               const SizedBox(height: 12.0),
               ConnectionType(),

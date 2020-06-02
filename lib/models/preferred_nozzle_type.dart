@@ -8,7 +8,7 @@ class PreferredNozzleType {
       {this.statics = false,
       this.rotators = false,
       this.rotors = false,
-      this.any = true});
+      this.any = false});
 
   PreferredNozzleType copyWith({
     bool statics,
@@ -16,46 +16,24 @@ class PreferredNozzleType {
     bool rotators,
     bool any,
   }) {
-    if (any != null) {
+    if (any != null && any) {
+      statics = true;
+      rotors = true;
+      rotators = true;
+    }
+
+    if (any != null && !any) {
       statics = false;
       rotors = false;
       rotators = false;
     }
 
-    if (statics != null && statics) {
-      if (this.rotators && this.rotors) {
-        any = true;
-        statics = false;
-        rotors = false;
-        rotators = false;
-      }
-      if (this.any) {
-        any = false;
-      }
-    }
-
-    if (rotators != null && rotators) {
-      if (this.statics && this.rotors) {
-        any = true;
-        statics = false;
-        rotors = false;
-        rotators = false;
-      }
-      if (this.any) {
-        any = false;
-      }
-    }
-
-    if (rotors != null && rotors) {
-      if (this.statics && this.rotators) {
-        any = true;
-        statics = false;
-        rotors = false;
-        rotators = false;
-      }
-      if (this.any) {
-        any = false;
-      }
+    if (statics != null && this.rotators && this.rotors) {
+      any = statics ? true : false;
+    } else if (rotators != null && this.statics && this.rotors) {
+      any = rotators ? true : false;
+    } else if (rotors != null && this.statics && this.rotators) {
+      any = rotors ? true : false;
     }
 
     return PreferredNozzleType(
