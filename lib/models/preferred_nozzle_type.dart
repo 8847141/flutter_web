@@ -17,23 +17,41 @@ class PreferredNozzleType {
     bool any,
   }) {
     if (any != null && any) {
-      statics = true;
-      rotors = true;
-      rotators = true;
+      this.statics = true;
+      this.rotors = true;
+      this.rotators = true;
     }
 
     if (any != null && !any) {
-      statics = false;
-      rotors = false;
-      rotators = false;
+      this.statics = false;
+      this.rotors = false;
+      this.rotators = false;
     }
 
     if (statics != null && this.rotators && this.rotors) {
       any = statics ? true : false;
+      if (this.any) {
+        statics = true;
+        rotators = false;
+        rotors = false;
+        any = false;
+      }
     } else if (rotators != null && this.statics && this.rotors) {
       any = rotators ? true : false;
+      if (this.any) {
+        statics = false;
+        rotators = true;
+        rotors = false;
+        any = false;
+      }
     } else if (rotors != null && this.statics && this.rotators) {
       any = rotors ? true : false;
+      if (this.any) {
+        statics = false;
+        rotators = false;
+        rotors = true;
+        any = false;
+      }
     }
 
     return PreferredNozzleType(
