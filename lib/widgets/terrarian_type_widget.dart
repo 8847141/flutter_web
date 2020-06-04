@@ -7,8 +7,8 @@ import '../constants.dart';
 class TerrarianType extends StatelessWidget {
   TerrarianType({Key key}) : super(key: key);
 
-  /*final TextEditingController _heightDifferenceController =
-      TextEditingController();*/
+  final TextEditingController _heightDifferenceController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class TerrarianType extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 'Рельеф участка',
-                style: mainTextStyle,
+                style: questionTextStyle,
               ),
             ),
             questionIndent,
@@ -30,8 +30,8 @@ class TerrarianType extends StatelessWidget {
                 children: [
                   DecoratedBox(
                     decoration: bloc.answers.flatTerrain
-                        ? dropdownButtonDecoration
-                        : dropdownButtonDecoration,
+                        ? answerDecoration
+                        : hideDecoration,
                     child: RadioListTile(
                       title: const Text('Ровный'),
                       activeColor: mainColor,
@@ -46,8 +46,8 @@ class TerrarianType extends StatelessWidget {
                   answerIndent,
                   DecoratedBox(
                     decoration: bloc.answers.flatTerrain
-                        ? dropdownButtonDecoration
-                        : dropdownButtonDecoration,
+                        ? hideDecoration
+                        : answerDecoration,
                     child: RadioListTile(
                       title: const Text('С перепадом высот'),
                       activeColor: mainColor,
@@ -62,31 +62,35 @@ class TerrarianType extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 8.0),
-            /*bloc.answers.flatTerrain
+            questionIndent,
+            bloc.answers.flatTerrain
                 ? const SizedBox()
                 : Row(
                     children: [
-                      const Text(
-                        'Макс. перепад высот',
-                        style: mainTextStyle,
+                      const Padding(
+                        padding: EdgeInsets.only(left: 25.0),
+                        child: Text(
+                          'Макс. перепад высот',
+                          style: secondaryTextStyle,
+                        ),
                       ),
                       const SizedBox(width: 8.0),
                       Align(
                         alignment: Alignment.center,
                         child: SizedBox(
-                          height: 50.0,
-                          width: 100.0,
+                          height: 56.0,
+                          width: MediaQuery.of(context).size.width - 240,
                           child: TextField(
                             controller: _heightDifferenceController,
                             maxLines: 1,
                             minLines: 1,
                             decoration: textFormInputDecoration,
+                            keyboardType: TextInputType.number,
                           ),
                         ),
                       ),
                     ],
-                  ),*/
+                  ),
           ],
         );
       } else {

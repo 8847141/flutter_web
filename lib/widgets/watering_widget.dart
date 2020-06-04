@@ -15,11 +15,10 @@ class Watering extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             'Что поливаем?',
-            style: mainTextStyle,
+            style: questionTextStyle,
           ),
         ),
-        // ),
-        const SizedBox(height: 8.0),
+        questionIndent,
         BlocBuilder<OptionsBloc, OptionsState>(
           builder: (context, bloc) {
             if (bloc is OptionsIsLoaded) {
@@ -27,12 +26,11 @@ class Watering extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: Column(
                   children: [
-                    Container(
+                    DecoratedBox(
                       decoration:
                           bloc.answers.typesOfIrrigatedLandings.allGarden
-                              ? dropdownButtonDecoration
-                              : hideDropdownButtonDecoration,
-                      width: 200.0,
+                              ? answerDecoration
+                              : hideDecoration,
                       child: CheckboxListTile(
                         title: const Text('Весь участок'),
                         activeColor: mainColor,
@@ -46,14 +44,17 @@ class Watering extends StatelessWidget {
                       ),
                     ),
                     answerIndent,
-                    Container(
-                      decoration: bloc.answers.typesOfIrrigatedLandings.grass
-                          ? dropdownButtonDecoration
-                          : hideDropdownButtonDecoration,
-                      width: 200.0,
+                    DecoratedBox(
+                      decoration: bloc.answers.typesOfIrrigatedLandings.grass &&
+                              !bloc.answers.typesOfIrrigatedLandings.allGarden
+                          ? answerDecoration
+                          : hideDecoration,
                       child: CheckboxListTile(
                         title: const Text('Газон'),
-                        activeColor: mainColor,
+                        activeColor:
+                            bloc.answers.typesOfIrrigatedLandings.allGarden
+                                ? hideColor
+                                : mainColor,
                         controlAffinity: ListTileControlAffinity.leading,
                         value: bloc.answers.typesOfIrrigatedLandings.grass,
                         onChanged: (value) => context.bloc<OptionsBloc>().add(
@@ -64,14 +65,18 @@ class Watering extends StatelessWidget {
                       ),
                     ),
                     answerIndent,
-                    Container(
-                      decoration: bloc.answers.typesOfIrrigatedLandings.garden
-                          ? dropdownButtonDecoration
-                          : hideDropdownButtonDecoration,
-                      width: 200.0,
+                    DecoratedBox(
+                      decoration: bloc
+                                  .answers.typesOfIrrigatedLandings.garden &&
+                              !bloc.answers.typesOfIrrigatedLandings.allGarden
+                          ? answerDecoration
+                          : hideDecoration,
                       child: CheckboxListTile(
                         title: const Text('Огород'),
-                        activeColor: mainColor,
+                        activeColor:
+                            bloc.answers.typesOfIrrigatedLandings.allGarden
+                                ? hideColor
+                                : mainColor,
                         controlAffinity: ListTileControlAffinity.leading,
                         value: bloc.answers.typesOfIrrigatedLandings.garden,
                         onChanged: (value) => context.bloc<OptionsBloc>().add(
@@ -82,15 +87,18 @@ class Watering extends StatelessWidget {
                       ),
                     ),
                     answerIndent,
-                    Container(
-                      decoration:
-                          bloc.answers.typesOfIrrigatedLandings.greenhouse
-                              ? dropdownButtonDecoration
-                              : hideDropdownButtonDecoration,
-                      width: 200.0,
+                    DecoratedBox(
+                      decoration: bloc.answers.typesOfIrrigatedLandings
+                                  .greenhouse &&
+                              !bloc.answers.typesOfIrrigatedLandings.allGarden
+                          ? answerDecoration
+                          : hideDecoration,
                       child: CheckboxListTile(
                         title: const Text('Теплица'),
-                        activeColor: mainColor,
+                        activeColor:
+                            bloc.answers.typesOfIrrigatedLandings.allGarden
+                                ? hideColor
+                                : mainColor,
                         controlAffinity: ListTileControlAffinity.leading,
                         value: bloc.answers.typesOfIrrigatedLandings.greenhouse,
                         onChanged: (value) => context.bloc<OptionsBloc>().add(
@@ -101,14 +109,17 @@ class Watering extends StatelessWidget {
                       ),
                     ),
                     answerIndent,
-                    Container(
-                      decoration: bloc.answers.typesOfIrrigatedLandings.shrub
-                          ? dropdownButtonDecoration
-                          : hideDropdownButtonDecoration,
-                      width: 200.0,
+                    DecoratedBox(
+                      decoration: bloc.answers.typesOfIrrigatedLandings.shrub &&
+                              !bloc.answers.typesOfIrrigatedLandings.allGarden
+                          ? answerDecoration
+                          : hideDecoration,
                       child: CheckboxListTile(
                         title: const Text('Кусты'),
-                        activeColor: mainColor,
+                        activeColor:
+                            bloc.answers.typesOfIrrigatedLandings.allGarden
+                                ? hideColor
+                                : mainColor,
                         controlAffinity: ListTileControlAffinity.leading,
                         value: bloc.answers.typesOfIrrigatedLandings.shrub,
                         onChanged: (value) => context.bloc<OptionsBloc>().add(
@@ -119,14 +130,18 @@ class Watering extends StatelessWidget {
                       ),
                     ),
                     answerIndent,
-                    Container(
-                      decoration: bloc.answers.typesOfIrrigatedLandings.flowers
-                          ? dropdownButtonDecoration
-                          : hideDropdownButtonDecoration,
-                      width: 200.0,
+                    DecoratedBox(
+                      decoration: bloc
+                                  .answers.typesOfIrrigatedLandings.flowers &&
+                              !bloc.answers.typesOfIrrigatedLandings.allGarden
+                          ? answerDecoration
+                          : hideDecoration,
                       child: CheckboxListTile(
                         title: const Text('Цветники'),
-                        activeColor: mainColor,
+                        activeColor:
+                            bloc.answers.typesOfIrrigatedLandings.allGarden
+                                ? hideColor
+                                : mainColor,
                         controlAffinity: ListTileControlAffinity.leading,
                         value: bloc.answers.typesOfIrrigatedLandings.flowers,
                         onChanged: (value) => context.bloc<OptionsBloc>().add(

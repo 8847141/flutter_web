@@ -40,7 +40,7 @@ const InputDecoration textFormInputDecoration = InputDecoration(
   fillColor: Colors.white,
 );
 
-final Decoration dropdownButtonDecoration = BoxDecoration(
+final Decoration answerDecoration = BoxDecoration(
   border: Border.all(
     color: mainColor,
     width: 2.0,
@@ -48,13 +48,7 @@ final Decoration dropdownButtonDecoration = BoxDecoration(
   borderRadius: BorderRadius.circular(14.0),
 );
 
-final Decoration hideDropdownButtonDecoration = BoxDecoration(
-  border: Border.all(
-    color: Colors.white,
-    width: 2.0,
-  ),
-  borderRadius: BorderRadius.circular(14.0),
-);
+const Decoration hideDecoration = BoxDecoration();
 
 //* Text styles
 
@@ -63,7 +57,7 @@ const TextStyle h1 = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
-const TextStyle mainTextStyle = TextStyle(
+const TextStyle questionTextStyle = TextStyle(
   fontWeight: FontWeight.bold,
   fontSize: 16.0,
 );

@@ -9,23 +9,18 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white70,
+      //backgroundColor: Colors.white70,
       body: Center(
         child: ListView(
           padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
           children: [
             const SizedBox(height: 40.0),
-            const Align(
-              alignment: Alignment.center,
-              child: Text(
-                'Техническое задание на проектирование',
-                style: h1,
-                textAlign: TextAlign.center,
-              ),
+            const Text(
+              'Техническое задание на проектирование',
+              style: h1,
+              textAlign: TextAlign.center,
             ),
-            const SizedBox(
-              height: 12.0,
-            ),
+            const SizedBox(height: 12.0),
             MediaQuery.of(context).size.width <= (questionsWidth + 20) * 2
                 ? ColumnQuestions()
                 : RowQuestions(),

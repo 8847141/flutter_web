@@ -14,7 +14,7 @@ class Path extends StatelessWidget {
           alignment: Alignment.topLeft,
           child: Text(
             'Поливаем дорожки?',
-            style: mainTextStyle,
+            style: questionTextStyle,
           ),
         ),
         questionIndent,
@@ -25,8 +25,8 @@ class Path extends StatelessWidget {
                 children: [
                   Container(
                     decoration: bloc.answers.canBeWateredWalkway
-                        ? dropdownButtonDecoration
-                        : null,
+                        ? answerDecoration
+                        : hideDecoration,
                     width: 130.0,
                     child: RadioListTile(
                       title: const Text('Да'),
@@ -41,8 +41,8 @@ class Path extends StatelessWidget {
                   ),
                   Container(
                     decoration: bloc.answers.canBeWateredWalkway
-                        ? null
-                        : dropdownButtonDecoration,
+                        ? hideDecoration
+                        : answerDecoration,
                     width: 130.0,
                     child: RadioListTile(
                       title: const Text('Нет'),

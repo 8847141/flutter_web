@@ -16,24 +16,24 @@ class Controller extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 'Пульт управления',
-                style: mainTextStyle,
+                style: questionTextStyle,
               ),
             ),
             questionIndent,
             Align(
-              alignment: Alignment.topLeft,
-              child: Container(
-                padding: const EdgeInsets.fromLTRB(8.0, 0.0, 8.0, 0.0),
-                decoration: dropdownButtonDecoration,
+              alignment: Alignment.center,
+              child: DecoratedBox(
+                decoration: answerDecoration,
                 child: DropdownButton<String>(
                   value: bloc.answers.controllerType,
                   icon: const Icon(Icons.arrow_drop_down),
-                  iconSize: 24.0,
+                  iconSize: 30.0,
+                  itemHeight: 56.0,
+                  isExpanded: true,
                   elevation: 8,
                   style: secondaryTextStyle,
-                  underline: const SizedBox(
-                    height: 0.0,
-                  ),
+                  underline: const SizedBox.shrink(),
+                  iconEnabledColor: mainColor,
                   onChanged: (controllerType) => context
                       .bloc<OptionsBloc>()
                       .add(ChangeAnswers(bloc.answers
@@ -45,7 +45,10 @@ class Controller extends StatelessWidget {
                       .map<DropdownMenuItem<String>>((value) {
                     return DropdownMenuItem<String>(
                       value: value,
-                      child: Text(value),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(25.0, 0.0, 8.0, 0.0),
+                        child: Text(value),
+                      ),
                     );
                   }).toList(),
                 ),
@@ -54,11 +57,11 @@ class Controller extends StatelessWidget {
             answerIndent,
             Align(
               alignment: Alignment.topLeft,
-              child: Container(
+              child: DecoratedBox(
                 decoration: bloc.answers.controllerWitfWiFi
-                    ? dropdownButtonDecoration
-                    : hideDropdownButtonDecoration,
-                width: 160.0,
+                    ? answerDecoration
+                    : hideDecoration,
+                //width: 160.0,
                 child: CheckboxListTile(
                   title: const Text('С Wi-Fi'),
                   activeColor: mainColor,

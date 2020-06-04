@@ -15,7 +15,7 @@ class Sensors extends StatelessWidget {
           alignment: Alignment.centerLeft,
           child: Text(
             'Датчик погоды',
-            style: mainTextStyle,
+            style: questionTextStyle,
           ),
         ),
         questionIndent,
@@ -26,8 +26,8 @@ class Sensors extends StatelessWidget {
                 children: [
                   DecoratedBox(
                     decoration: bloc.answers.sensors.rain
-                        ? dropdownButtonDecoration
-                        : hideDropdownButtonDecoration,
+                        ? answerDecoration
+                        : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Дождя'),
                       activeColor: mainColor,
@@ -42,8 +42,8 @@ class Sensors extends StatelessWidget {
                   answerIndent,
                   DecoratedBox(
                     decoration: bloc.answers.sensors.wind
-                        ? dropdownButtonDecoration
-                        : hideDropdownButtonDecoration,
+                        ? answerDecoration
+                        : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Ветра'),
                       activeColor: mainColor,
@@ -58,8 +58,8 @@ class Sensors extends StatelessWidget {
                   answerIndent,
                   DecoratedBox(
                     decoration: bloc.answers.sensors.soil
-                        ? dropdownButtonDecoration
-                        : hideDropdownButtonDecoration,
+                        ? answerDecoration
+                        : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Влажности почвы'),
                       activeColor: mainColor,
@@ -74,8 +74,8 @@ class Sensors extends StatelessWidget {
                   answerIndent,
                   DecoratedBox(
                     decoration: bloc.answers.sensors.freeze
-                        ? dropdownButtonDecoration
-                        : hideDropdownButtonDecoration,
+                        ? answerDecoration
+                        : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Заморозков'),
                       activeColor: mainColor,
@@ -90,8 +90,8 @@ class Sensors extends StatelessWidget {
                   answerIndent,
                   DecoratedBox(
                     decoration: bloc.answers.sensors.rainFreeze
-                        ? dropdownButtonDecoration
-                        : hideDropdownButtonDecoration,
+                        ? answerDecoration
+                        : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Дождя и заморозков'),
                       activeColor: mainColor,
@@ -106,8 +106,8 @@ class Sensors extends StatelessWidget {
                   answerIndent,
                   DecoratedBox(
                     decoration: bloc.answers.sensors.solar
-                        ? dropdownButtonDecoration
-                        : hideDropdownButtonDecoration,
+                        ? answerDecoration
+                        : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Солнечной активности'),
                       activeColor: mainColor,
@@ -122,8 +122,8 @@ class Sensors extends StatelessWidget {
                   answerIndent,
                   DecoratedBox(
                     decoration: bloc.answers.sensors.flow
-                        ? dropdownButtonDecoration
-                        : hideDropdownButtonDecoration,
+                        ? answerDecoration
+                        : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Потока'),
                       activeColor: mainColor,
