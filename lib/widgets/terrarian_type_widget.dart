@@ -75,11 +75,9 @@ class TerrarianType extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(width: 8.0),
-                      Align(
-                        alignment: Alignment.center,
+                      Flexible(
                         child: SizedBox(
                           height: 56.0,
-                          width: MediaQuery.of(context).size.width - 240,
                           child: TextField(
                             controller: _heightDifferenceController,
                             maxLines: 1,
