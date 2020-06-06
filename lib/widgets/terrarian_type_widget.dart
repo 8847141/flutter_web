@@ -7,9 +7,6 @@ import '../constants.dart';
 class TerrarianType extends StatelessWidget {
   TerrarianType({Key key}) : super(key: key);
 
-  final TextEditingController _heightDifferenceController =
-      TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<OptionsBloc, OptionsState>(builder: (context, bloc) {
@@ -39,8 +36,9 @@ class TerrarianType extends StatelessWidget {
                       groupValue: bloc.answers.flatTerrain,
                       onChanged: (dynamic value) => context
                           .bloc<OptionsBloc>()
-                          .add(ChangeAnswers(bloc.answers
-                              .copyWith(flatTerrain: value as bool))),
+                          .add(ChangeAnswers(bloc.answers.copyWith(
+                              flatTerrain: value as bool,
+                              heightDifference: ''))),
                     ),
                   ),
                   answerIndent,
@@ -70,7 +68,7 @@ class TerrarianType extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.only(left: 25.0),
                         child: Text(
-                          'Макс. перепад высот',
+                          'Перепад высот, м',
                           style: secondaryTextStyle,
                         ),
                       ),
@@ -79,7 +77,11 @@ class TerrarianType extends StatelessWidget {
                         child: SizedBox(
                           height: 56.0,
                           child: TextField(
-                            controller: _heightDifferenceController,
+                            onChanged: (value) => context
+                                .bloc<OptionsBloc>()
+                                .add(ChangeAnswers(bloc.answers
+                                    .copyWith(heightDifference: value))),
+                            cursorColor: mainColor,
                             maxLines: 1,
                             minLines: 1,
                             decoration: textFormInputDecoration,

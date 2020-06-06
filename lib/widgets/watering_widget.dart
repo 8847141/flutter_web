@@ -27,24 +27,6 @@ class Watering extends StatelessWidget {
                 child: Column(
                   children: [
                     DecoratedBox(
-                      decoration:
-                          bloc.answers.typesOfIrrigatedLandings.allGarden
-                              ? answerDecoration
-                              : hideDecoration,
-                      child: CheckboxListTile(
-                        title: const Text('Весь участок'),
-                        activeColor: mainColor,
-                        controlAffinity: ListTileControlAffinity.leading,
-                        value: bloc.answers.typesOfIrrigatedLandings.allGarden,
-                        onChanged: (value) => context.bloc<OptionsBloc>().add(
-                            ChangeAnswers(bloc.answers.copyWith(
-                                typesOfIrrigatedLandings: bloc
-                                    .answers.typesOfIrrigatedLandings
-                                    .copyWith(allGarden: value)))),
-                      ),
-                    ),
-                    answerIndent,
-                    DecoratedBox(
                       decoration: bloc.answers.typesOfIrrigatedLandings.grass &&
                               !bloc.answers.typesOfIrrigatedLandings.allGarden
                           ? answerDecoration
@@ -149,6 +131,24 @@ class Watering extends StatelessWidget {
                                 typesOfIrrigatedLandings: bloc
                                     .answers.typesOfIrrigatedLandings
                                     .copyWith(flowers: value)))),
+                      ),
+                    ),
+                    answerIndent,
+                    DecoratedBox(
+                      decoration:
+                          bloc.answers.typesOfIrrigatedLandings.allGarden
+                              ? answerDecoration
+                              : hideDecoration,
+                      child: CheckboxListTile(
+                        title: const Text('Весь участок'),
+                        activeColor: mainColor,
+                        controlAffinity: ListTileControlAffinity.leading,
+                        value: bloc.answers.typesOfIrrigatedLandings.allGarden,
+                        onChanged: (value) => context.bloc<OptionsBloc>().add(
+                            ChangeAnswers(bloc.answers.copyWith(
+                                typesOfIrrigatedLandings: bloc
+                                    .answers.typesOfIrrigatedLandings
+                                    .copyWith(allGarden: value)))),
                       ),
                     ),
                   ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 //* Sizes
 
-const double questionsWidth = 400.0;
+const double questionsWidth = 320.0; //MediaQuery.of(context).size.width - 32,
 
 //* Colors
 const Color mainColor = Color(0xff3553f1);

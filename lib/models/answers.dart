@@ -4,7 +4,7 @@ import 'types_of_irrigated_landings.dart';
 
 class Answers {
   bool flatTerrain;
-  //String heightDifference;
+  String heightDifference;
   String connectionType;
   //String otherconnectionType;
   bool canBeWateredWalkway;
@@ -25,6 +25,7 @@ class Answers {
 
   Answers({
     this.flatTerrain = true,
+    this.heightDifference = '',
     this.connectionType = 'Емкость',
     this.canBeWateredWalkway = true,
     PreferredNozzleType preferredNozzleType,
@@ -41,6 +42,7 @@ class Answers {
 
   Answers copyWith({
     bool flatTerrain,
+    String heightDifference,
     String connectionType,
     bool canBeWateredWalkway,
     PreferredNozzleType preferredNozzleType,
@@ -51,6 +53,7 @@ class Answers {
   }) {
     return Answers(
         flatTerrain: flatTerrain ?? this.flatTerrain,
+        heightDifference: heightDifference ?? this.heightDifference,
         connectionType: connectionType ?? this.connectionType,
         canBeWateredWalkway: canBeWateredWalkway ?? this.canBeWateredWalkway,
         preferredNozzleType: preferredNozzleType ?? this.preferredNozzleType,
