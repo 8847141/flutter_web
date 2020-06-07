@@ -25,9 +25,15 @@ const EdgeInsetsGeometry checboxesPadding =
     EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 0.0);
 
 //* Indents
-const SizedBox answerIndent = SizedBox(height: 4.0);
+const SizedBox answerIndent = SizedBox(
+  height: 4.0,
+  width: 4.0,
+);
 
-const SizedBox questionIndent = SizedBox(height: 8.0);
+const SizedBox questionIndent = SizedBox(
+  height: 8.0,
+  width: 8.0,
+);
 
 //* Decorations
 const InputDecoration textFormInputDecoration = InputDecoration(
