@@ -12,7 +12,7 @@ class Answers {
   String controllerType;
   bool controllerWitfWiFi;
   Sensors sensors;
-  //bool dripIrrigation;
+  bool dripIrrigation;
   TypesOfIrrigatedLandings typesOfIrrigatedLandings;
   String waterOutlet;
   bool needPump;
@@ -38,6 +38,7 @@ class Answers {
     PreferredNozzleType preferredNozzleType,
     this.controllerType = 'Внутренний',
     this.controllerWitfWiFi = false,
+    this.dripIrrigation = false,
     Sensors sensors,
     TypesOfIrrigatedLandings typesOfIrrigatedLandings,
     this.waterOutlet = '',
@@ -59,6 +60,7 @@ class Answers {
     PreferredNozzleType preferredNozzleType,
     String controllerType,
     bool controllerWitfWiFi,
+    bool dripIrrigation,
     Sensors sensors,
     TypesOfIrrigatedLandings typesOfIrrigatedLandings,
     String waterOutlet,
@@ -75,6 +77,7 @@ class Answers {
       controllerType: controllerType ?? this.controllerType,
       controllerWitfWiFi: controllerWitfWiFi ?? this.controllerWitfWiFi,
       sensors: sensors ?? this.sensors,
+      dripIrrigation: dripIrrigation ?? this.dripIrrigation,
       typesOfIrrigatedLandings:
           typesOfIrrigatedLandings ?? this.typesOfIrrigatedLandings,
       waterOutlet: waterOutlet ?? this.waterOutlet,

@@ -28,7 +28,7 @@ class WaterTank extends StatelessWidget {
                         ? answerDecoration
                         : hideDecoration,
                     child: SizedBox(
-                      width: 150.0,
+                      width: 130.0,
                       child: RadioListTile(
                         title: const Text('Да'),
                         activeColor: mainColor,
@@ -46,7 +46,7 @@ class WaterTank extends StatelessWidget {
                         ? hideDecoration
                         : answerDecoration,
                     child: SizedBox(
-                      width: 150.0,
+                      width: 130.0,
                       child: RadioListTile(
                         title: const Text('Нет'),
                         activeColor: mainColor,

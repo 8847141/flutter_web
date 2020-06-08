@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/options_bloc.dart';
 import '../constants.dart';
 
-class Pump extends StatelessWidget {
-  Pump({Key key}) : super(key: key);
+class DripIrrigation extends StatelessWidget {
+  DripIrrigation({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,7 +13,7 @@ class Pump extends StatelessWidget {
         const Align(
           alignment: Alignment.topLeft,
           child: Text(
-            'Подобрать насос?',
+            'Используем капельный полив?',
             style: questionTextStyle,
           ),
         ),
@@ -24,7 +24,7 @@ class Pump extends StatelessWidget {
               return Row(
                 children: [
                   DecoratedBox(
-                    decoration: bloc.answers.needPump
+                    decoration: bloc.answers.dripIrrigation
                         ? answerDecoration
                         : hideDecoration,
                     child: SizedBox(
@@ -33,16 +33,16 @@ class Pump extends StatelessWidget {
                         title: const Text('Да'),
                         activeColor: mainColor,
                         value: true,
-                        groupValue: bloc.answers.needPump,
+                        groupValue: bloc.answers.dripIrrigation,
                         onChanged: (dynamic value) => context
                             .bloc<OptionsBloc>()
                             .add(ChangeAnswers(bloc.answers
-                                .copyWith(needPump: value as bool))),
+                                .copyWith(dripIrrigation: value as bool))),
                       ),
                     ),
                   ),
                   DecoratedBox(
-                    decoration: bloc.answers.needPump
+                    decoration: bloc.answers.dripIrrigation
                         ? hideDecoration
                         : answerDecoration,
                     child: SizedBox(
@@ -51,11 +51,11 @@ class Pump extends StatelessWidget {
                         title: const Text('Нет'),
                         activeColor: mainColor,
                         value: false,
-                        groupValue: bloc.answers.needPump,
+                        groupValue: bloc.answers.dripIrrigation,
                         onChanged: (dynamic value) => context
                             .bloc<OptionsBloc>()
                             .add(ChangeAnswers(bloc.answers
-                                .copyWith(needPump: value as bool))),
+                                .copyWith(dripIrrigation: value as bool))),
                       ),
                     ),
                   ),
