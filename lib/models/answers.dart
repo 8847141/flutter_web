@@ -3,6 +3,7 @@ import 'sensors.dart';
 import 'types_of_irrigated_landings.dart';
 
 class Answers {
+  String landArea;
   bool flatTerrain;
   String heightDifference;
   String connectionType;
@@ -30,6 +31,7 @@ class Answers {
   List<String> get controllerTypes => ['Внутренний', 'Внешний', 'Не нужен'];
 
   Answers({
+    this.landArea = '',
     this.flatTerrain = true,
     this.heightDifference = '',
     this.connectionType = 'Магистраль',
@@ -52,6 +54,7 @@ class Answers {
   }
 
   Answers copyWith({
+    String landArea,
     bool flatTerrain,
     String heightDifference,
     String connectionType,
@@ -68,6 +71,7 @@ class Answers {
     bool needWaterTank,
   }) {
     return Answers(
+      landArea: landArea ?? this.landArea,
       flatTerrain: flatTerrain ?? this.flatTerrain,
       heightDifference: heightDifference ?? this.heightDifference,
       connectionType: connectionType ?? this.connectionType,

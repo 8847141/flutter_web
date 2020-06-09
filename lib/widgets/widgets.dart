@@ -1,6 +1,7 @@
 export 'connection_type_widget.dart';
 export 'controller_widget.dart';
 export 'drip_irrigation_widget.dart';
+export 'land_area.dart';
 export 'path_widget.dart';
 export 'preferred_nozzle_type_widget.dart';
 export 'pump_widget.dart';

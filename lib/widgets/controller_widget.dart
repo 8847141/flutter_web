@@ -62,7 +62,7 @@ class Controller extends StatelessWidget {
                     ? answerDecoration
                     : hideDecoration,
                 child: CheckboxListTile(
-                  title: const Text('С Wi-Fi'),
+                  title: const Text('Wi-Fi (управление с телефона)'),
                   activeColor: mainColor,
                   controlAffinity: ListTileControlAffinity.leading,
                   value: bloc.answers.controllerWitfWiFi,
