@@ -76,6 +76,8 @@ class ColumnQuestions extends StatelessWidget {
               const SizedBox(height: 12.0),
               LandArea(),
               const SizedBox(height: 12.0),
+              Budget(),
+              const SizedBox(height: 12.0),
             ],
           ),
         ),

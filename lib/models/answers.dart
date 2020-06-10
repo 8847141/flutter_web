@@ -18,6 +18,8 @@ class Answers {
   String waterOutlet;
   bool needPump;
   bool needWaterTank;
+  String budget;
+  String otherBudget;
   //String comments;
 
   List<String> get connectionTypes => [
@@ -30,6 +32,16 @@ class Answers {
       ];
   List<String> get controllerTypes => ['Внутренний', 'Внешний', 'Не нужен'];
 
+  List<String> get budgets => [
+        'До 50 тыс. руб',
+        'До 100 тыс. руб',
+        'До 200 тыс. руб',
+        'До 300 тыс. руб',
+        'На ваше усмотрение (Эконом)',
+        'На ваше усмотрение (Стандарт)',
+        'На ваше усмотрение (Премиум)',
+        'Другое',
+      ];
   Answers({
     this.landArea = '',
     this.flatTerrain = true,
@@ -46,6 +58,8 @@ class Answers {
     this.waterOutlet = '',
     this.needPump = true,
     this.needWaterTank = true,
+    this.budget = 'На ваше усмотрение (Стандарт)',
+    this.otherBudget = '',
   }) {
     this.preferredNozzleType = preferredNozzleType ?? PreferredNozzleType();
     this.sensors = sensors ?? Sensors();
@@ -69,6 +83,8 @@ class Answers {
     String waterOutlet,
     bool needPump,
     bool needWaterTank,
+    String budget,
+    String otherBudget,
   }) {
     return Answers(
       landArea: landArea ?? this.landArea,
@@ -87,6 +103,8 @@ class Answers {
       waterOutlet: waterOutlet ?? this.waterOutlet,
       needPump: needPump ?? this.needPump,
       needWaterTank: needWaterTank ?? this.needWaterTank,
+      budget: budget ?? this.budget,
+      otherBudget: otherBudget ?? this.otherBudget,
     );
   }
 }
