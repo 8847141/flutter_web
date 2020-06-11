@@ -35,6 +35,11 @@ const SizedBox questionIndent = SizedBox(
   width: 8.0,
 );
 
+const SizedBox blocIndent = SizedBox(
+  height: 12.0,
+  width: 12.0,
+);
+
 //* Decorations
 const InputDecoration textFormInputDecoration = InputDecoration(
   focusedBorder: textFormBorderStyle,
