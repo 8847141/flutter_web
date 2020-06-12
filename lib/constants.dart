@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-//* Sizes
-
-const double questionsWidth = 288.0; //MediaQuery.of(context).size.width - 32,
-
 //* Colors
 const Color mainColor = Color(0xff3553f1);
 
@@ -42,6 +38,18 @@ const SizedBox blocIndent = SizedBox(
 
 //* Decorations
 const InputDecoration textFormInputDecoration = InputDecoration(
+  focusedBorder: textFormBorderStyle,
+  enabledBorder: textFormBorderStyle,
+  errorBorder: textFormBorderStyle,
+  disabledBorder: textFormBorderStyle,
+  border: textFormBorderStyle,
+  filled: true,
+  fillColor: Colors.white,
+);
+
+const InputDecoration commentsInputDecoration = InputDecoration(
+  hintText:
+      'Комментарии и пожелания для проектирования(можно указать расположение емкости, насоса, пульта управления, водяных розеток)',
   focusedBorder: textFormBorderStyle,
   enabledBorder: textFormBorderStyle,
   errorBorder: textFormBorderStyle,

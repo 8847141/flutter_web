@@ -8,6 +8,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double questionsWidth = MediaQuery.of(context).size.width - 32;
+
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -16,7 +18,7 @@ class HomePage extends StatelessWidget {
         }
       },
       child: Scaffold(
-        //backgroundColor: Colors.white70,
+        backgroundColor: Colors.white70,
         body: Center(
           child: ListView(
             padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
@@ -27,10 +29,13 @@ class HomePage extends StatelessWidget {
                 style: h1,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 12.0),
+              blocIndent,
               MediaQuery.of(context).size.width <= (questionsWidth + 20) * 2
-                  ? ColumnQuestions()
-                  : RowQuestions(),
+                  ? ColumnQuestions(questionsWidth: questionsWidth)
+                  : RowQuestions(questionsWidth: questionsWidth),
+              blocIndent,
+              Comments(),
+              blocIndent,
             ],
           ),
         ),
@@ -40,7 +45,9 @@ class HomePage extends StatelessWidget {
 }
 
 class ColumnQuestions extends StatelessWidget {
-  ColumnQuestions({Key key}) : super(key: key);
+  final double questionsWidth;
+
+  ColumnQuestions({Key key, this.questionsWidth}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +84,6 @@ class ColumnQuestions extends StatelessWidget {
               Pump(),
               blocIndent,
               WaterTank(),
-              blocIndent,
             ],
           ),
         ),
@@ -87,7 +93,12 @@ class ColumnQuestions extends StatelessWidget {
 }
 
 class RowQuestions extends StatelessWidget {
-  RowQuestions({Key key}) : super(key: key);
+  final double questionsWidth;
+
+  RowQuestions({
+    Key key,
+    this.questionsWidth,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -112,7 +123,6 @@ class RowQuestions extends StatelessWidget {
               DripIrrigation(),
               blocIndent,
               PreferredNozzleType(),
-              blocIndent,
             ],
           ),
         ),
@@ -132,7 +142,6 @@ class RowQuestions extends StatelessWidget {
               Pump(),
               blocIndent,
               WaterTank(),
-              blocIndent,
             ],
           ),
         ),

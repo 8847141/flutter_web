@@ -20,7 +20,7 @@ class Answers {
   bool needWaterTank;
   String budget;
   String otherBudget;
-  //String comments;
+  String comments;
 
   List<String> get connectionTypes => [
         'Емкость (своя)',
@@ -60,6 +60,7 @@ class Answers {
     this.needWaterTank = true,
     this.budget = 'На ваше усмотрение (Стандарт)',
     this.otherBudget = '',
+    this.comments = '',
   }) {
     this.preferredNozzleType = preferredNozzleType ?? PreferredNozzleType();
     this.sensors = sensors ?? Sensors();
@@ -85,6 +86,7 @@ class Answers {
     bool needWaterTank,
     String budget,
     String otherBudget,
+    String comments,
   }) {
     return Answers(
       landArea: landArea ?? this.landArea,
@@ -105,6 +107,7 @@ class Answers {
       needWaterTank: needWaterTank ?? this.needWaterTank,
       budget: budget ?? this.budget,
       otherBudget: otherBudget ?? this.otherBudget,
+      comments: comments ?? this.comments,
     );
   }
 }
