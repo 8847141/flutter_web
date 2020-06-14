@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../bloc/options_bloc.dart';
 import '../constants.dart';
+import '../main_bloc/options_bloc.dart';
 
 class DripIrrigation extends StatelessWidget {
   DripIrrigation({Key key}) : super(key: key);
