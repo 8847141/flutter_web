@@ -1,13 +1,14 @@
 part of 'comments_bloc.dart';
 
+@immutable
 abstract class CommentsState extends Equatable {
   const CommentsState();
 }
 
-class CommentsInitial extends CommentsState {
+class CommentsIsLoaded extends CommentsState {
   final String comments;
 
-  const CommentsInitial(this.comments);
+  const CommentsIsLoaded(this.comments);
 
   @override
   List<Object> get props => [comments];
