@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'comments/comments_widget.dart';
 import 'constants.dart';
 import 'widgets/widgets.dart';
 

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'HomePage.dart';
-import 'comments/bloc/comments_bloc.dart';
-import 'main_bloc/options_bloc.dart';
+import 'blocs/comments_bloc/comments_bloc.dart';
+import 'blocs/main_bloc/options_bloc.dart';
 
 void main() => runApp(MyApp());
 
