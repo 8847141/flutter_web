@@ -25,10 +25,9 @@ class LandArea extends StatelessWidget {
                     onChanged: (value) => context.bloc<OptionsBloc>().add(
                         ChangeAnswers(bloc.answers.copyWith(landArea: value))),
                     cursorColor: mainColor,
-                    maxLines: 5,
+                    maxLines: 1,
                     minLines: 1,
                     decoration: textFormInputDecoration,
-                    textCapitalization: TextCapitalization.sentences,
                     keyboardType: TextInputType.number,
                   );
                 } else {

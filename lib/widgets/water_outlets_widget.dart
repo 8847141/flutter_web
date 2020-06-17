@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/main_bloc/options_bloc.dart';
+import '../blocs/water_outlets_bloc/water_outlets_bloc.dart';
 import '../constants.dart';
 
 class WaterOutlets extends StatelessWidget {
@@ -18,18 +18,17 @@ class WaterOutlets extends StatelessWidget {
         Flexible(
           child: SizedBox(
             height: 56.0,
-            child: BlocBuilder<OptionsBloc, OptionsState>(
+            child: BlocBuilder<WaterOutletsBloc, WaterOutletsState>(
               builder: (context, bloc) {
-                if (bloc is OptionsIsLoaded) {
+                if (bloc is WaterOutletsIsLoaded) {
                   return TextField(
-                    onChanged: (value) => context.bloc<OptionsBloc>().add(
-                        ChangeAnswers(
-                            bloc.answers.copyWith(waterOutlet: value))),
+                    onChanged: (value) => context
+                        .bloc<WaterOutletsBloc>()
+                        .add(ChangeWaterOutlets(value)),
                     cursorColor: mainColor,
-                    maxLines: 5,
+                    maxLines: 1,
                     minLines: 1,
                     decoration: textFormInputDecoration,
-                    textCapitalization: TextCapitalization.sentences,
                     keyboardType: TextInputType.number,
                   );
                 } else {

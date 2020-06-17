@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'HomePage.dart';
 import 'blocs/comments_bloc/comments_bloc.dart';
 import 'blocs/main_bloc/options_bloc.dart';
+import 'blocs/water_outlets_bloc/water_outlets_bloc.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,6 +25,11 @@ class MyApp extends StatelessWidget {
           BlocProvider(
             create: (context) {
               return CommentsBloc();
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return WaterOutletsBloc();
             },
           ),
         ],

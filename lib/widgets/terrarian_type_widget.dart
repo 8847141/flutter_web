@@ -72,7 +72,7 @@ class TerrarianType extends StatelessWidget {
                           style: secondaryTextStyle,
                         ),
                       ),
-                      const SizedBox(width: 8.0),
+                      questionIndent,
                       Flexible(
                         child: SizedBox(
                           height: 56.0,
