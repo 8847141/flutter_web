@@ -15,8 +15,7 @@ class Answers {
   Sensors sensors;
   bool dripIrrigation;
   TypesOfIrrigatedLandings typesOfIrrigatedLandings;
-  String waterOutlet;
-  bool needPump;
+
   bool needWaterTank;
   String budget;
   String otherBudget;
@@ -54,8 +53,6 @@ class Answers {
     this.dripIrrigation = false,
     Sensors sensors,
     TypesOfIrrigatedLandings typesOfIrrigatedLandings,
-    this.waterOutlet = '',
-    this.needPump = true,
     this.needWaterTank = true,
     this.budget = 'На ваше усмотрение (Стандарт)',
     this.otherBudget = '',
@@ -80,11 +77,9 @@ class Answers {
     Sensors sensors,
     TypesOfIrrigatedLandings typesOfIrrigatedLandings,
     String waterOutlet,
-    bool needPump,
     bool needWaterTank,
     String budget,
     String otherBudget,
-    String comments,
   }) {
     return Answers(
       landArea: landArea ?? this.landArea,
@@ -100,8 +95,6 @@ class Answers {
       dripIrrigation: dripIrrigation ?? this.dripIrrigation,
       typesOfIrrigatedLandings:
           typesOfIrrigatedLandings ?? this.typesOfIrrigatedLandings,
-      waterOutlet: waterOutlet ?? this.waterOutlet,
-      needPump: needPump ?? this.needPump,
       needWaterTank: needWaterTank ?? this.needWaterTank,
       budget: budget ?? this.budget,
       otherBudget: otherBudget ?? this.otherBudget,
