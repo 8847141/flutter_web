@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/main_bloc/options_bloc.dart';
+import '../blocs/water_tank_bloc/water_tank_bloc.dart';
 import '../constants.dart';
 
 class WaterTank extends StatelessWidget {
@@ -18,44 +18,40 @@ class WaterTank extends StatelessWidget {
           ),
         ),
         questionIndent,
-        BlocBuilder<OptionsBloc, OptionsState>(
+        BlocBuilder<WaterTankBloc, WaterTankState>(
           builder: (context, bloc) {
-            if (bloc is OptionsIsLoaded) {
+            if (bloc is WaterTankIsLoaded) {
               return Row(
                 children: [
                   DecoratedBox(
-                    decoration: bloc.answers.needWaterTank
-                        ? answerDecoration
-                        : hideDecoration,
+                    decoration:
+                        bloc.needWaterTank ? answerDecoration : hideDecoration,
                     child: SizedBox(
                       width: 130.0,
                       child: RadioListTile(
                         title: const Text('Да'),
                         activeColor: mainColor,
                         value: true,
-                        groupValue: bloc.answers.needWaterTank,
+                        groupValue: bloc.needWaterTank,
                         onChanged: (dynamic value) => context
-                            .bloc<OptionsBloc>()
-                            .add(ChangeAnswers(bloc.answers
-                                .copyWith(needWaterTank: value as bool))),
+                            .bloc<WaterTankBloc>()
+                            .add(ChangeWaterTank(value as bool)),
                       ),
                     ),
                   ),
                   DecoratedBox(
-                    decoration: bloc.answers.needWaterTank
-                        ? hideDecoration
-                        : answerDecoration,
+                    decoration:
+                        bloc.needWaterTank ? hideDecoration : answerDecoration,
                     child: SizedBox(
                       width: 130.0,
                       child: RadioListTile(
                         title: const Text('Нет'),
                         activeColor: mainColor,
                         value: false,
-                        groupValue: bloc.answers.needWaterTank,
+                        groupValue: bloc.needWaterTank,
                         onChanged: (dynamic value) => context
-                            .bloc<OptionsBloc>()
-                            .add(ChangeAnswers(bloc.answers
-                                .copyWith(needWaterTank: value as bool))),
+                            .bloc<WaterTankBloc>()
+                            .add(ChangeWaterTank(value as bool)),
                       ),
                     ),
                   ),

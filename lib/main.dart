@@ -6,6 +6,8 @@ import 'blocs/comments_bloc/comments_bloc.dart';
 import 'blocs/main_bloc/options_bloc.dart';
 import 'blocs/pump_bloc/pump_bloc.dart';
 import 'blocs/water_outlets_bloc/water_outlets_bloc.dart';
+import 'blocs/water_tank_bloc/water_tank_bloc.dart';
+import 'blocs/watering_bloc/watering_bloc.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,6 +40,14 @@ class MyApp extends StatelessWidget {
               return PumpBloc();
             },
           ),
+          BlocProvider(
+            create: (context) {
+              return WaterTankBloc();
+            },
+          ),
+          BlocProvider(create: (context) {
+            return WateringBloc();
+          })
         ],
         child: HomePage(),
       ),

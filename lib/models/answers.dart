@@ -14,9 +14,7 @@ class Answers {
   bool controllerWitfWiFi;
   Sensors sensors;
   bool dripIrrigation;
-  TypesOfIrrigatedLandings typesOfIrrigatedLandings;
 
-  bool needWaterTank;
   String budget;
   String otherBudget;
 
@@ -52,15 +50,11 @@ class Answers {
     this.controllerWitfWiFi = false,
     this.dripIrrigation = false,
     Sensors sensors,
-    TypesOfIrrigatedLandings typesOfIrrigatedLandings,
-    this.needWaterTank = true,
     this.budget = 'На ваше усмотрение (Стандарт)',
     this.otherBudget = '',
   }) {
     this.preferredNozzleType = preferredNozzleType ?? PreferredNozzleType();
     this.sensors = sensors ?? Sensors();
-    this.typesOfIrrigatedLandings =
-        typesOfIrrigatedLandings ?? TypesOfIrrigatedLandings();
   }
 
   Answers copyWith({
@@ -77,7 +71,6 @@ class Answers {
     Sensors sensors,
     TypesOfIrrigatedLandings typesOfIrrigatedLandings,
     String waterOutlet,
-    bool needWaterTank,
     String budget,
     String otherBudget,
   }) {
@@ -93,9 +86,6 @@ class Answers {
       controllerWitfWiFi: controllerWitfWiFi ?? this.controllerWitfWiFi,
       sensors: sensors ?? this.sensors,
       dripIrrigation: dripIrrigation ?? this.dripIrrigation,
-      typesOfIrrigatedLandings:
-          typesOfIrrigatedLandings ?? this.typesOfIrrigatedLandings,
-      needWaterTank: needWaterTank ?? this.needWaterTank,
       budget: budget ?? this.budget,
       otherBudget: otherBudget ?? this.otherBudget,
     );
