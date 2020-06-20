@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'HomePage.dart';
+
+import 'blocs/budget_bloc/budget_bloc.dart';
 import 'blocs/comments_bloc/comments_bloc.dart';
+import 'blocs/connection_type_bloc/connection_type_bloc.dart';
+import 'blocs/controller_bloc/controller_bloc.dart';
 import 'blocs/main_bloc/options_bloc.dart';
 import 'blocs/pump_bloc/pump_bloc.dart';
 import 'blocs/water_outlets_bloc/water_outlets_bloc.dart';
@@ -22,7 +26,7 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) {
-              return OptionsBloc();
+              return BudgetBloc();
             },
           ),
           BlocProvider(
@@ -32,7 +36,17 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) {
-              return WaterOutletsBloc();
+              return ConnectionTypeBloc();
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return ControllerBloc();
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return OptionsBloc();
             },
           ),
           BlocProvider(
@@ -42,12 +56,19 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) {
+              return WaterOutletsBloc();
+            },
+          ),
+          BlocProvider(
+            create: (context) {
               return WaterTankBloc();
             },
           ),
-          BlocProvider(create: (context) {
-            return WateringBloc();
-          })
+          BlocProvider(
+            create: (context) {
+              return WateringBloc();
+            },
+          ),
         ],
         child: HomePage(),
       ),

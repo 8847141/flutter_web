@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/main_bloc/options_bloc.dart';
+import '../blocs/connection_type_bloc/connection_type_bloc.dart';
 import '../constants.dart';
 
 class ConnectionType extends StatelessWidget {
@@ -21,15 +21,15 @@ class ConnectionType extends StatelessWidget {
         questionIndent,
         Align(
           alignment: Alignment.topLeft,
-          child: BlocBuilder<OptionsBloc, OptionsState>(
+          child: BlocBuilder<ConnectionTypeBloc, ConnectionTypeState>(
             builder: (context, bloc) {
-              if (bloc is OptionsIsLoaded) {
+              if (bloc is ConnectionTypeIsLoaded) {
                 return Column(
                   children: [
                     DecoratedBox(
                       decoration: answerDecoration,
                       child: DropdownButton<String>(
-                        value: bloc.answers.connectionType,
+                        value: bloc.connectionType,
                         icon: const Icon(Icons.arrow_drop_down),
                         iconSize: 30.0,
                         itemHeight: 56.0,
@@ -38,12 +38,10 @@ class ConnectionType extends StatelessWidget {
                         underline: const SizedBox.shrink(),
                         iconEnabledColor: mainColor,
                         onChanged: (connectionType) => context
-                            .bloc<OptionsBloc>()
-                            .add(ChangeAnswers(bloc.answers
-                                .copyWith(connectionType: connectionType))),
+                            .bloc<ConnectionTypeBloc>()
+                            .add(ChangeConnectionType(connectionType)),
                         items: context
-                            .bloc<OptionsBloc>()
-                            .answers
+                            .bloc<ConnectionTypeBloc>()
                             .connectionTypes
                             .map<DropdownMenuItem<String>>((value) {
                           return DropdownMenuItem<String>(
@@ -58,8 +56,11 @@ class ConnectionType extends StatelessWidget {
                       ),
                     ),
                     questionIndent,
-                    bloc.answers.connectionType ==
-                            bloc.answers.connectionTypes.last
+                    bloc.connectionType ==
+                            context
+                                .bloc<ConnectionTypeBloc>()
+                                .connectionTypes
+                                .last
                         ? Row(
                             children: [
                               const Padding(
@@ -73,9 +74,8 @@ class ConnectionType extends StatelessWidget {
                               Flexible(
                                 child: TextField(
                                   onChanged: (value) => context
-                                      .bloc<OptionsBloc>()
-                                      .add(ChangeAnswers(bloc.answers.copyWith(
-                                          otherConnectionType: value))),
+                                      .bloc<ConnectionTypeBloc>()
+                                      .add(ChangeOtherConnectionType(value)),
                                   cursorColor: mainColor,
                                   maxLines: 5,
                                   minLines: 1,

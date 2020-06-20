@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/main_bloc/options_bloc.dart';
+import '../blocs/budget_bloc/budget_bloc.dart';
 import '../constants.dart';
 
 class Budget extends StatelessWidget {
@@ -21,15 +21,15 @@ class Budget extends StatelessWidget {
         questionIndent,
         Align(
           alignment: Alignment.topLeft,
-          child: BlocBuilder<OptionsBloc, OptionsState>(
+          child: BlocBuilder<BudgetBloc, BudgetState>(
             builder: (context, bloc) {
-              if (bloc is OptionsIsLoaded) {
+              if (bloc is BudgetIsLoaded) {
                 return Column(
                   children: [
                     DecoratedBox(
                       decoration: answerDecoration,
                       child: DropdownButton<String>(
-                        value: bloc.answers.budget,
+                        value: bloc.budget,
                         icon: const Icon(Icons.arrow_drop_down),
                         iconSize: 30.0,
                         itemHeight: 56.0,
@@ -37,12 +37,11 @@ class Budget extends StatelessWidget {
                         style: secondaryTextStyle,
                         underline: const SizedBox.shrink(),
                         iconEnabledColor: mainColor,
-                        onChanged: (budget) => context.bloc<OptionsBloc>().add(
-                            ChangeAnswers(bloc.answers
-                                .copyWith(budget: budget, otherBudget: ''))),
+                        onChanged: (budget) => context
+                            .bloc<BudgetBloc>()
+                            .add(ChangeBudget(budget)),
                         items: context
-                            .bloc<OptionsBloc>()
-                            .answers
+                            .bloc<BudgetBloc>()
                             .budgets
                             .map<DropdownMenuItem<String>>((value) {
                           return DropdownMenuItem<String>(
@@ -57,30 +56,32 @@ class Budget extends StatelessWidget {
                       ),
                     ),
                     questionIndent,
-                    bloc.answers.budget == bloc.answers.budgets.last
+                    bloc.budget == context.bloc<BudgetBloc>().budgets.last
                         ? Row(
                             children: [
                               const Padding(
                                 padding: EdgeInsets.only(left: 25.0),
                                 child: Text(
-                                  'Ваш вариант:',
+                                  'Ваш вариант, руб:',
                                   style: secondaryTextStyle,
                                 ),
                               ),
                               questionIndent,
                               Flexible(
-                                child: TextField(
-                                  onChanged: (value) => context
-                                      .bloc<OptionsBloc>()
-                                      .add(ChangeAnswers(bloc.answers
-                                          .copyWith(otherBudget: value))),
-                                  cursorColor: mainColor,
-                                  maxLines: 5,
-                                  minLines: 1,
-                                  decoration: textFormInputDecoration,
-                                  textCapitalization:
-                                      TextCapitalization.sentences,
-                                  keyboardType: TextInputType.text,
+                                child: SizedBox(
+                                  height: 56.0,
+                                  child: TextField(
+                                    onChanged: (value) => context
+                                        .bloc<BudgetBloc>()
+                                        .add(ChangeOtherBudget(value)),
+                                    cursorColor: mainColor,
+                                    maxLines: 1,
+                                    minLines: 1,
+                                    decoration: textFormInputDecoration,
+                                    textCapitalization:
+                                        TextCapitalization.sentences,
+                                    keyboardType: TextInputType.text,
+                                  ),
                                 ),
                               ),
                             ],

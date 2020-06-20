@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/main_bloc/options_bloc.dart';
+import '../blocs/controller_bloc/controller_bloc.dart';
 import '../constants.dart';
 
 class Controller extends StatelessWidget {
   Controller({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OptionsBloc, OptionsState>(builder: (context, bloc) {
-      if (bloc is OptionsIsLoaded) {
+    return BlocBuilder<ControllerBloc, ControllerState>(
+        builder: (context, bloc) {
+      if (bloc is ControllerIsLoaded) {
         return Column(
           children: [
             const Align(
@@ -25,7 +26,7 @@ class Controller extends StatelessWidget {
               child: DecoratedBox(
                 decoration: answerDecoration,
                 child: DropdownButton<String>(
-                  value: bloc.answers.controllerType,
+                  value: bloc.controllerType,
                   icon: const Icon(Icons.arrow_drop_down),
                   iconSize: 30.0,
                   itemHeight: 56.0,
@@ -35,12 +36,10 @@ class Controller extends StatelessWidget {
                   underline: const SizedBox.shrink(),
                   iconEnabledColor: mainColor,
                   onChanged: (controllerType) => context
-                      .bloc<OptionsBloc>()
-                      .add(ChangeAnswers(bloc.answers
-                          .copyWith(controllerType: controllerType))),
+                      .bloc<ControllerBloc>()
+                      .add(ChangeControllerType(controllerType)),
                   items: context
-                      .bloc<OptionsBloc>()
-                      .answers
+                      .bloc<ControllerBloc>()
                       .controllerTypes
                       .map<DropdownMenuItem<String>>((value) {
                     return DropdownMenuItem<String>(
@@ -54,24 +53,31 @@ class Controller extends StatelessWidget {
                 ),
               ),
             ),
-            answerIndent,
-            Align(
-              alignment: Alignment.topLeft,
-              child: DecoratedBox(
-                decoration: bloc.answers.controllerWitfWiFi
-                    ? answerDecoration
-                    : hideDecoration,
-                child: CheckboxListTile(
-                  title: const Text('Wi-Fi (управление с телефона)'),
-                  activeColor: mainColor,
-                  controlAffinity: ListTileControlAffinity.leading,
-                  value: bloc.answers.controllerWitfWiFi,
-                  onChanged: (value) => context.bloc<OptionsBloc>().add(
-                      ChangeAnswers(
-                          bloc.answers.copyWith(controllerWitfWiFi: value))),
-                ),
-              ),
-            ),
+            bloc.controllerType ==
+                    context.bloc<ControllerBloc>().controllerTypes.last
+                ? const SizedBox()
+                : Column(
+                    children: [
+                      answerIndent,
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: DecoratedBox(
+                          decoration: bloc.controllerWitfWiFi
+                              ? answerDecoration
+                              : hideDecoration,
+                          child: CheckboxListTile(
+                            title: const Text('Wi-Fi (управление с телефона)'),
+                            activeColor: mainColor,
+                            controlAffinity: ListTileControlAffinity.leading,
+                            value: bloc.controllerWitfWiFi,
+                            onChanged: (value) => context
+                                .bloc<ControllerBloc>()
+                                .add(ChangeControllerWitfWiFi(value)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )
           ],
         );
       } else {
