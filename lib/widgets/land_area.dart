@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/main_bloc/options_bloc.dart';
+import '../blocs/land_area_bloc/land_area_bloc.dart';
 import '../constants.dart';
 
 class LandArea extends StatelessWidget {
@@ -18,12 +18,12 @@ class LandArea extends StatelessWidget {
         Flexible(
           child: SizedBox(
             height: 56.0,
-            child: BlocBuilder<OptionsBloc, OptionsState>(
+            child: BlocBuilder<LandAreaBloc, LandAreaState>(
               builder: (context, bloc) {
-                if (bloc is OptionsIsLoaded) {
+                if (bloc is LandAreaIsLoaded) {
                   return TextField(
-                    onChanged: (value) => context.bloc<OptionsBloc>().add(
-                        ChangeAnswers(bloc.answers.copyWith(landArea: value))),
+                    onChanged: (value) =>
+                        context.bloc<LandAreaBloc>().add(ChangeLandArea(value)),
                     cursorColor: mainColor,
                     maxLines: 1,
                     minLines: 1,

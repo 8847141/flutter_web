@@ -7,8 +7,13 @@ import 'blocs/budget_bloc/budget_bloc.dart';
 import 'blocs/comments_bloc/comments_bloc.dart';
 import 'blocs/connection_type_bloc/connection_type_bloc.dart';
 import 'blocs/controller_bloc/controller_bloc.dart';
-import 'blocs/main_bloc/options_bloc.dart';
+import 'blocs/drip_bloc/drip_bloc.dart';
+import 'blocs/land_area_bloc/land_area_bloc.dart';
+import 'blocs/nozzles_bloc/nozzles_bloc.dart';
 import 'blocs/pump_bloc/pump_bloc.dart';
+import 'blocs/sensors_bloc/sensors_bloc.dart';
+import 'blocs/terrain_bloc/terrain_bloc.dart';
+import 'blocs/walkway_bloc/walkway_bloc.dart';
 import 'blocs/water_outlets_bloc/water_outlets_bloc.dart';
 import 'blocs/water_tank_bloc/water_tank_bloc.dart';
 import 'blocs/watering_bloc/watering_bloc.dart';
@@ -46,12 +51,37 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) {
-              return OptionsBloc();
+              return DripBloc();
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return LandAreaBloc();
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return NozzlesBloc();
             },
           ),
           BlocProvider(
             create: (context) {
               return PumpBloc();
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return SensorsBloc();
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return TerrainBloc();
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              return WalkwayBloc();
             },
           ),
           BlocProvider(

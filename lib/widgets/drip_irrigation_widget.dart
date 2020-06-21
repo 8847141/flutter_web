@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/main_bloc/options_bloc.dart';
+import '../blocs/drip_bloc/drip_bloc.dart';
 import '../constants.dart';
 
 class DripIrrigation extends StatelessWidget {
@@ -18,44 +18,40 @@ class DripIrrigation extends StatelessWidget {
           ),
         ),
         questionIndent,
-        BlocBuilder<OptionsBloc, OptionsState>(
+        BlocBuilder<DripBloc, DripState>(
           builder: (context, bloc) {
-            if (bloc is OptionsIsLoaded) {
+            if (bloc is DripIsLoaded) {
               return Row(
                 children: [
                   DecoratedBox(
-                    decoration: bloc.answers.dripIrrigation
-                        ? answerDecoration
-                        : hideDecoration,
+                    decoration:
+                        bloc.dripIrrigation ? answerDecoration : hideDecoration,
                     child: SizedBox(
                       width: 130.0,
                       child: RadioListTile(
                         title: const Text('Да'),
                         activeColor: mainColor,
                         value: true,
-                        groupValue: bloc.answers.dripIrrigation,
+                        groupValue: bloc.dripIrrigation,
                         onChanged: (dynamic value) => context
-                            .bloc<OptionsBloc>()
-                            .add(ChangeAnswers(bloc.answers
-                                .copyWith(dripIrrigation: value as bool))),
+                            .bloc<DripBloc>()
+                            .add(ChangeDrip(value as bool)),
                       ),
                     ),
                   ),
                   DecoratedBox(
-                    decoration: bloc.answers.dripIrrigation
-                        ? hideDecoration
-                        : answerDecoration,
+                    decoration:
+                        bloc.dripIrrigation ? hideDecoration : answerDecoration,
                     child: SizedBox(
                       width: 130.0,
                       child: RadioListTile(
                         title: const Text('Нет'),
                         activeColor: mainColor,
                         value: false,
-                        groupValue: bloc.answers.dripIrrigation,
+                        groupValue: bloc.dripIrrigation,
                         onChanged: (dynamic value) => context
-                            .bloc<OptionsBloc>()
-                            .add(ChangeAnswers(bloc.answers
-                                .copyWith(dripIrrigation: value as bool))),
+                            .bloc<DripBloc>()
+                            .add(ChangeDrip(value as bool)),
                       ),
                     ),
                   ),

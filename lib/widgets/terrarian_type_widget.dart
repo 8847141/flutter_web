@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/main_bloc/options_bloc.dart';
+import '../blocs/terrain_bloc/terrain_bloc.dart';
 import '../constants.dart';
 
 class TerrarianType extends StatelessWidget {
@@ -9,8 +9,8 @@ class TerrarianType extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OptionsBloc, OptionsState>(builder: (context, bloc) {
-      if (bloc is OptionsIsLoaded) {
+    return BlocBuilder<TerrainBloc, TerrainState>(builder: (context, bloc) {
+      if (bloc is TerrainIsLoaded) {
         return Column(
           children: [
             const Align(
@@ -26,42 +26,37 @@ class TerrarianType extends StatelessWidget {
               child: Column(
                 children: [
                   DecoratedBox(
-                    decoration: bloc.answers.flatTerrain
-                        ? answerDecoration
-                        : hideDecoration,
+                    decoration:
+                        bloc.flatTerrain ? answerDecoration : hideDecoration,
                     child: RadioListTile(
                       title: const Text('Ровный'),
                       activeColor: mainColor,
                       value: true,
-                      groupValue: bloc.answers.flatTerrain,
+                      groupValue: bloc.flatTerrain,
                       onChanged: (dynamic value) => context
-                          .bloc<OptionsBloc>()
-                          .add(ChangeAnswers(bloc.answers.copyWith(
-                              flatTerrain: value as bool,
-                              heightDifference: ''))),
+                          .bloc<TerrainBloc>()
+                          .add(ChangeFlatTerrain(value as bool)),
                     ),
                   ),
                   answerIndent,
                   DecoratedBox(
-                    decoration: bloc.answers.flatTerrain
-                        ? hideDecoration
-                        : answerDecoration,
+                    decoration:
+                        bloc.flatTerrain ? hideDecoration : answerDecoration,
                     child: RadioListTile(
                       title: const Text('С перепадом высот'),
                       activeColor: mainColor,
                       value: false,
-                      groupValue: bloc.answers.flatTerrain,
+                      groupValue: bloc.flatTerrain,
                       onChanged: (dynamic value) => context
-                          .bloc<OptionsBloc>()
-                          .add(ChangeAnswers(bloc.answers
-                              .copyWith(flatTerrain: value as bool))),
+                          .bloc<TerrainBloc>()
+                          .add(ChangeFlatTerrain(value as bool)),
                     ),
                   ),
                 ],
               ),
             ),
             questionIndent,
-            bloc.answers.flatTerrain
+            bloc.flatTerrain
                 ? const SizedBox()
                 : Row(
                     children: [
@@ -78,9 +73,8 @@ class TerrarianType extends StatelessWidget {
                           height: 56.0,
                           child: TextField(
                             onChanged: (value) => context
-                                .bloc<OptionsBloc>()
-                                .add(ChangeAnswers(bloc.answers
-                                    .copyWith(heightDifference: value))),
+                                .bloc<TerrainBloc>()
+                                .add(ChangeHeightDifference(value)),
                             cursorColor: mainColor,
                             maxLines: 1,
                             minLines: 1,

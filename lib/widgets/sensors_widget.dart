@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/main_bloc/options_bloc.dart';
+import '../blocs/sensors_bloc/sensors_bloc.dart';
 import '../constants.dart';
 
 class Sensors extends StatelessWidget {
@@ -19,120 +19,101 @@ class Sensors extends StatelessWidget {
           ),
         ),
         questionIndent,
-        BlocBuilder<OptionsBloc, OptionsState>(
+        BlocBuilder<SensorsBloc, SensorsState>(
           builder: (context, bloc) {
-            if (bloc is OptionsIsLoaded) {
+            if (bloc is SensorsIsLoaded) {
               return Column(
                 children: [
                   DecoratedBox(
-                    decoration: bloc.answers.sensors.rain
-                        ? answerDecoration
-                        : hideDecoration,
+                    decoration:
+                        bloc.sensors.rain ? answerDecoration : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Дождя'),
                       activeColor: mainColor,
                       controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.sensors.rain,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              sensors:
-                                  bloc.answers.sensors.copyWith(rain: value)))),
+                      value: bloc.sensors.rain,
+                      onChanged: (value) => context.bloc<SensorsBloc>().add(
+                          ChangeSensors(bloc.sensors.copyWith(rain: value))),
                     ),
                   ),
                   answerIndent,
                   DecoratedBox(
-                    decoration: bloc.answers.sensors.wind
-                        ? answerDecoration
-                        : hideDecoration,
+                    decoration:
+                        bloc.sensors.wind ? answerDecoration : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Ветра'),
                       activeColor: mainColor,
                       controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.sensors.wind,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              sensors:
-                                  bloc.answers.sensors.copyWith(wind: value)))),
+                      value: bloc.sensors.wind,
+                      onChanged: (value) => context.bloc<SensorsBloc>().add(
+                          ChangeSensors(bloc.sensors.copyWith(wind: value))),
                     ),
                   ),
                   answerIndent,
                   DecoratedBox(
-                    decoration: bloc.answers.sensors.soil
-                        ? answerDecoration
-                        : hideDecoration,
+                    decoration:
+                        bloc.sensors.soil ? answerDecoration : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Влажности почвы'),
                       activeColor: mainColor,
                       controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.sensors.soil,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              sensors:
-                                  bloc.answers.sensors.copyWith(soil: value)))),
+                      value: bloc.sensors.soil,
+                      onChanged: (value) => context.bloc<SensorsBloc>().add(
+                          ChangeSensors(bloc.sensors.copyWith(soil: value))),
                     ),
                   ),
                   answerIndent,
                   DecoratedBox(
-                    decoration: bloc.answers.sensors.freeze
-                        ? answerDecoration
-                        : hideDecoration,
+                    decoration:
+                        bloc.sensors.freeze ? answerDecoration : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Заморозков'),
                       activeColor: mainColor,
                       controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.sensors.freeze,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              sensors: bloc.answers.sensors
-                                  .copyWith(freeze: value)))),
+                      value: bloc.sensors.freeze,
+                      onChanged: (value) => context.bloc<SensorsBloc>().add(
+                          ChangeSensors(bloc.sensors.copyWith(freeze: value))),
                     ),
                   ),
                   answerIndent,
                   DecoratedBox(
-                    decoration: bloc.answers.sensors.rainFreeze
+                    decoration: bloc.sensors.rainFreeze
                         ? answerDecoration
                         : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Дождя и заморозков'),
                       activeColor: mainColor,
                       controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.sensors.rainFreeze,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              sensors: bloc.answers.sensors
-                                  .copyWith(rainFreeze: value)))),
+                      value: bloc.sensors.rainFreeze,
+                      onChanged: (value) => context.bloc<SensorsBloc>().add(
+                          ChangeSensors(
+                              bloc.sensors.copyWith(rainFreeze: value))),
                     ),
                   ),
                   answerIndent,
                   DecoratedBox(
-                    decoration: bloc.answers.sensors.solar
-                        ? answerDecoration
-                        : hideDecoration,
+                    decoration:
+                        bloc.sensors.solar ? answerDecoration : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Солнечной активности'),
                       activeColor: mainColor,
                       controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.sensors.solar,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              sensors: bloc.answers.sensors
-                                  .copyWith(solar: value)))),
+                      value: bloc.sensors.solar,
+                      onChanged: (value) => context.bloc<SensorsBloc>().add(
+                          ChangeSensors(bloc.sensors.copyWith(solar: value))),
                     ),
                   ),
                   answerIndent,
                   DecoratedBox(
-                    decoration: bloc.answers.sensors.flow
-                        ? answerDecoration
-                        : hideDecoration,
+                    decoration:
+                        bloc.sensors.flow ? answerDecoration : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Потока'),
                       activeColor: mainColor,
                       controlAffinity: ListTileControlAffinity.leading,
-                      value: bloc.answers.sensors.flow,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              sensors:
-                                  bloc.answers.sensors.copyWith(flow: value)))),
+                      value: bloc.sensors.flow,
+                      onChanged: (value) => context.bloc<SensorsBloc>().add(
+                          ChangeSensors(bloc.sensors.copyWith(flow: value))),
                     ),
                   ),
                 ],

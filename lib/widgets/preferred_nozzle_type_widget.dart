@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/main_bloc/options_bloc.dart';
+import '../blocs/nozzles_bloc/nozzles_bloc.dart';
 import '../constants.dart';
 
 class PreferredNozzleType extends StatelessWidget {
@@ -18,86 +18,75 @@ class PreferredNozzleType extends StatelessWidget {
           ),
         ),
         questionIndent,
-        BlocBuilder<OptionsBloc, OptionsState>(builder: (context, bloc) {
-          if (bloc is OptionsIsLoaded) {
+        BlocBuilder<NozzlesBloc, NozzlesState>(builder: (context, bloc) {
+          if (bloc is NozzlesIsLoaded) {
             return Align(
               alignment: Alignment.topLeft,
               child: Column(
                 children: [
                   DecoratedBox(
-                    decoration: bloc.answers.preferredNozzleType.statics &&
-                            !bloc.answers.preferredNozzleType.any
+                    decoration: bloc.preferredNozzleType.statics &&
+                            !bloc.preferredNozzleType.any
                         ? answerDecoration
                         : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Статические'),
                       controlAffinity: ListTileControlAffinity.leading,
-                      activeColor: bloc.answers.preferredNozzleType.any
-                          ? hideColor
-                          : mainColor,
-                      value: bloc.answers.preferredNozzleType.statics,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              preferredNozzleType: bloc
-                                  .answers.preferredNozzleType
-                                  .copyWith(statics: value)))),
+                      activeColor:
+                          bloc.preferredNozzleType.any ? hideColor : mainColor,
+                      value: bloc.preferredNozzleType.statics,
+                      onChanged: (value) => context.bloc<NozzlesBloc>().add(
+                          ChangeNozzles(bloc.preferredNozzleType
+                              .copyWith(statics: value))),
                     ),
                   ),
                   answerIndent,
                   DecoratedBox(
-                    decoration: bloc.answers.preferredNozzleType.rotators &&
-                            !bloc.answers.preferredNozzleType.any
+                    decoration: bloc.preferredNozzleType.rotators &&
+                            !bloc.preferredNozzleType.any
                         ? answerDecoration
                         : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Ротаторные'),
                       controlAffinity: ListTileControlAffinity.leading,
-                      activeColor: bloc.answers.preferredNozzleType.any
-                          ? hideColor
-                          : mainColor,
-                      value: bloc.answers.preferredNozzleType.rotators,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              preferredNozzleType: bloc
-                                  .answers.preferredNozzleType
-                                  .copyWith(rotators: value)))),
+                      activeColor:
+                          bloc.preferredNozzleType.any ? hideColor : mainColor,
+                      value: bloc.preferredNozzleType.rotators,
+                      onChanged: (value) => context.bloc<NozzlesBloc>().add(
+                          ChangeNozzles(bloc.preferredNozzleType
+                              .copyWith(rotators: value))),
                     ),
                   ),
                   answerIndent,
                   DecoratedBox(
-                    decoration: bloc.answers.preferredNozzleType.rotors &&
-                            !bloc.answers.preferredNozzleType.any
+                    decoration: bloc.preferredNozzleType.rotors &&
+                            !bloc.preferredNozzleType.any
                         ? answerDecoration
                         : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Роторы'),
                       controlAffinity: ListTileControlAffinity.leading,
-                      activeColor: bloc.answers.preferredNozzleType.any
-                          ? hideColor
-                          : mainColor,
-                      value: bloc.answers.preferredNozzleType.rotors,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              preferredNozzleType: bloc
-                                  .answers.preferredNozzleType
-                                  .copyWith(rotors: value)))),
+                      activeColor:
+                          bloc.preferredNozzleType.any ? hideColor : mainColor,
+                      value: bloc.preferredNozzleType.rotors,
+                      onChanged: (value) => context.bloc<NozzlesBloc>().add(
+                          ChangeNozzles(bloc.preferredNozzleType
+                              .copyWith(rotors: value))),
                     ),
                   ),
                   answerIndent,
                   DecoratedBox(
-                    decoration: bloc.answers.preferredNozzleType.any
+                    decoration: bloc.preferredNozzleType.any
                         ? answerDecoration
                         : hideDecoration,
                     child: CheckboxListTile(
                       title: const Text('Любые'),
                       controlAffinity: ListTileControlAffinity.leading,
                       activeColor: mainColor,
-                      value: bloc.answers.preferredNozzleType.any,
-                      onChanged: (value) => context.bloc<OptionsBloc>().add(
-                          ChangeAnswers(bloc.answers.copyWith(
-                              preferredNozzleType: bloc
-                                  .answers.preferredNozzleType
-                                  .copyWith(any: value)))),
+                      value: bloc.preferredNozzleType.any,
+                      onChanged: (value) => context.bloc<NozzlesBloc>().add(
+                          ChangeNozzles(
+                              bloc.preferredNozzleType.copyWith(any: value))),
                     ),
                   ),
                 ],
