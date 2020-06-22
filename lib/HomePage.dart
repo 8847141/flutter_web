@@ -12,6 +12,53 @@ class HomePage extends StatelessWidget {
 
     final double questionsWidth = _screenWidth < 450 ? _screenWidth - 32 : 418;
 
+    final Budget _budget = Budget();
+    final LandArea _landArea = LandArea();
+    final TerrarianType _terrarianType = TerrarianType();
+    final Watering _watering = Watering();
+    final Path _path = Path();
+    final DripIrrigation _dripIrrigation = DripIrrigation();
+    final PreferredNozzleType _preferredNozzleType = PreferredNozzleType();
+    final WaterOutlets _waterOutlets = WaterOutlets();
+    final Controller _controller = Controller();
+    final Sensors _sensors = Sensors();
+    final ConnectionType _connectionType = ConnectionType();
+    final Pump _pump = Pump();
+    final WaterTank _waterTank = WaterTank();
+    final Comments _comments = Comments();
+
+    final List<Widget> _firstColumn = [
+      _budget,
+      blocIndent,
+      _landArea,
+      blocIndent,
+      _terrarianType,
+      blocIndent,
+      _watering,
+      blocIndent,
+      _path,
+      blocIndent,
+      _dripIrrigation,
+      blocIndent,
+      _preferredNozzleType,
+    ];
+
+    final List<Widget> _secondColumn = [
+      _waterOutlets,
+      blocIndent,
+      _controller,
+      blocIndent,
+      _sensors,
+      blocIndent,
+      _connectionType,
+      blocIndent,
+      _pump,
+      blocIndent,
+      _waterTank,
+      blocIndent,
+      _comments,
+    ];
+
     return GestureDetector(
       onTap: () {
         FocusScopeNode currentFocus = FocusScope.of(context);
@@ -33,8 +80,16 @@ class HomePage extends StatelessWidget {
               ),
               blocIndent,
               MediaQuery.of(context).size.width <= (questionsWidth + 20) * 2
-                  ? ColumnQuestions(questionsWidth: questionsWidth)
-                  : RowQuestions(questionsWidth: questionsWidth),
+                  ? ColumnQuestions(
+                      questionsWidth: questionsWidth,
+                      firsColumn: _firstColumn,
+                      secondColumn: _secondColumn,
+                    )
+                  : RowQuestions(
+                      questionsWidth: questionsWidth,
+                      firsColumn: _firstColumn,
+                      secondColumn: _secondColumn,
+                    ),
               blocIndent,
             ],
           ),
@@ -46,8 +101,15 @@ class HomePage extends StatelessWidget {
 
 class ColumnQuestions extends StatelessWidget {
   final double questionsWidth;
+  final List<Widget> firsColumn;
+  final List<Widget> secondColumn;
 
-  ColumnQuestions({Key key, this.questionsWidth}) : super(key: key);
+  ColumnQuestions({
+    Key key,
+    @required this.questionsWidth,
+    @required this.firsColumn,
+    @required this.secondColumn,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,35 +120,7 @@ class ColumnQuestions extends StatelessWidget {
         SizedBox(
           width: questionsWidth,
           child: Column(
-            children: [
-              Budget(),
-              blocIndent,
-              LandArea(),
-              blocIndent,
-              TerrarianType(),
-              blocIndent,
-              Watering(),
-              blocIndent,
-              Path(),
-              blocIndent,
-              DripIrrigation(),
-              blocIndent,
-              PreferredNozzleType(),
-              blocIndent,
-              WaterOutlets(),
-              blocIndent,
-              Controller(),
-              blocIndent,
-              Sensors(),
-              blocIndent,
-              ConnectionType(),
-              blocIndent,
-              Pump(),
-              blocIndent,
-              WaterTank(),
-              blocIndent,
-              Comments(),
-            ],
+            children: firsColumn + secondColumn,
           ),
         ),
       ],
@@ -96,10 +130,14 @@ class ColumnQuestions extends StatelessWidget {
 
 class RowQuestions extends StatelessWidget {
   final double questionsWidth;
+  final List<Widget> firsColumn;
+  final List<Widget> secondColumn;
 
   RowQuestions({
     Key key,
-    this.questionsWidth,
+    @required this.questionsWidth,
+    @required this.firsColumn,
+    @required this.secondColumn,
   }) : super(key: key);
 
   @override
@@ -112,40 +150,14 @@ class RowQuestions extends StatelessWidget {
           SizedBox(
             width: questionsWidth,
             child: Column(
-              children: [
-                Budget(),
-                blocIndent,
-                LandArea(),
-                blocIndent,
-                TerrarianType(),
-                blocIndent,
-                Watering(),
-                blocIndent,
-                Path(),
-                blocIndent,
-                DripIrrigation(),
-                blocIndent,
-                PreferredNozzleType(),
-              ],
+              children: firsColumn,
             ),
           ),
           const SizedBox(width: 20.0),
           SizedBox(
             width: questionsWidth,
             child: Column(
-              children: [
-                WaterOutlets(),
-                blocIndent,
-                Controller(),
-                blocIndent,
-                Sensors(),
-                blocIndent,
-                ConnectionType(),
-                blocIndent,
-                Pump(),
-                blocIndent,
-                WaterTank(),
-              ],
+              children: secondColumn,
             ),
           ),
         ],
