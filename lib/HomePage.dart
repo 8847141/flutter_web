@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'package:path/path.dart';
+import 'package:excel/excel.dart';
 import 'package:flutter/material.dart';
 
 import 'constants.dart';
@@ -90,6 +93,17 @@ class HomePage extends StatelessWidget {
                       firsColumn: _firstColumn,
                       secondColumn: _secondColumn,
                     ),
+              blocIndent,
+              FlatButton(
+                color: mainColor,
+                onPressed: () {
+                  Excel excel = Excel.createExcel();
+                },
+                child: const Text(
+                  'Create EXCEL',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
               blocIndent,
             ],
           ),
