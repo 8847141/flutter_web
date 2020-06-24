@@ -1,7 +1,8 @@
 import 'dart:io';
-import 'package:path/path.dart';
-import 'package:excel/excel.dart';
+
 import 'package:flutter/material.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
 
 import 'constants.dart';
 import 'widgets/widgets.dart';
@@ -96,11 +97,25 @@ class HomePage extends StatelessWidget {
               blocIndent,
               FlatButton(
                 color: mainColor,
-                onPressed: () {
-                  Excel excel = Excel.createExcel();
+                onPressed: () async {
+                  final pdf = pw.Document();
+
+                  pdf.addPage(
+                    pw.Page(
+                      pageFormat: PdfPageFormat.a4,
+                      build: (context) {
+                        return pw.Center(
+                          child: pw.Text('Hello World'),
+                        ); // Center
+                      },
+                    ),
+                  );
+
+                  final file = File('example.pdf');
+                  await file.writeAsBytes(pdf.save());
                 },
                 child: const Text(
-                  'Create EXCEL',
+                  'Create PDF',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
