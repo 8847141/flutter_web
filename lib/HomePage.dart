@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:open_file/open_file.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 
@@ -112,14 +110,18 @@ class HomePage extends StatelessWidget {
               blocIndent,
               FlatButton(
                 color: mainColor,
-                onPressed: () async {
-                  final Directory appDocDir =
+                onPressed: () {
+                  /*final Directory appDocDir =
                       await getApplicationDocumentsDirectory();
                   final String appDocPath = appDocDir.path;
                   final File file = File(appDocPath + '/' + 'document.pdf');
                   print('Save as file ${file.path} ...');
                   await file.writeAsBytes(pdf.save());
-                  OpenFile.open(file.path);
+                  OpenFile.open(file.path);*/
+                  print('object');
+
+                  final file = File('example.pdf');
+                  file.writeAsBytes(pdf.save());
                 },
                 child: const Text(
                   'Create PDF',
