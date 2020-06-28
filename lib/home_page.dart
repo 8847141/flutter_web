@@ -111,15 +111,6 @@ class HomePage extends StatelessWidget {
               FlatButton(
                 color: mainColor,
                 onPressed: () {
-                  /*final Directory appDocDir =
-                      await getApplicationDocumentsDirectory();
-                  final String appDocPath = appDocDir.path;
-                  final File file = File(appDocPath + '/' + 'document.pdf');
-                  print('Save as file ${file.path} ...');
-                  await file.writeAsBytes(pdf.save());
-                  OpenFile.open(file.path);*/
-                  print('object');
-
                   final file = File('example.pdf');
                   file.writeAsBytes(pdf.save());
                 },
