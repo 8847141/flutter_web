@@ -1,8 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
 
 import 'constants.dart';
 import 'widgets/widgets.dart';
@@ -12,19 +11,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final pdf = pw.Document();
-
-    pdf.addPage(
-      pw.Page(
-        pageFormat: PdfPageFormat.a4,
-        build: (context) {
-          return pw.Center(
-            child: pw.Text('Hello World'),
-          );
-        },
-      ),
-    );
-
     final double _screenWidth = MediaQuery.of(context).size.width;
 
     final double questionsWidth = _screenWidth < 450 ? _screenWidth - 32 : 418;
@@ -110,10 +96,7 @@ class HomePage extends StatelessWidget {
               blocIndent,
               FlatButton(
                 color: mainColor,
-                onPressed: () {
-                  final file = File('example.pdf');
-                  file.writeAsBytes(pdf.save());
-                },
+                onPressed: _createPDF,
                 child: const Text(
                   'Create PDF',
                   style: TextStyle(color: Colors.white),
@@ -125,6 +108,27 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> _createPDF() async {
+    final pw.Document pdf = pw.Document();
+
+    pdf.addPage(
+      pw.Page(
+        pageFormat: PdfPageFormat.a4,
+        build: (context) {
+          return pw.Center(
+            child: pw.Text('Hello World'),
+          );
+        },
+      ),
+    );
+
+    await Printing.layoutPdf(
+        onLayout: (format) async => await Printing.convertHtml(
+              format: format,
+              html: '<html><body><p>Hello!</p></body></html>',
+            ));
   }
 }
 
