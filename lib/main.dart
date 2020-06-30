@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'pdf_view.dart';
 
 import 'blocs/budget_bloc/budget_bloc.dart';
 import 'blocs/comments_bloc/comments_bloc.dart';
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Техническое задание',
-      home: MultiBlocProvider(
+      home: PdfView(),
+      /*MultiBlocProvider(
         providers: [
           BlocProvider(
             create: (context) {
@@ -100,7 +102,7 @@ class MyApp extends StatelessWidget {
           ),
         ],
         child: HomePage(),
-      ),
+      ),*/
     );
   }
 }
