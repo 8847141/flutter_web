@@ -1,9 +1,9 @@
-import 'dart:io';
+import 'dart:convert';
+import 'dart:html' as html;
+
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -27,10 +27,41 @@ class PdfView extends StatelessWidget {
                 Icons.assignment,
                 color: Colors.white,
               ),
-              onPressed: () async {
-                final pdf = await rootBundle.load('document.pdf');
-                await Printing.layoutPdf(
-                    onLayout: (_) => pdf.buffer.asUint8List());
+              onPressed: () {
+                /* final pdf = pw.Document();
+
+                pdf.addPage(pw.Page(
+                    pageFormat: PdfPageFormat.a4,
+                    build: (context) {
+                      return pw.Center(
+                        child: pw.Text("Hello World"),
+                      );
+                    })); */
+
+                const text = 'this is the text file';
+                // prepare
+                final bytes = utf8.encode(text);
+                final blob = html.Blob(doc.save());
+                final url = html.Url.createObjectUrlFromBlob(blob);
+                /* final anchor =
+                    html.document.createElement('a') as html.AnchorElement
+                      ..href = url
+                      ..style.display = 'none'
+                      ..download = 'doc.txt';
+                html.document.body.children.add(anchor);*/
+
+                const String lala = 'sdfsdfsdf';
+                // ignore: prefer_single_quotes
+                html.AnchorElement(href: "data:text, $blob")
+                  ..setAttribute('download', 'report.txt')
+                  ..click();
+
+                // download
+                // anchor.click();
+
+                // cleanup
+                /*html.document.body.children.remove(anchor);
+                html.Url.revokeObjectUrl(url);*/
               })
         ],
       ),
