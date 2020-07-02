@@ -1,7 +1,9 @@
+import 'dart:html' as html;
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'package:printing/printing.dart';
 
 import 'constants.dart';
 import 'widgets/widgets.dart';
@@ -110,25 +112,30 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Future<void> _createPDF() async {
-    final pw.Document pdf = pw.Document();
+  void _createPDF() {
+    final pdf = pw.Document();
 
-    pdf.addPage(
-      pw.Page(
+    pdf.addPage(pw.Page(
         pageFormat: PdfPageFormat.a4,
         build: (context) {
           return pw.Center(
             child: pw.Text('Hello World'),
-          );
-        },
-      ),
-    );
+          ); // Center
+        })); // Page
 
-    await Printing.layoutPdf(
-        onLayout: (format) async => await Printing.convertHtml(
-              format: format,
-              html: '<html><body><p>Hello!</p></body></html>',
-            ));
+    final bytes = (pdf.save());
+    final blob = html.Blob(<Uint8List>[Uint8List.fromList(bytes)]);
+    final url = html.Url.createObjectUrlFromBlob(blob);
+
+    final anchor = html.document.createElement('a') as html.AnchorElement
+      ..href = url
+      ..download = 'answers.pdf';
+    html.document.body.children.add(anchor);
+
+    anchor.click();
+
+    html.document.body.children.remove(anchor);
+    html.Url.revokeObjectUrl(url);
   }
 }
 
