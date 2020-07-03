@@ -2,8 +2,10 @@ import 'dart:html' as html;
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
+import 'blocs/land_area_bloc/land_area_bloc.dart';
 
 import 'constants.dart';
 import 'widgets/widgets.dart';
@@ -115,13 +117,20 @@ class HomePage extends StatelessWidget {
   void _createPDF() {
     final pdf = pw.Document();
 
-    pdf.addPage(pw.Page(
-        pageFormat: PdfPageFormat.a4,
-        build: (context) {
-          return pw.Center(
-            child: pw.Text('Hello World'),
-          ); // Center
-        })); // Page
+    BlocListener<LandAreaBloc, LandAreaState>(
+      listener: (context, bloc) {
+        print('object');
+        final landArea = (bloc as LandAreaIsLoaded).landArea;
+        pdf.addPage(pw.Page(
+            pageFormat: PdfPageFormat.a4,
+            build: (context) {
+              return pw.Center(
+                child: pw.Text('Площадь полива: $landArea'),
+              );
+            }));
+        pdf.save();
+      },
+    );
 
     final bytes = (pdf.save());
     final blob = html.Blob(<Uint8List>[Uint8List.fromList(bytes)]);
