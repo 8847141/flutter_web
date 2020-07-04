@@ -116,21 +116,29 @@ class HomePage extends StatelessWidget {
 
   void _createPDF() {
     final pdf = pw.Document();
-
+    print('start');
     BlocListener<LandAreaBloc, LandAreaState>(
       listener: (context, bloc) {
-        print('object');
-        final landArea = (bloc as LandAreaIsLoaded).landArea;
-        pdf.addPage(pw.Page(
-            pageFormat: PdfPageFormat.a4,
-            build: (context) {
-              return pw.Center(
-                child: pw.Text('Площадь полива: $landArea'),
-              );
-            }));
-        pdf.save();
+        print('if');
+        if (bloc is LandAreaIsLoaded) {
+          final landArea = bloc.landArea;
+          pdf.addPage(pw.Page(
+              pageFormat: PdfPageFormat.a4,
+              build: (context) {
+                return pw.Center(
+                  child: pw.Text('Площадь полива: $landArea'),
+                );
+              }));
+          pdf.save();
+          print('bloc');
+          return null;
+        } else {
+          print('ELSE');
+          return null;
+        }
       },
     );
+    print('end');
 
     final bytes = (pdf.save());
     final blob = html.Blob(<Uint8List>[Uint8List.fromList(bytes)]);
