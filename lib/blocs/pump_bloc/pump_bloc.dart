@@ -8,8 +8,9 @@ part 'pump_event.dart';
 part 'pump_state.dart';
 
 class PumpBloc extends Bloc<PumpEvent, PumpState> {
-  @override
-  PumpState get initialState => const PumpIsLoaded(true);
+  PumpBloc() : super(const PumpIsLoaded(true));
+  /*@override
+  PumpState get initialState => const PumpIsLoaded(true);*/
 
   @override
   Stream<PumpState> mapEventToState(

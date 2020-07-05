@@ -8,8 +8,9 @@ part 'drip_event.dart';
 part 'drip_state.dart';
 
 class DripBloc extends Bloc<DripEvent, DripState> {
-  @override
-  DripState get initialState => const DripIsLoaded(false);
+  DripBloc() : super(const DripIsLoaded(false));
+  /*@override
+  DripState get initialState => const DripIsLoaded(false);*/
 
   @override
   Stream<DripState> mapEventToState(

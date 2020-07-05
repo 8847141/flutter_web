@@ -8,8 +8,9 @@ part 'land_area_event.dart';
 part 'land_area_state.dart';
 
 class LandAreaBloc extends Bloc<LandAreaEvent, LandAreaState> {
-  @override
-  LandAreaState get initialState => const LandAreaIsLoaded('');
+  LandAreaBloc() : super(const LandAreaIsLoaded(''));
+  /*@override
+  LandAreaState get initialState => const LandAreaIsLoaded('');*/
 
   @override
   Stream<LandAreaState> mapEventToState(

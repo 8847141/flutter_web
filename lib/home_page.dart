@@ -13,6 +13,7 @@ import 'widgets/widgets.dart';
 class HomePage extends StatelessWidget {
   HomePage({Key key}) : super(key: key);
 
+  final pdf = pw.Document();
   @override
   Widget build(BuildContext context) {
     final double _screenWidth = MediaQuery.of(context).size.width;
@@ -100,7 +101,7 @@ class HomePage extends StatelessWidget {
               blocIndent,
               FlatButton(
                 color: mainColor,
-                onPressed: _createPDF,
+                onPressed: _savePDF,
                 child: const Text(
                   'Create PDF',
                   style: TextStyle(color: Colors.white),
@@ -114,32 +115,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  void _createPDF() {
-    final pdf = pw.Document();
-    print('start');
-    BlocListener<LandAreaBloc, LandAreaState>(
-      listener: (context, bloc) {
-        print('if');
-        if (bloc is LandAreaIsLoaded) {
-          final landArea = bloc.landArea;
-          pdf.addPage(pw.Page(
-              pageFormat: PdfPageFormat.a4,
-              build: (context) {
-                return pw.Center(
-                  child: pw.Text('Площадь полива: $landArea'),
-                );
-              }));
-          pdf.save();
-          print('bloc');
-          return null;
-        } else {
-          print('ELSE');
-          return null;
-        }
-      },
-    );
-    print('end');
-
+  void _savePDF() {
     final bytes = (pdf.save());
     final blob = html.Blob(<Uint8List>[Uint8List.fromList(bytes)]);
     final url = html.Url.createObjectUrlFromBlob(blob);

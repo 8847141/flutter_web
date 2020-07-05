@@ -8,8 +8,9 @@ part 'water_outlets_event.dart';
 part 'water_outlets_state.dart';
 
 class WaterOutletsBloc extends Bloc<WaterOutletsEvent, WaterOutletsState> {
-  @override
-  WaterOutletsState get initialState => const WaterOutletsIsLoaded('');
+  WaterOutletsBloc() : super(const WaterOutletsIsLoaded(''));
+  /*@override
+  WaterOutletsState get initialState => const WaterOutletsIsLoaded('');*/
 
   @override
   Stream<WaterOutletsState> mapEventToState(

@@ -9,6 +9,11 @@ part 'connection_type_state.dart';
 
 class ConnectionTypeBloc
     extends Bloc<ConnectionTypeEvent, ConnectionTypeState> {
+  ConnectionTypeBloc()
+      : super(const ConnectionTypeIsLoaded(
+          connectionType: 'Магистраль',
+          otherConnectionType: '',
+        ));
   List<String> get connectionTypes => [
         'Емкость (своя)',
         'Магистраль',
@@ -17,11 +22,11 @@ class ConnectionTypeBloc
         'Водоем',
         'Другое'
       ];
-  @override
+  /*@override
   ConnectionTypeState get initialState => const ConnectionTypeIsLoaded(
         connectionType: 'Магистраль',
         otherConnectionType: '',
-      );
+      );*/
 
   @override
   Stream<ConnectionTypeState> mapEventToState(

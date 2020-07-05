@@ -8,11 +8,16 @@ part 'terrain_event.dart';
 part 'terrain_state.dart';
 
 class TerrainBloc extends Bloc<TerrainEvent, TerrainState> {
-  @override
+  TerrainBloc()
+      : super(const TerrainIsLoaded(
+          flatTerrain: true,
+          heightDifference: '',
+        ));
+  /*@override
   TerrainState get initialState => const TerrainIsLoaded(
         flatTerrain: true,
         heightDifference: '',
-      );
+      );*/
 
   @override
   Stream<TerrainState> mapEventToState(

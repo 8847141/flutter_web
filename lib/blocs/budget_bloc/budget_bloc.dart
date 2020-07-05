@@ -8,6 +8,9 @@ part 'budget_event.dart';
 part 'budget_state.dart';
 
 class BudgetBloc extends Bloc<BudgetEvent, BudgetState> {
+  BudgetBloc()
+      : super(const BudgetIsLoaded('На ваше усмотрение (Стандарт)', ''));
+
   List<String> get budgets => [
         'До 50 тыс. руб',
         'До 100 тыс. руб',
@@ -18,9 +21,9 @@ class BudgetBloc extends Bloc<BudgetEvent, BudgetState> {
         'На ваше усмотрение (Премиум)',
         'Другое',
       ];
-  @override
+  /*@override
   BudgetState get initialState =>
-      const BudgetIsLoaded('На ваше усмотрение (Стандарт)', '');
+      const BudgetIsLoaded('На ваше усмотрение (Стандарт)', '');*/
 
   @override
   Stream<BudgetState> mapEventToState(

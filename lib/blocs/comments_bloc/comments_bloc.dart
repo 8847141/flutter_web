@@ -8,8 +8,9 @@ part 'comments_event.dart';
 part 'comments_state.dart';
 
 class CommentsBloc extends Bloc<CommentsEvent, CommentsState> {
-  @override
-  CommentsState get initialState => const CommentsIsLoaded('');
+  CommentsBloc() : super(const CommentsIsLoaded(''));
+  /* @override
+  CommentsState get initialState => const CommentsIsLoaded('');*/
 
   @override
   Stream<CommentsState> mapEventToState(

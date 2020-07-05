@@ -10,8 +10,9 @@ part 'nozzles_event.dart';
 part 'nozzles_state.dart';
 
 class NozzlesBloc extends Bloc<NozzlesEvent, NozzlesState> {
-  @override
-  NozzlesState get initialState => NozzlesIsLoaded(PreferredNozzleType());
+  NozzlesBloc() : super(NozzlesIsLoaded(PreferredNozzleType()));
+  /*@override
+  NozzlesState get initialState => NozzlesIsLoaded(PreferredNozzleType());*/
 
   @override
   Stream<NozzlesState> mapEventToState(
