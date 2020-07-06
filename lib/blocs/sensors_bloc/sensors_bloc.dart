@@ -11,8 +11,6 @@ part 'sensors_state.dart';
 
 class SensorsBloc extends Bloc<SensorsEvent, SensorsState> {
   SensorsBloc() : super(SensorsIsLoaded(Sensors()));
-  /*@override
-  SensorsState get initialState => SensorsIsLoaded(Sensors());*/
 
   @override
   Stream<SensorsState> mapEventToState(

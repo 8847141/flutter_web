@@ -9,8 +9,6 @@ part 'walkway_state.dart';
 
 class WalkwayBloc extends Bloc<WalkwayEvent, WalkwayState> {
   WalkwayBloc() : super(const WalkwayIsLoaded(true));
-  /*@override
-  WalkwayState get initialState => const WalkwayIsLoaded(true);*/
 
   @override
   Stream<WalkwayState> mapEventToState(

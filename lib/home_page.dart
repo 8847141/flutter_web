@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-import 'blocs/land_area_bloc/land_area_bloc.dart';
 
+import 'blocs/walkway_bloc/walkway_bloc.dart';
 import 'constants.dart';
 import 'widgets/widgets.dart';
 
@@ -20,52 +20,7 @@ class HomePage extends StatelessWidget {
 
     final double questionsWidth = _screenWidth < 450 ? _screenWidth - 32 : 418;
 
-    final Budget _budget = Budget();
-    final LandArea _landArea = LandArea();
-    final TerrarianType _terrarianType = TerrarianType();
-    final Watering _watering = Watering();
-    final Path _path = Path();
-    final DripIrrigation _dripIrrigation = DripIrrigation();
-    final PreferredNozzleType _preferredNozzleType = PreferredNozzleType();
-    final WaterOutlets _waterOutlets = WaterOutlets();
-    final Controller _controller = Controller();
-    final Sensors _sensors = Sensors();
-    final ConnectionType _connectionType = ConnectionType();
-    final Pump _pump = Pump();
-    final WaterTank _waterTank = WaterTank();
-    final Comments _comments = Comments();
-
-    final List<Widget> _firstColumn = [
-      _budget,
-      blocIndent,
-      _landArea,
-      blocIndent,
-      _terrarianType,
-      blocIndent,
-      _watering,
-      blocIndent,
-      _path,
-      blocIndent,
-      _dripIrrigation,
-      blocIndent,
-      _preferredNozzleType,
-    ];
-
-    final List<Widget> _secondColumn = [
-      _waterOutlets,
-      blocIndent,
-      _controller,
-      blocIndent,
-      _sensors,
-      blocIndent,
-      _connectionType,
-      blocIndent,
-      _pump,
-      blocIndent,
-      _waterTank,
-      blocIndent,
-      _comments,
-    ];
+    final WalkwayBloc _counterBloc = BlocProvider.of<WalkwayBloc>(context);
 
     return GestureDetector(
       onTap: () {
@@ -88,16 +43,8 @@ class HomePage extends StatelessWidget {
               ),
               blocIndent,
               MediaQuery.of(context).size.width <= (questionsWidth + 20) * 2
-                  ? ColumnQuestions(
-                      questionsWidth: questionsWidth,
-                      firsColumn: _firstColumn,
-                      secondColumn: _secondColumn,
-                    )
-                  : RowQuestions(
-                      questionsWidth: questionsWidth,
-                      firsColumn: _firstColumn,
-                      secondColumn: _secondColumn,
-                    ),
+                  ? ColumnQuestions(questionsWidth: questionsWidth)
+                  : RowQuestions(questionsWidth: questionsWidth),
               blocIndent,
               FlatButton(
                 color: mainColor,
@@ -108,6 +55,13 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               blocIndent,
+              BlocListener<WalkwayBloc, WalkwayState>(
+                bloc: _counterBloc,
+                listener: (context, bloc) {
+                  print('asdasd');
+                },
+                child: const SizedBox(),
+              )
             ],
           ),
         ),
@@ -134,15 +88,8 @@ class HomePage extends StatelessWidget {
 
 class ColumnQuestions extends StatelessWidget {
   final double questionsWidth;
-  final List<Widget> firsColumn;
-  final List<Widget> secondColumn;
 
-  ColumnQuestions({
-    Key key,
-    @required this.questionsWidth,
-    @required this.firsColumn,
-    @required this.secondColumn,
-  }) : super(key: key);
+  ColumnQuestions({Key key, @required this.questionsWidth}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -153,7 +100,35 @@ class ColumnQuestions extends StatelessWidget {
         SizedBox(
           width: questionsWidth,
           child: Column(
-            children: firsColumn + secondColumn,
+            children: [
+              Budget(),
+              blocIndent,
+              LandArea(),
+              blocIndent,
+              TerrarianType(),
+              blocIndent,
+              Watering(),
+              blocIndent,
+              Path(),
+              blocIndent,
+              DripIrrigation(),
+              blocIndent,
+              PreferredNozzleType(),
+              blocIndent,
+              WaterOutlets(),
+              blocIndent,
+              Controller(),
+              blocIndent,
+              Sensors(),
+              blocIndent,
+              ConnectionType(),
+              blocIndent,
+              Pump(),
+              blocIndent,
+              WaterTank(),
+              blocIndent,
+              Comments(),
+            ],
           ),
         ),
       ],
@@ -163,15 +138,8 @@ class ColumnQuestions extends StatelessWidget {
 
 class RowQuestions extends StatelessWidget {
   final double questionsWidth;
-  final List<Widget> firsColumn;
-  final List<Widget> secondColumn;
 
-  RowQuestions({
-    Key key,
-    @required this.questionsWidth,
-    @required this.firsColumn,
-    @required this.secondColumn,
-  }) : super(key: key);
+  RowQuestions({Key key, @required this.questionsWidth}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -183,14 +151,42 @@ class RowQuestions extends StatelessWidget {
           SizedBox(
             width: questionsWidth,
             child: Column(
-              children: firsColumn,
+              children: [
+                Budget(),
+                blocIndent,
+                LandArea(),
+                blocIndent,
+                TerrarianType(),
+                blocIndent,
+                Watering(),
+                blocIndent,
+                Path(),
+                blocIndent,
+                DripIrrigation(),
+                blocIndent,
+                PreferredNozzleType(),
+                blocIndent,
+              ],
             ),
           ),
           const SizedBox(width: 20.0),
           SizedBox(
             width: questionsWidth,
             child: Column(
-              children: secondColumn,
+              children: [
+                WaterOutlets(),
+                blocIndent,
+                Controller(),
+                blocIndent,
+                Sensors(),
+                blocIndent,
+                ConnectionType(),
+                blocIndent,
+                Pump(),
+                blocIndent,
+                WaterTank(),
+                blocIndent,
+              ],
             ),
           ),
         ],

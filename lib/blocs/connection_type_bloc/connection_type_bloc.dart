@@ -22,11 +22,6 @@ class ConnectionTypeBloc
         'Водоем',
         'Другое'
       ];
-  /*@override
-  ConnectionTypeState get initialState => const ConnectionTypeIsLoaded(
-        connectionType: 'Магистраль',
-        otherConnectionType: '',
-      );*/
 
   @override
   Stream<ConnectionTypeState> mapEventToState(

@@ -21,9 +21,6 @@ class BudgetBloc extends Bloc<BudgetEvent, BudgetState> {
         'На ваше усмотрение (Премиум)',
         'Другое',
       ];
-  /*@override
-  BudgetState get initialState =>
-      const BudgetIsLoaded('На ваше усмотрение (Стандарт)', '');*/
 
   @override
   Stream<BudgetState> mapEventToState(

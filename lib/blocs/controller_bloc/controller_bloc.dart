@@ -15,12 +15,6 @@ class ControllerBloc extends Bloc<ControllerEvent, ControllerState> {
         ));
   List<String> get controllerTypes => ['Внутренний', 'Внешний', 'Не нужен'];
 
-  /* @override
-  ControllerState get initialState => const ControllerIsLoaded(
-        controllerType: 'Внутренний',
-        controllerWitfWiFi: false,
-      );*/
-
   @override
   Stream<ControllerState> mapEventToState(
     ControllerEvent event,

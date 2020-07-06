@@ -11,9 +11,6 @@ part 'watering_state.dart';
 
 class WateringBloc extends Bloc<WateringEvent, WateringState> {
   WateringBloc() : super(WateringIsLoaded(TypesOfIrrigatedLandings()));
-  /*@override
-  WateringState get initialState =>
-      WateringIsLoaded(TypesOfIrrigatedLandings());*/
 
   @override
   Stream<WateringState> mapEventToState(
