@@ -22,6 +22,8 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   MyApp({Key key}) : super(key: key);
 
+  //final WalkwayBloc _walkwayBloc = WalkwayBloc();
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

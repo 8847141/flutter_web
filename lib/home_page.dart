@@ -20,7 +20,7 @@ class HomePage extends StatelessWidget {
 
     final double questionsWidth = _screenWidth < 450 ? _screenWidth - 32 : 418;
 
-    final WalkwayBloc _counterBloc = BlocProvider.of<WalkwayBloc>(context);
+    final _counterBloc = BlocProvider.of<WalkwayBloc>(context);
 
     return GestureDetector(
       onTap: () {
